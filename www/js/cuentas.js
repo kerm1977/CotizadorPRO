@@ -161,7 +161,7 @@ function visN(a){return a.filter(function(x){return x.show!==false}).length+' de
 function visBar(a){return'<div class="bk-vis"><span><i class="bi bi-eye"></i> Mostrar en la cotización: <b id="bk-vis-n">'+visN(a)+'</b></span><div class="bk-vis-b"><button type="button" class="btn btn-sm btn-outline-primary" data-ball="1"><i class="bi bi-check2-all"></i> Todas</button><button type="button" class="btn btn-sm btn-outline-secondary" data-ball="0"><i class="bi bi-eye-slash"></i> Ninguna</button></div></div>'}
 window.cproCtas=function(){return load().filter(function(x){return x.show!==false}).map(function(x){var f=x.f||{},l=x.l||{},p=PAISES[x.p],sh=function(k){return String(l[k]||k).split('(')[0].trim()},ct=p&&p.cats.filter(function(c){return c.k==x.c})[0];
   return{e:x.e,c:x.c,cat:ct?ct.n:'',flag:p?p.flag:'',pais:p?p.n:'',num:f.num||'',det:[f.tipo,f.mon,f.cci?sh('cci')+': '+f.cci:'',f.doc?sh('doc')+': '+f.doc:'',f.mail].filter(Boolean).join(' · '),tit:f.tit||'',v:fmt(x),u:x.c=='enlace'?f.num:''}})};
-function rer(){try{if(typeof render=='function')render()}catch(e){}}
+function rer(){try{if(typeof render=='function')render()}catch(e){}try{qpickBtn()}catch(e){}}
 function share(x){var p=PAISES[x.p],t=['*'+x.e+'*'+(p?' ('+p.n+')':'')];Object.keys(x.f||{}).forEach(function(k){if(x.f[k])t.push((x.l&&x.l[k]||k)+': '+x.f[k])});
   var txt=t.join('\n'),PL=window.Capacitor&&Capacitor.Plugins;
   if(PL&&PL.Share)PL.Share.share({title:x.e,text:txt,dialogTitle:'Compartir por WhatsApp'}).catch(function(){});else window.open('https://wa.me/?text='+encodeURIComponent(txt),'_blank')}
@@ -195,18 +195,29 @@ function onSave(){var c=cat(),en=Q('#bk-ent').value;if(!c||!en)return T('Selecci
 
 /* ===== Selector de cuentas para la cotización (Información de pago) ===== */
 var _qsel=null;                 // null = todas (por defecto) · [] = ninguna · [{e,num}]
-function qpickBtn(){var b=Q('#qpick');if(!b)return;b.querySelector('.fsel-v').textContent=_qsel==null?'Todas mis cuentas':(_qsel.length?_qsel.length==1?'1 cuenta':_qsel.length+' cuentas':'Sin cuentas');b.classList.toggle('ph',_qsel==null)}
+function qpickCards(){var box=Q('#qpick-cards');if(!box)return;var eff=window.cproCtasPick?_qsel==null?window.cproCtas():window.cproCtasPick(_qsel):[];
+  box.innerHTML=eff.length?'<div class="qctas">'+eff.map(function(x){return'<div class="qcta"><div class="qcta-h">'+(x.flag?'<span class="qcta-f">'+E(x.flag)+'</span>':'')+'<b>'+E(x.e)+'</b>'+(x.pais?'<span class="qcta-c">'+E(x.pais)+'</span>':'')+'</div>'+(x.num?'<div class="qcta-n">'+E(x.num)+'</div>':'')+(x.det||x.cat?'<div class="qcta-d">'+E([x.det,x.cat].filter(Boolean).join(' · '))+'</div>':'')+(x.tit?'<div class="qcta-t">'+E(x.tit)+'</div>':'')+'</div>'}).join('')+'</div>':''}
+function qpickBtn(){var b=Q('#qpick');if(!b)return;b.querySelector('.fsel-v').textContent=_qsel==null?'Todas mis cuentas':(_qsel.length?_qsel.length==1?'1 cuenta':_qsel.length+' cuentas':'Sin cuentas');b.classList.toggle('ph',_qsel==null);qpickCards()}
 function qpickSheet(){var all=window.cproCtas();if(!all.length)return T('Configurá cuentas en Mi Perfil → Cuentas');
+  var gps=[],gi={};all.forEach(function(x,i){var k=(x.flag||'')+(x.pais||'Otras');if(gi[k]===undefined){gi[k]=gps.length;gps.push({flag:x.flag,pais:x.pais||'Otras',rows:[]})}gps[gi[k]].rows.push({x:x,i:i})});
+  gps.sort(function(a,b){return a.pais.localeCompare(b.pais,'es')});
+  function isOn(x){return _qsel==null||_qsel.some(function(s){return s.e==x.e&&s.num==x.num})}
   var ov=document.createElement('div');ov.className='fsheet-ov';
-  ov.innerHTML='<div class="fsheet" role="dialog" aria-label="Cuentas de pago"><div class="fs-grab"></div><div class="fs-h"><span class="fs-hi"><i class="bi bi-wallet2"></i></span><b>Cuentas de pago</b><button type="button" class="fs-x" title="Cerrar"><i class="bi bi-x-lg"></i></button></div><div class="fs-l">'+all.map(function(x,i){var on=_qsel==null||_qsel.some(function(s){return s.e==x.e&&s.num==x.num});
-    return'<button type="button" class="fs-o'+(on?' on':'')+'" data-i="'+i+'"><span class="fs-ic">'+(x.flag?E(x.flag):'<i class="bi '+(CIC[x.c]||'bi-bank')+'"></i>')+'</span><span class="fs-t">'+E(x.e)+(x.num||x.cat?'<small>'+E([x.num,x.cat].filter(Boolean).join(' · '))+'</small>':'')+'</span><i class="bi bi-check-circle-fill fs-ck"></i></button>'}).join('')+'</div></div>';
+  ov.innerHTML='<div class="fsheet" role="dialog" aria-label="Cuentas de pago"><div class="fs-grab"></div><div class="fs-h"><span class="fs-hi"><i class="bi bi-wallet2"></i></span><b>Cuentas de pago</b><button type="button" class="fs-x" title="Cerrar"><i class="bi bi-x-lg"></i></button></div><div class="fs-l">'+gps.map(function(g,g2){
+    return'<div class="fs-grp"><button type="button" class="fs-o'+(g.rows.every(function(r){return isOn(r.x)})?' on':'')+'" data-g="'+g2+'"><span class="fs-ic">'+(g.flag?E(g.flag):'<i class="bi bi-globe-americas"></i>')+'</span><span class="fs-t"><b>'+E(g.pais)+'</b><small>'+g.rows.length+' cuenta'+(g.rows.length==1?'':'s')+'</small></span><i class="bi bi-check-circle-fill fs-ck"></i></button><div class="qpk-sub">'+g.rows.map(function(r){var x=r.x;
+      return'<button type="button" class="fs-o'+(isOn(x)?' on':'')+'" data-i="'+r.i+'"><span class="fs-ic"><i class="bi '+(CIC[x.c]||'bi-bank')+'"></i></span><span class="fs-t">'+E(x.e)+(x.num||x.cat?'<small>'+E([x.num,x.cat].filter(Boolean).join(' · '))+'</small>':'')+'</span><i class="bi bi-check-circle-fill fs-ck"></i></button>'}).join('')+'</div></div>'}).join('')+'</div></div>';
   document.body.appendChild(ov);
   function close(){ov.classList.remove('on');setTimeout(function(){ov.remove()},260)}
-  ov.onclick=function(e){if(e.target===ov||e.target.closest('.fs-x'))return close();var o=e.target.closest('.fs-o');if(!o)return;var x=all[+o.getAttribute('data-i')];
+  function setOn(x,on){var j=-1;for(var k=0;k<_qsel.length;k++)if(_qsel[k].e==x.e&&_qsel[k].num==x.num)j=k;if(on&&j<0)_qsel.push({e:x.e,num:x.num});if(!on&&j>=0)_qsel.splice(j,1)}
+  function syncG(g2){var g=gps[g2],on=g.rows.every(function(r){return isOn(r.x)});var h=ov.querySelector('[data-g="'+g2+'"]');if(h)h.classList.toggle('on',on)}
+  ov.onclick=function(e){if(e.target===ov||e.target.closest('.fs-x'))return close();var o=e.target.closest('.fs-o');if(!o)return;
     if(_qsel==null)_qsel=all.map(function(y){return{e:y.e,num:y.num}});
-    var j=-1;for(var k=0;k<_qsel.length;k++)if(_qsel[k].e==x.e&&_qsel[k].num==x.num)j=k;
-    if(j<0)_qsel.push({e:x.e,num:x.num});else _qsel.splice(j,1);
-    o.classList.toggle('on');qpickBtn();rer()};
+    if(o.hasAttribute('data-g')){var g=gps[+o.getAttribute('data-g')],on=g.rows.every(function(r){return isOn(r.x)});
+      g.rows.forEach(function(r){setOn(r.x,!on)});o.classList.toggle('on',!on);
+      Array.prototype.forEach.call(o.parentNode.querySelectorAll('[data-i]'),function(r){r.classList.toggle('on',!on)})}
+    else{var x=all[+o.getAttribute('data-i')];o.classList.toggle('on');setOn(x,o.classList.contains('on'));
+      var gp=o.closest('.fs-grp'),gh=gp&&gp.querySelector('[data-g]');if(gh)syncG(+gh.getAttribute('data-g'))}
+    qpickBtn();rer()};
   requestAnimationFrame(function(){ov.classList.add('on')})}
 window.cproQSel=function(){return _qsel};
 window.cproQSet=function(s){_qsel=s==null?null:s.map(function(x){return{e:x.e,num:x.num}});qpickBtn()};

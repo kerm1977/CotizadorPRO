@@ -529,6 +529,7 @@ input,select,textarea,.form-control,.form-select{max-width:100%;box-sizing:borde
 #bk-mt{cursor:pointer;user-select:none;display:flex;align-items:center;gap:6px}
 #bk-mt .bk-mc{margin-left:auto;transition:transform .2s;color:var(--mut)}
 #bk-mt.shut .bk-mc{transform:rotate(-90deg)}
+.qpk-sub{margin:0 0 4px 12px;padding-left:8px;border-left:2px solid rgba(99,102,241,.2)}
 .qctas{margin-top:8px;font-size:.78rem;text-align:left;display:flex;flex-direction:column;gap:6px;word-break:break-word}
 .qctas a{color:inherit;text-decoration:underline}
 .qcta{padding:7px 10px;border-radius:10px;background:rgba(99,102,241,.07);border-left:3px solid var(--acc2);display:flex;flex-direction:column;gap:1px;min-width:0}
