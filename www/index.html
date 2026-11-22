@@ -334,7 +334,6 @@
         <div class="col-6"><span class="cs-l">Fecha inicio</span><input id="idesde" type="date" class="form-control"></div>
         <div class="col-6"><span class="cs-l">Fecha fin</span><input id="ihasta" type="date" class="form-control"></div>
         <div class="col-6"><span class="cs-l">Cantidad de días</span><input id="idias" type="number" min="1" class="form-control" placeholder="Ej: 7"></div>
-        <div class="col-6"><span class="cs-l">Cliente / contacto</span><input id="icli" class="form-control" placeholder="Opcional"></div>
       </div>
     </section>
     <section class="cs">
@@ -349,7 +348,7 @@
 <div class="pg" id="mItiD"><div class="mdl-box wide">
   <div class="mdl-head"><span><i class="bi bi-map me-2"></i>Itinerario</span></div>
   <div class="mdl-body">
-    <div class="stp"><span class="stp-d ok" data-go="mIti"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">2</span><span class="stp-l"></span><span class="stp-d" data-go="mItiG">3</span></div>
+    <div class="stp"><span class="stp-d ok" data-go="mIti"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">2</span><span class="stp-l"></span><span class="stp-d" data-go="mItiR">3</span></div>
     <div class="stp-t">Paso 2 · Día a día</div>
     <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de paso</div>
     <section class="cs">
@@ -363,7 +362,50 @@
       <div id="imaps"></div>
       <div class="it mt-1"><input id="imapin" class="form-control" placeholder="Pegá un enlace de Google Maps"><button type="button" class="btn btn-outline-primary" id="imapb"><i class="bi bi-plus-lg"></i></button></div>
     </section>
-    <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mIti"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mItiG">Continuar <i class="bi bi-arrow-right"></i></button></div>
+    <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mIti"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mItiR">Continuar <i class="bi bi-arrow-right"></i></button></div>
+  </div>
+</div></div>
+
+<!-- ===== Itinerario · paso 3: Resumen ===== -->
+<div class="pg" id="mItiR"><div class="mdl-box wide">
+  <div class="mdl-head"><span><i class="bi bi-clipboard-check me-2"></i>Itinerario</span></div>
+  <div class="mdl-body">
+    <div class="stp"><span class="stp-d ok" data-go="mIti"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d ok" data-go="mItiD"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">3</span></div>
+    <div class="stp-t">Paso 3 · Resumen</div>
+    <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de paso</div>
+    <section class="cs"><div class="cs-t"><i class="bi bi-clipboard-check"></i> Resumen del viaje</div><div id="itisum" class="cs-tot"></div></section>
+    <section class="cs"><div class="cs-t"><i class="bi bi-calendar3"></i> Día a día</div><div id="itidays"></div></section>
+    <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mItiD"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mItiI">Más opciones <i class="bi bi-arrow-right"></i></button></div>
+  </div>
+</div></div>
+
+<!-- ===== Itinerario · paso 3: Instrucciones ===== -->
+<div class="pg" id="mItiI"><div class="mdl-box wide">
+  <div class="mdl-head"><span><i class="bi bi-info-circle me-2"></i>Itinerario</span></div>
+  <div class="mdl-body">
+    <div class="stp"><span class="stp-d ok" data-go="mIti"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d ok" data-go="mItiD"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">3</span></div>
+    <div class="stp-t">Paso 3 · Instrucciones</div>
+    <section class="cs">
+      <div class="cs-t"><i class="bi bi-info-circle"></i> Agregar instrucciones</div>
+      <div class="cs-hint">Texto predeterminado — editá lo que necesités. Se integra al PDF.</div>
+      <textarea id="iins" class="form-control" rows="5" style="resize:vertical"></textarea>
+    </section>
+    <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mItiR"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mItiN">Siguiente · No incluye <i class="bi bi-arrow-right"></i></button></div>
+  </div>
+</div></div>
+
+<!-- ===== Itinerario · paso 3: No incluye ===== -->
+<div class="pg" id="mItiN"><div class="mdl-box wide">
+  <div class="mdl-head"><span><i class="bi bi-slash-circle me-2"></i>Itinerario</span></div>
+  <div class="mdl-body">
+    <div class="stp"><span class="stp-d ok" data-go="mIti"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d ok" data-go="mItiD"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">3</span></div>
+    <div class="stp-t">Paso 3 · No incluye</div>
+    <section class="cs">
+      <div class="cs-t"><i class="bi bi-slash-circle"></i> El servicio no incluye</div>
+      <div class="cs-hint">Lo que el viaje no cubre — se integra al PDF.</div>
+      <textarea id="ini" class="form-control" rows="4" placeholder="Ej: alimentación, propinas, transporte…" style="resize:vertical"></textarea>
+    </section>
+    <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mItiI"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mItiG">Siguiente · Opciones <i class="bi bi-arrow-right"></i></button></div>
   </div>
 </div></div>
 
@@ -371,10 +413,9 @@
 <div class="pg" id="mItiG"><div class="mdl-box wide">
   <div class="mdl-head"><span><i class="bi bi-save me-2"></i>Itinerario</span></div>
   <div class="mdl-body">
-    <div class="stp"><span class="stp-d ok" data-go="mIti"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d ok" data-go="mItiD"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">3</span></div>
-    <div class="stp-t">Paso 3 · Guardar</div>
+    <div class="stp"><span class="stp-d ok" data-go="mIti"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d ok" data-go="mItiR"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">3</span></div>
+    <div class="stp-t">Paso 3 · Opciones</div>
     <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de paso</div>
-    <section class="cs"><div class="cs-t"><i class="bi bi-clipboard-check"></i> Resumen</div><div id="itisum" class="cs-tot"></div></section>
     <section class="cs">
       <div class="cs-t"><i class="bi bi-image"></i> Portada del PDF</div>
       <div class="cs-hint">Se coloca como primera página en aspecto de hoja A4, vista completa.</div>
@@ -387,10 +428,13 @@
       <div class="cs-t"><i class="bi bi-file-earmark-pdf"></i> Exportar a PDF</div>
       <div class="form-check form-switch"><input class="form-check-input" id="iexp-emp" type="checkbox" checked><label class="form-check-label" for="iexp-emp">Incluir datos de la empresa</label></div>
       <div class="form-check form-switch"><input class="form-check-input" id="iexp-ctas" type="checkbox" checked><label class="form-check-label" for="iexp-ctas">Incluir cuentas bancarias</label></div>
-      <span class="cs-l mt-2">Instrucciones</span><textarea id="iins" class="form-control" rows="3" style="resize:vertical"></textarea>
-      <span class="cs-l mt-2">El servicio no incluye</span><textarea id="ini" class="form-control" rows="2" placeholder="Ej: alimentación, propinas, transporte…" style="resize:vertical"></textarea>
       <button type="button" class="btn btn-outline-danger w-100 mt-2" id="itipdf"><i class="bi bi-file-earmark-pdf"></i> Exportar PDF</button>
     </section>
+    <section class="cs">
+      <div class="cs-t"><i class="bi bi-person"></i> Cliente / contacto</div>
+      <input id="icli" class="form-control" placeholder="Opcional">
+    </section>
+    <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mItiR"><i class="bi bi-arrow-left"></i> Volver</button></div>
     <button type="button" class="btn btn-primary w-100" id="saveIti" style="border-radius:10px"><i class="bi bi-save"></i> Guardar y cerrar</button>
   </div>
 </div></div>
