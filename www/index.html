@@ -146,14 +146,14 @@
   </div>
 </div></div>
 
-<!-- ===== Página: Información del servicio (paso 2) ===== -->
+<!-- ===== Paso 2 · hoja 1: Información de pago ===== -->
 <div class="pg" id="mPago"><div class="mdl-box wide">
   <div class="mdl-head"><span><i class="bi bi-pencil-square me-2"></i>Crear Servicios</span></div>
   <div class="mdl-body">
     <div class="stp"><span class="stp-d ok" data-go="mSrv"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">2</span><span class="stp-l"></span><span class="stp-d" data-go="mCot">3</span></div>
-    <div class="stp-t">Paso 2 · Información del servicio</div>
-    <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de paso</div>
-    <!-- 1. Información de pago -->
+    <div class="stp-t">Paso 2 · Información de pago</div>
+    <div class="stp2"><span class="stp2-d on"></span><span class="stp2-d" data-go="mDet"></span><span class="stp2-d" data-go="mItems"></span><span class="stp2-d" data-go="mTax"></span><span class="stp2-d" data-go="mNotas"></span><span class="stp2-d" data-go="mQCli"></span></div>
+    <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de hoja</div>
     <section class="cs">
       <div class="cs-t"><i class="bi bi-wallet2"></i> Información de pago</div>
       <span class="cs-l">Moneda</span>
@@ -164,24 +164,54 @@
       <div><button type="button" id="qpick" class="fsel"><span class="fsel-i"><i class="bi bi-wallet2"></i></span><span class="fsel-v">Todas mis cuentas</span><i class="bi bi-chevron-down fsel-ch"></i></button>
       <div id="qpick-cards"></div></div>
     </section>
+    <button type="button" class="btn btn-primary w-100" data-go="mDet" style="border-radius:10px">Siguiente · Detalles <i class="bi bi-arrow-right"></i></button>
+  </div>
+</div></div>
 
-    <!-- 2. Detalles -->
+<!-- ===== Paso 2 · hoja 2: Detalles ===== -->
+<div class="pg" id="mDet"><div class="mdl-box wide">
+  <div class="mdl-head"><span><i class="bi bi-pencil-square me-2"></i>Crear Servicios</span></div>
+  <div class="mdl-body">
+    <div class="stp"><span class="stp-d ok" data-go="mSrv"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">2</span><span class="stp-l"></span><span class="stp-d" data-go="mCot">3</span></div>
+    <div class="stp-t">Paso 2 · Detalles</div>
+    <div class="stp2"><span class="stp2-d" data-go="mPago"></span><span class="stp2-d on"></span><span class="stp2-d" data-go="mItems"></span><span class="stp2-d" data-go="mTax"></span><span class="stp2-d" data-go="mNotas"></span><span class="stp2-d" data-go="mQCli"></span></div>
+    <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de hoja</div>
     <section class="cs">
       <div class="cs-t"><i class="bi bi-sliders"></i> Detalles</div>
       <span class="cs-l">Tipo de ítem</span>
       <select id="tipo" class="form-select"><option value="srv">Servicio</option><option value="prod">Producto</option></select>
       <div class="cs-hint"><b>Servicio:</b> trabajo o mano de obra. <b>Producto:</b> artículo físico que se vende.</div>
     </section>
-    <datalist id="cat-srv"></datalist><datalist id="cat-prod"></datalist>
+    <button type="button" class="btn btn-primary w-100" data-go="mItems" style="border-radius:10px">Siguiente · Conceptos <i class="bi bi-arrow-right"></i></button>
+  </div>
+</div></div>
 
-    <!-- 3. Conceptos -->
+<!-- ===== Paso 2 · hoja 3: Conceptos de servicio ===== -->
+<div class="pg" id="mItems"><div class="mdl-box wide">
+  <div class="mdl-head"><span><i class="bi bi-pencil-square me-2"></i>Crear Servicios</span></div>
+  <div class="mdl-body">
+    <div class="stp"><span class="stp-d ok" data-go="mSrv"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">2</span><span class="stp-l"></span><span class="stp-d" data-go="mCot">3</span></div>
+    <div class="stp-t">Paso 2 · Conceptos de servicio</div>
+    <div class="stp2"><span class="stp2-d" data-go="mPago"></span><span class="stp2-d" data-go="mDet"></span><span class="stp2-d on"></span><span class="stp2-d" data-go="mTax"></span><span class="stp2-d" data-go="mNotas"></span><span class="stp2-d" data-go="mQCli"></span></div>
+    <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de hoja</div>
     <section class="cs">
       <div class="cs-t"><i class="bi bi-list-check"></i> <span id="itemlbl">Concepto de servicio</span></div>
       <div id="items"></div>
       <button class="btn btn-outline-primary w-100" id="add"><i class="bi bi-plus-lg"></i> Agregar más servicios</button>
     </section>
+    <datalist id="cat-srv"></datalist><datalist id="cat-prod"></datalist>
+    <button type="button" class="btn btn-primary w-100" data-go="mTax" style="border-radius:10px">Siguiente · Impuestos <i class="bi bi-arrow-right"></i></button>
+  </div>
+</div></div>
 
-    <!-- 4. Impuesto y total -->
+<!-- ===== Paso 2 · hoja 4: Impuestos ===== -->
+<div class="pg" id="mTax"><div class="mdl-box wide">
+  <div class="mdl-head"><span><i class="bi bi-pencil-square me-2"></i>Crear Servicios</span></div>
+  <div class="mdl-body">
+    <div class="stp"><span class="stp-d ok" data-go="mSrv"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">2</span><span class="stp-l"></span><span class="stp-d" data-go="mCot">3</span></div>
+    <div class="stp-t">Paso 2 · Impuestos</div>
+    <div class="stp2"><span class="stp2-d" data-go="mPago"></span><span class="stp2-d" data-go="mDet"></span><span class="stp2-d" data-go="mItems"></span><span class="stp2-d on"></span><span class="stp2-d" data-go="mNotas"></span><span class="stp2-d" data-go="mQCli"></span></div>
+    <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de hoja</div>
     <section class="cs">
       <div class="cs-t justify-content-between"><span><i class="bi bi-calculator"></i> Impuesto y total</span>
         <div class="form-check form-switch mb-0"><input class="form-check-input" id="taxtog" type="checkbox" checked><label class="form-check-label" for="taxtog" style="font-size:.78rem;text-transform:none;letter-spacing:0">Activo</label></div>
@@ -193,14 +223,34 @@
         <div class="r grand" id="totrow" style="display:none"><b>Total</b><b id="totamt"></b></div>
       </div>
     </section>
+    <button type="button" class="btn btn-primary w-100" data-go="mNotas" style="border-radius:10px">Siguiente · Notas <i class="bi bi-arrow-right"></i></button>
+  </div>
+</div></div>
 
-    <!-- 5. Notas -->
+<!-- ===== Paso 2 · hoja 5: Notas ===== -->
+<div class="pg" id="mNotas"><div class="mdl-box wide">
+  <div class="mdl-head"><span><i class="bi bi-pencil-square me-2"></i>Crear Servicios</span></div>
+  <div class="mdl-body">
+    <div class="stp"><span class="stp-d ok" data-go="mSrv"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">2</span><span class="stp-l"></span><span class="stp-d" data-go="mCot">3</span></div>
+    <div class="stp-t">Paso 2 · Notas</div>
+    <div class="stp2"><span class="stp2-d" data-go="mPago"></span><span class="stp2-d" data-go="mDet"></span><span class="stp2-d" data-go="mItems"></span><span class="stp2-d" data-go="mTax"></span><span class="stp2-d on"></span><span class="stp2-d" data-go="mQCli"></span></div>
+    <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de hoja</div>
     <section class="cs">
       <div class="cs-t"><i class="bi bi-journal-text"></i> Notas</div>
       <textarea id="notas" class="form-control" rows="4" placeholder="Condiciones, vigencia…" style="resize:vertical"></textarea>
     </section>
+    <button type="button" class="btn btn-primary w-100" data-go="mQCli" style="border-radius:10px">Siguiente · Cliente <i class="bi bi-arrow-right"></i></button>
+  </div>
+</div></div>
 
-    <!-- 6. Cliente -->
+<!-- ===== Paso 2 · hoja 6: Cliente ===== -->
+<div class="pg" id="mQCli"><div class="mdl-box wide">
+  <div class="mdl-head"><span><i class="bi bi-pencil-square me-2"></i>Crear Servicios</span></div>
+  <div class="mdl-body">
+    <div class="stp"><span class="stp-d ok" data-go="mSrv"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">2</span><span class="stp-l"></span><span class="stp-d" data-go="mCot">3</span></div>
+    <div class="stp-t">Paso 2 · Cliente</div>
+    <div class="stp2"><span class="stp2-d" data-go="mPago"></span><span class="stp2-d" data-go="mDet"></span><span class="stp2-d" data-go="mItems"></span><span class="stp2-d" data-go="mTax"></span><span class="stp2-d" data-go="mNotas"></span><span class="stp2-d on"></span></div>
+    <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de hoja</div>
     <section class="cs">
       <div class="cs-t justify-content-between"><span><i class="bi bi-person"></i> Cliente</span>
         <button class="btn btn-sm btn-outline-success" id="cligo" title="Agregar / editar cliente" style="text-transform:none;letter-spacing:0"><i class="bi bi-person-plus"></i> Nuevo</button>
@@ -213,13 +263,10 @@
         </div>
       </div>
     </section>
-
-    <!-- 7. Vista previa (al fondo) -->
     <section class="cs cs-prev">
       <button class="btn btn-primary w-100" id="prevtog"><i class="bi bi-eye"></i> Visualizar cotización</button>
       <div class="qprev mt-3" id="prev" style="display:none"></div>
     </section>
-
     <button type="button" class="btn btn-primary w-100" data-go="mCot" style="border-radius:10px">Continuar <i class="bi bi-arrow-right"></i></button>
   </div>
 </div></div>

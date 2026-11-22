@@ -149,7 +149,7 @@ try{localStorage.removeItem('cpro_bg')}catch(e){}
 var _rb=$('#renbrand');if(_rb)_rb.onclick=function(){var n=prompt('Nombre personalizado del título:','CotizacionesPro');if(n===null)return;n=n.trim()||'CotizacionesPro';localStorage.setItem('cpro_brand',n);var h=document.querySelector('h1.brand');if(h)h.textContent=n;document.title=n;toast('Título actualizado')};
 var _bn=localStorage.getItem('cpro_brand');if(_bn){var _bh2=document.querySelector('h1.brand');if(_bh2)_bh2.textContent=_bn;document.title=_bn}
 $$('.secbt').forEach(function(b){b.onclick=function(){openModal(b.dataset.open)}});
-var FLOW=['mSrv','mPago','mCot'],SW={mSrv:1,mPago:2,mCot:3},_swNext=null,_swSel='';
+var FLOW=['mSrv','mPago','mDet','mItems','mTax','mNotas','mQCli','mCot'],SW={mSrv:1,mPago:2,mDet:3,mItems:4,mTax:5,mNotas:6,mQCli:7,mCot:8},_swNext=null,_swSel='';
 $$('.srv-o').forEach(function(b){b.onclick=function(){if(b.dataset.srv=='cot'){_swSel='cot';_swNext='mPago';stepGo('mPago',false)}else toast('«'+b.querySelector('b').textContent+'» estará disponible pronto')}});
 function stepGo(id,back){if(back){if(_pgStack[_pgStack.length-1]==id)_pgStack.pop();pgShow(id);_pgStack.pop()}else pgShow(id);var m=document.getElementById(id);if(m){m.classList.remove('sw-l','sw-r');void m.offsetWidth;m.classList.add(back?'sw-r':'sw-l')}}
 function swStep(id,back){var i=FLOW.indexOf(id);if(i<0)return;if(back){if(i>0)stepGo(FLOW[i-1],true);else stepGo(_pgStack[_pgStack.length-1]||'pg-home',true)}else if(i==0){if(_swNext)stepGo(_swNext,false);else toast('Elegí una opción para continuar')}else if(i<FLOW.length-1)stepGo(FLOW[i+1],false)}
