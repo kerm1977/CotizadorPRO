@@ -142,7 +142,30 @@
       <button type="button" class="srv-o" data-srv="iti"><i class="bi bi-map"></i><b>Itinerario</b><small>Plan de viaje o agenda por días</small></button>
       <button type="button" class="srv-o" data-srv="ven"><i class="bi bi-cart-check"></i><b>Venta</b><small>Registro de una venta realizada</small></button>
       <button type="button" class="srv-o" data-srv="srv"><i class="bi bi-tools"></i><b>Servicios</b><small>Orden o detalle de un servicio</small></button>
+      <button type="button" class="srv-o" data-srv="ctl"><i class="bi bi-check2-square"></i><b>Control de itinerario</b><small>Progreso por día de cada viaje</small></button>
     </div>
+  </div>
+</div></div>
+
+<!-- ===== Página: Nuevo / guardados (paso 1) ===== -->
+<div class="pg" id="mLst"><div class="mdl-box wide">
+  <div class="mdl-head"><span><i class="bi bi-pencil-square me-2"></i>Crear Servicios</span></div>
+  <div class="mdl-body">
+    <div class="stp"><span class="stp-d on" data-go="mSrv">1</span><span class="stp-l"></span><span class="stp-d" data-go="mPago">2</span><span class="stp-l"></span><span class="stp-d" data-go="mCot">3</span></div>
+    <div class="stp-t" id="lst-t">Paso 1 · Cotizaciones</div>
+    <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de paso</div>
+    <button type="button" class="btn btn-primary w-100" id="lst-new" style="border-radius:10px"><i class="bi bi-plus-lg"></i> <span id="lst-newlbl">Nueva cotización</span></button>
+    <section class="cs mt-3">
+      <div class="cs-t justify-content-between"><span><i class="bi bi-wallet2"></i> Info de pago en nuevas</span>
+        <div class="form-check form-switch mb-0"><input class="form-check-input" id="paydef" type="checkbox"><label class="form-check-label" for="paydef" style="font-size:.78rem;text-transform:none;letter-spacing:0">Aplicar</label></div>
+      </div>
+      <div class="cs-hint">Activo: la moneda, el tipo de pago y las cuentas seleccionadas se copian a todas las nuevas.</div>
+    </section>
+    <section class="cs">
+      <div class="cs-t"><i class="bi bi-archive"></i> <span id="lst-h">Cotizaciones guardadas</span></div>
+      <div id="lst"></div>
+    </section>
+    <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mSrv"><i class="bi bi-arrow-left"></i> Volver</button></div>
   </div>
 </div></div>
 
@@ -196,6 +219,7 @@
     <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de hoja</div>
     <section class="cs">
       <div class="cs-t"><i class="bi bi-list-check"></i> <span id="itemlbl">Concepto de servicio</span></div>
+      <span class="cs-l" id="snoml">Nombre del servicio</span><input id="snom" class="form-control mb-2" placeholder="Ej: Masajes terapéuticos">
       <div id="items"></div>
       <div id="it-tot" class="it-tot d-none"><span>Total</span><b id="it-tot-v"></b></div>
       <button class="btn btn-outline-primary w-100" id="add"><i class="bi bi-plus-lg"></i> Agregar más servicios</button>
@@ -290,6 +314,100 @@
     <button type="button" class="btn btn-primary w-100" id="save2" style="border-radius:10px"><i class="bi bi-save"></i> Guardar y cerrar</button>
   </div>
 </div></div>
+<!-- ===== Itinerario · paso 1: Datos del viaje ===== -->
+<div class="pg" id="mIti"><div class="mdl-box wide">
+  <div class="mdl-head"><span><i class="bi bi-map me-2"></i>Itinerario</span></div>
+  <div class="mdl-body">
+    <div class="stp"><span class="stp-d on">1</span><span class="stp-l"></span><span class="stp-d" data-go="mItiD">2</span><span class="stp-l"></span><span class="stp-d" data-go="mItiG">3</span></div>
+    <div class="stp-t">Paso 1 · Datos del viaje</div>
+    <div class="stp-h"><i class="bi bi-airplane"></i> Espacio exclusivo para turismo y actividades</div>
+    <section class="cs">
+      <div class="cs-t"><i class="bi bi-tag"></i> Identificación</div>
+      <span class="cs-l">Nombre del viaje</span><input id="inom" class="form-control mb-2" placeholder="Ej: Viaje a la Conchinchina">
+      <div class="row g-2">
+        <div class="col-6"><span class="cs-l">País</span><select id="ipais" class="form-select"><option value="">Seleccionar</option></select></div>
+        <div class="col-6"><span class="cs-l">Pasajeros</span><input id="ipax" type="number" min="1" class="form-control" placeholder="1"></div>
+        <div class="col-6"><span class="cs-l">Fecha inicio</span><input id="idesde" type="date" class="form-control"></div>
+        <div class="col-6"><span class="cs-l">Fecha fin</span><input id="ihasta" type="date" class="form-control"></div>
+        <div class="col-6"><span class="cs-l">Cantidad de días</span><input id="idias" type="number" min="1" class="form-control" placeholder="Ej: 7"></div>
+        <div class="col-6"><span class="cs-l">Cliente / contacto</span><input id="icli" class="form-control" placeholder="Opcional"></div>
+      </div>
+    </section>
+    <section class="cs">
+      <div class="cs-t"><i class="bi bi-journal-text"></i> Notas del viaje</div>
+      <textarea id="inotas" class="form-control" rows="3" placeholder="Punto de encuentro, horarios, recomendaciones…" style="resize:vertical"></textarea>
+    </section>
+    <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mLst"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mItiD">Siguiente · Día a día <i class="bi bi-arrow-right"></i></button></div>
+  </div>
+</div></div>
+
+<!-- ===== Itinerario · paso 2: Día a día ===== -->
+<div class="pg" id="mItiD"><div class="mdl-box wide">
+  <div class="mdl-head"><span><i class="bi bi-map me-2"></i>Itinerario</span></div>
+  <div class="mdl-body">
+    <div class="stp"><span class="stp-d ok" data-go="mIti"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">2</span><span class="stp-l"></span><span class="stp-d" data-go="mItiG">3</span></div>
+    <div class="stp-t">Paso 2 · Día a día</div>
+    <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de paso</div>
+    <section class="cs">
+      <div class="cs-t justify-content-between"><span><i class="bi bi-calendar3"></i> Días del itinerario</span><button type="button" class="btn btn-sm btn-outline-primary" id="idayb" style="text-transform:none;letter-spacing:0"><i class="bi bi-plus-lg"></i> Día</button></div>
+      <div class="cs-hint">Cada día hereda la fecha desde el inicio del viaje. Agregá las opciones que querás por día.</div>
+      <div id="idays" class="mt-2"></div>
+    </section>
+    <section class="cs">
+      <div class="cs-t"><i class="bi bi-geo-alt"></i> Enlaces de mapas</div>
+      <div class="cs-hint">Solo para uso interno — no se exportan al PDF.</div>
+      <div id="imaps"></div>
+      <div class="it mt-1"><input id="imapin" class="form-control" placeholder="Pegá un enlace de Google Maps"><button type="button" class="btn btn-outline-primary" id="imapb"><i class="bi bi-plus-lg"></i></button></div>
+    </section>
+    <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mIti"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mItiG">Continuar <i class="bi bi-arrow-right"></i></button></div>
+  </div>
+</div></div>
+
+<!-- ===== Itinerario · paso 3: Guardar y exportar ===== -->
+<div class="pg" id="mItiG"><div class="mdl-box wide">
+  <div class="mdl-head"><span><i class="bi bi-save me-2"></i>Itinerario</span></div>
+  <div class="mdl-body">
+    <div class="stp"><span class="stp-d ok" data-go="mIti"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d ok" data-go="mItiD"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">3</span></div>
+    <div class="stp-t">Paso 3 · Guardar</div>
+    <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de paso</div>
+    <section class="cs"><div class="cs-t"><i class="bi bi-clipboard-check"></i> Resumen</div><div id="itisum" class="cs-tot"></div></section>
+    <section class="cs">
+      <div class="cs-t"><i class="bi bi-image"></i> Portada del PDF</div>
+      <div class="cs-hint">Se coloca como primera página en aspecto de hoja A4, vista completa.</div>
+      <input type="file" id="icov" accept="image/*" class="d-none">
+      <button type="button" class="btn btn-outline-primary w-100 mt-1" id="icovb"><i class="bi bi-upload"></i> Subir portada</button>
+      <div id="icovp" class="d-none mt-2" style="border:1px solid rgba(120,120,120,.35);border-radius:10px;overflow:hidden;aspect-ratio:210/297;background:#fff center/cover no-repeat"></div>
+      <button type="button" class="btn btn-sm btn-outline-danger w-100 mt-2 d-none" id="icovx"><i class="bi bi-x-lg"></i> Quitar portada</button>
+    </section>
+    <section class="cs">
+      <div class="cs-t"><i class="bi bi-file-earmark-pdf"></i> Exportar a PDF</div>
+      <div class="form-check form-switch"><input class="form-check-input" id="iexp-emp" type="checkbox" checked><label class="form-check-label" for="iexp-emp">Incluir datos de la empresa</label></div>
+      <div class="form-check form-switch"><input class="form-check-input" id="iexp-ctas" type="checkbox" checked><label class="form-check-label" for="iexp-ctas">Incluir cuentas bancarias</label></div>
+      <span class="cs-l mt-2">Instrucciones</span><textarea id="iins" class="form-control" rows="3" style="resize:vertical"></textarea>
+      <span class="cs-l mt-2">El servicio no incluye</span><textarea id="ini" class="form-control" rows="2" placeholder="Ej: alimentación, propinas, transporte…" style="resize:vertical"></textarea>
+      <button type="button" class="btn btn-outline-danger w-100 mt-2" id="itipdf"><i class="bi bi-file-earmark-pdf"></i> Exportar PDF</button>
+    </section>
+    <button type="button" class="btn btn-primary w-100" id="saveIti" style="border-radius:10px"><i class="bi bi-save"></i> Guardar y cerrar</button>
+  </div>
+</div></div>
+
+<div class="pg" id="mCtl"><div class="mdl-box">
+  <div class="mdl-head"><span><i class="bi bi-check2-square me-2"></i>Control de itinerario</span></div>
+  <div class="mdl-body">
+    <div class="cs-hint mb-2">Tocá un itinerario para marcar el progreso de cada día.</div>
+    <div id="ctllist"></div>
+    <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mSrv"><i class="bi bi-arrow-left"></i> Volver</button></div>
+  </div>
+</div></div>
+
+<div class="pg" id="mCtlV"><div class="mdl-box wide">
+  <div class="mdl-head"><span><i class="bi bi-check2-square me-2"></i>Control de itinerario</span></div>
+  <div class="mdl-body">
+    <div id="ctlv"></div>
+    <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mCtl"><i class="bi bi-arrow-left"></i> Volver</button></div>
+  </div>
+</div></div>
+
 <button class="pgfab" id="pgfab" title="Volver"><i class="bi bi-arrow-left"></i></button>
 <button class="savefab" id="savefab" title="Guardar cotización" style="display:none"><i class="bi bi-save"></i> Guardar</button>
 
@@ -350,6 +468,7 @@
 <div class="pg" id="mCli"><div class="mdl-box">
   <div class="mdl-head"><span><i class="bi bi-people me-2"></i>Clientes</span></div>
   <div class="mdl-body">
+    <input id="clisearch" class="form-control mb-2" placeholder="Buscar por nombre, apellido, país, teléfono, email, dirección, campo o tipo…">
     <button class="btn btn-primary w-100 mb-3" id="clinew" type="button"><i class="bi bi-person-plus-fill"></i> Agregar nuevo cliente</button>
     <div id="clilist2"></div>
   </div>
@@ -363,7 +482,8 @@
     <input id="cli" class="form-control mb-2" placeholder="Nombre de cliente">
     <input id="ape" class="form-control mb-2" placeholder="Apellidos">
     <div class="mb-2"><select id="cpais" class="form-select" data-ic="bi-globe-americas"><option value="">País del cliente</option></select></div>
-    <input id="tel" class="form-control mb-2" placeholder="Teléfono" inputmode="numeric">
+    <div class="input-group mb-2"><span class="input-group-text d-none" id="telcode"></span><input id="tel" class="form-control" placeholder="Teléfono" inputmode="numeric"></div>
+    <button type="button" class="btn btn-success w-100 mb-2 d-none" id="telwa"><i class="bi bi-whatsapp"></i> Contactar por WhatsApp</button>
     <input id="mail" class="form-control mb-2" placeholder="Email">
     <input id="cdir" class="form-control mb-2" placeholder="Dirección">
     <div id="cfcli"></div>
@@ -421,7 +541,7 @@
 <script src="js/ota_stamp.js"></script>
 <script src="js/plantilla.js"></script>
 <script src="js/catalog.js?v=1"></script>
-<script src="js/app.js?v=36"></script>
+<script src="js/app.js?v=37"></script>
 <script src="js/exports.js?v=4"></script>
 <script src="js/paises.js?v=1"></script>
 <script src="js/cuentas.js?v=13"></script>

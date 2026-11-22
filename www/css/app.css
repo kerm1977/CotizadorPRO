@@ -610,3 +610,11 @@ body.dark .fsheet{background:#111827}
 .fs-none{text-align:center;color:var(--mut);padding:24px 0}
 /* Botones de inicio: radio de 10px */
 .secbt[data-open="mCliNew"],.secbt[data-open="mCot"],.secbt[data-open="mSrv"],.secbt[data-open="mEnv"],.secbt[data-open="mGuard"],.secbt[data-open="mCli"]{border-radius:10px}
+
+/* Itinerario: progreso y opciones del control */
+.iprg{height:6px;border-radius:4px;background:var(--hov);overflow:hidden}
+.iprg>i{display:block;height:100%;background:var(--acc2);border-radius:4px;transition:width .25s}
+.iop{display:flex;align-items:flex-start;gap:8px;padding:6px 0;font-size:.88rem;cursor:pointer}
+.iop input{margin-top:3px;flex:0 0 auto}
+.iop span{flex:1}
+.iop.done span{text-decoration:line-through;opacity:.55}
