@@ -534,6 +534,11 @@ input,select,textarea,.form-control,.form-select{max-width:100%;box-sizing:borde
 .stp2-d.on{background:var(--acc2);transform:scale(1.25)}
 .it-sw{display:flex;align-items:center;gap:7px;font-size:.8rem;cursor:pointer;padding:7px 0;user-select:none}
 .it-sw input{accent-color:var(--acc2)}
+.it-pick{cursor:pointer;background:var(--hov)}
+.fs-fx{padding:0 18px 8px;flex:0 0 auto}
+.fs-ft{padding:2px 18px 14px;flex:0 0 auto}
+.fs-other{border:0;background:transparent;color:var(--acc2);font-size:.82rem;padding:6px 0;display:flex;align-items:center;gap:6px}
+.fs-other:hover{text-decoration:underline}
 .qpk-sub{margin:0 0 4px 12px;padding-left:8px;border-left:2px solid rgba(99,102,241,.2)}
 .qctas{margin-top:8px;font-size:.78rem;text-align:left;display:flex;flex-direction:column;gap:6px;word-break:break-word}
 .qctas a{color:inherit;text-decoration:underline}
