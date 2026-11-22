@@ -218,8 +218,12 @@
     <div class="stp2"><span class="stp2-d" data-go="mPago"></span><span class="stp2-d" data-go="mDet"></span><span class="stp2-d on"></span><span class="stp2-d" data-go="mTax"></span><span class="stp2-d" data-go="mNotas"></span><span class="stp2-d" data-go="mQCli"></span></div>
     <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de hoja</div>
     <section class="cs">
+      <div class="cs-t"><i class="bi bi-tag"></i> <span id="snoml">Nombre del servicio</span></div>
+      <input id="snom" class="form-control" placeholder="Ej: Masajes terapéuticos">
+      <div class="cs-hint">Un solo nombre por cotización — es el título en las guardadas.</div>
+    </section>
+    <section class="cs">
       <div class="cs-t"><i class="bi bi-list-check"></i> <span id="itemlbl">Concepto de servicio</span></div>
-      <span class="cs-l" id="snoml">Nombre del servicio</span><input id="snom" class="form-control mb-2" placeholder="Ej: Masajes terapéuticos">
       <div id="items"></div>
       <div id="it-tot" class="it-tot d-none"><span>Total</span><b id="it-tot-v"></b></div>
       <button class="btn btn-outline-primary w-100" id="add"><i class="bi bi-plus-lg"></i> Agregar más servicios</button>
@@ -325,7 +329,7 @@
       <div class="cs-t"><i class="bi bi-tag"></i> Identificación</div>
       <span class="cs-l">Nombre del viaje</span><input id="inom" class="form-control mb-2" placeholder="Ej: Viaje a la Conchinchina">
       <div class="row g-2">
-        <div class="col-6"><span class="cs-l">País</span><select id="ipais" class="form-select"><option value="">Seleccionar</option></select></div>
+        <div class="col-6"><span class="cs-l">País</span><input id="ipais" class="form-control" readonly placeholder="Tocar para elegir…"></div>
         <div class="col-6"><span class="cs-l">Pasajeros</span><input id="ipax" type="number" min="1" class="form-control" placeholder="1"></div>
         <div class="col-6"><span class="cs-l">Fecha inicio</span><input id="idesde" type="date" class="form-control"></div>
         <div class="col-6"><span class="cs-l">Fecha fin</span><input id="ihasta" type="date" class="form-control"></div>
@@ -406,6 +410,11 @@
     <div id="ctlv"></div>
     <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mCtl"><i class="bi bi-arrow-left"></i> Volver</button></div>
   </div>
+</div></div>
+
+<div class="pg" id="mPais"><div class="mdl-box">
+  <div class="mdl-head"><span><i class="bi bi-flag me-2"></i>País del viaje</span></div>
+  <div class="mdl-body"><div id="paislist"></div></div>
 </div></div>
 
 <button class="pgfab" id="pgfab" title="Volver"><i class="bi bi-arrow-left"></i></button>
