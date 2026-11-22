@@ -193,6 +193,25 @@ function onSave(){var c=cat(),en=Q('#bk-ent').value;if(!c||!en)return T('Selecci
   var a=load(),o={p:Q('#bk-pais').value,c:c.k,e:en,f:f,l:l,ts:Date.now()},up=EDIT>=0&&a[EDIT];if(up){if(a[EDIT].show===false)o.show=false;a[EDIT]=o}else a.push(o);save(a);resetEdit();
   Q('#bk-ent').value='';onEnt();list();rer();T(up?'Cuenta actualizada':'Cuenta guardada')}
 
+/* ===== Selector de cuentas para la cotización (Información de pago) ===== */
+var _qsel=null;                 // null = todas (por defecto) · [] = ninguna · [{e,num}]
+function qpickBtn(){var b=Q('#qpick');if(!b)return;b.querySelector('.fsel-v').textContent=_qsel==null?'Todas mis cuentas':(_qsel.length?_qsel.length==1?'1 cuenta':_qsel.length+' cuentas':'Sin cuentas');b.classList.toggle('ph',_qsel==null)}
+function qpickSheet(){var all=window.cproCtas();if(!all.length)return T('Configurá cuentas en Mi Perfil → Cuentas');
+  var ov=document.createElement('div');ov.className='fsheet-ov';
+  ov.innerHTML='<div class="fsheet" role="dialog" aria-label="Cuentas de pago"><div class="fs-grab"></div><div class="fs-h"><span class="fs-hi"><i class="bi bi-wallet2"></i></span><b>Cuentas de pago</b><button type="button" class="fs-x" title="Cerrar"><i class="bi bi-x-lg"></i></button></div><div class="fs-l">'+all.map(function(x,i){var on=_qsel==null||_qsel.some(function(s){return s.e==x.e&&s.num==x.num});
+    return'<button type="button" class="fs-o'+(on?' on':'')+'" data-i="'+i+'"><span class="fs-ic">'+(x.flag?E(x.flag):'<i class="bi '+(CIC[x.c]||'bi-bank')+'"></i>')+'</span><span class="fs-t">'+E(x.e)+(x.num||x.cat?'<small>'+E([x.num,x.cat].filter(Boolean).join(' · '))+'</small>':'')+'</span><i class="bi bi-check-circle-fill fs-ck"></i></button>'}).join('')+'</div></div>';
+  document.body.appendChild(ov);
+  function close(){ov.classList.remove('on');setTimeout(function(){ov.remove()},260)}
+  ov.onclick=function(e){if(e.target===ov||e.target.closest('.fs-x'))return close();var o=e.target.closest('.fs-o');if(!o)return;var x=all[+o.getAttribute('data-i')];
+    if(_qsel==null)_qsel=all.map(function(y){return{e:y.e,num:y.num}});
+    var j=-1;for(var k=0;k<_qsel.length;k++)if(_qsel[k].e==x.e&&_qsel[k].num==x.num)j=k;
+    if(j<0)_qsel.push({e:x.e,num:x.num});else _qsel.splice(j,1);
+    o.classList.toggle('on');qpickBtn();rer()};
+  requestAnimationFrame(function(){ov.classList.add('on')})}
+window.cproQSel=function(){return _qsel};
+window.cproQSet=function(s){_qsel=s==null?null:s.map(function(x){return{e:x.e,num:x.num}});qpickBtn()};
+window.cproCtasPick=function(sel){var a=window.cproCtas();return sel==null?a:a.filter(function(x){return sel.some(function(s){return s.e==x.e&&s.num==x.num})})};
+
 function init(){if(!Q('#mBank'))return;fillPais();
   Q('#bk-pais').setAttribute('data-ic','bi-globe-americas');Q('#bk-cat').setAttribute('data-ic','bi-grid');
   enhance(Q('#bk-pais'),'Selecciona tu país');enhance(Q('#bk-cat'),'Tipo de cuenta');enhance(Q('#bk-ent'),'Selecciona la entidad');
@@ -203,6 +222,7 @@ function init(){if(!Q('#mBank'))return;fillPais();
   window.cproFsync=fsync;enhance(Q('#cpais'),'País del cliente');enhance(Q('#cur'),'Moneda');enhance(Q('#cf-pago'),'Tipo de pago');
   var mt=Q('#bk-mt');if(mt)mt.onclick=function(){var l=Q('#bk-list');l.classList.toggle('d-none');mt.classList.toggle('shut',l.classList.contains('d-none'))};
   var g=Q('#bankgo');if(g)g.onclick=function(){if(typeof pgShow=='function')pgShow('mBank');list()};
+  var qp=Q('#qpick');if(qp)qp.onclick=qpickSheet;qpickBtn();
   onPais();list();rer()}
 init();
 window.CPRO_CUENTAS=load;
