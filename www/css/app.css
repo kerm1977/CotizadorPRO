@@ -547,7 +547,8 @@ input,select,textarea,.form-control,.form-select{max-width:100%;box-sizing:borde
 .stp-nav{display:flex;gap:10px;align-items:stretch}
 .stp-nav .btn-primary{flex:1 1 auto}
 .stp-nav .btn-outline-secondary{flex:0 0 auto;border-radius:10px}
-.fs-sub{padding:10px 6px 2px;font-size:.72rem;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.04em}
+.fs-sub{padding:10px 6px 2px;font-size:.72rem;font-weight:700;color:var(--mut);text-transform:uppercase;letter-spacing:.04em;display:flex;align-items:center;gap:6px}
+.fs-sub::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--acc2);flex:0 0 auto}
 .fs-ar{margin-left:auto;color:var(--mut);font-size:.8rem}
 .fs-n{margin-left:auto;font-size:.72rem;color:var(--mut);padding-right:4px}
 .fs-cat .fs-ck{display:none}
