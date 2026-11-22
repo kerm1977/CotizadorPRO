@@ -80,6 +80,7 @@
     <div id="iview" class="iview"></div>
     <button class="btn btn-primary w-100 mt-3" id="editinfo" type="button" style="border-radius:10px"><i class="bi bi-pencil-square"></i> Editar información</button>
     <button class="btn btn-outline-primary w-100 mt-3" id="bankgo" type="button" style="border-radius:10px"><i class="bi bi-bank"></i> Cuentas</button>
+    <button class="btn btn-outline-primary w-100 mt-3" id="normsgo" type="button" style="border-radius:10px"><i class="bi bi-journal-check"></i> Normas e instrucciones</button>
     <div id="sharebox" class="d-none mt-3" style="margin-bottom:140px">
       <div class="form-check mb-2" style="display:flex;align-items:center;gap:8px;justify-content:center">
         <input class="form-check-input" type="checkbox" id="shdet">
@@ -112,7 +113,7 @@
     <hr class="my-3" style="border-color:var(--line)">
     <div class="mut mb-2" style="font-weight:700;font-size:.9rem;text-align:center">Temas</div>
     <button class="btn btn-outline-primary w-100 mb-3" id="renbrand" type="button"><i class="bi bi-pencil-square"></i> Cambiar nombre del título</button>
-    <button class="btn btn-outline-warning w-100 mt-3" id="genprueba" type="button"><i class="bi bi-magic"></i> Generar Prueba</button>
+    <div class="d-flex gap-2 mt-3"><button class="btn btn-outline-warning flex-fill" id="genprueba" type="button"><i class="bi bi-magic"></i> Generar Prueba</button><button class="btn btn-outline-danger flex-fill" id="delprueba" type="button"><i class="bi bi-trash"></i> Eliminar prueba</button></div>
     <div id="palrow" class="d-flex justify-content-center gap-2 mt-4"></div>
   </div>
 </div></div>
@@ -388,7 +389,8 @@
     <section class="cs">
       <div class="cs-t"><i class="bi bi-info-circle"></i> Agregar instrucciones</div>
       <div class="cs-hint">Texto predeterminado — editá lo que necesités. Se integra al PDF.</div>
-      <textarea id="iins" class="form-control" rows="5" style="resize:vertical"></textarea>
+      <select id="inssel" class="form-select form-select-sm mb-2"><option value="">＋ Insertar guardadas del perfil…</option><option value="ins">Instrucciones del perfil</option><option value="nor">Normas del perfil</option></select>
+      <div class="rt" data-ed="iins" data-ph="Escribí las instrucciones del viaje…"></div>
     </section>
     <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mItiR"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mItiN">Siguiente · No incluye <i class="bi bi-arrow-right"></i></button></div>
   </div>
@@ -403,7 +405,8 @@
     <section class="cs">
       <div class="cs-t"><i class="bi bi-slash-circle"></i> El servicio no incluye</div>
       <div class="cs-hint">Lo que el viaje no cubre — se integra al PDF.</div>
-      <textarea id="ini" class="form-control" rows="4" placeholder="Ej: alimentación, propinas, transporte…" style="resize:vertical"></textarea>
+      <select id="ninsel" class="form-select form-select-sm mb-2"><option value="">＋ Insertar guardadas del perfil…</option><option value="ins">Instrucciones del perfil</option><option value="nor">Normas del perfil</option></select>
+      <div class="rt" data-ed="ini" data-ph="Ej: alimentación, propinas, transporte…"></div>
     </section>
     <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mItiI"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mItiG">Siguiente · Opciones <i class="bi bi-arrow-right"></i></button></div>
   </div>
@@ -431,8 +434,10 @@
       <button type="button" class="btn btn-outline-danger w-100 mt-2" id="itipdf"><i class="bi bi-file-earmark-pdf"></i> Exportar PDF</button>
     </section>
     <section class="cs">
-      <div class="cs-t"><i class="bi bi-person"></i> Cliente / contacto</div>
-      <input id="icli" class="form-control" placeholder="Opcional">
+      <div class="cs-t"><i class="bi bi-people"></i> Clientes / contactos</div>
+      <div class="cs-hint">Elegí uno o varios contactos para enviarles el itinerario.</div>
+      <button type="button" class="btn btn-outline-primary w-100" id="iclipick"><i class="bi bi-person-plus"></i> Elegir contactos</button>
+      <div id="iclist" class="mt-2"></div>
     </section>
     <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mItiR"><i class="bi bi-arrow-left"></i> Volver</button></div>
     <button type="button" class="btn btn-primary w-100" id="saveIti" style="border-radius:10px"><i class="bi bi-save"></i> Guardar y cerrar</button>
@@ -459,6 +464,26 @@
 <div class="pg" id="mPais"><div class="mdl-box">
   <div class="mdl-head"><span><i class="bi bi-flag me-2"></i>País del viaje</span></div>
   <div class="mdl-body"><div id="paislist"></div></div>
+</div></div>
+
+<!-- ===== Página: Normas e instrucciones del perfil ===== -->
+<div class="pg" id="mNorm"><div class="mdl-box">
+  <div class="mdl-head"><span><i class="bi bi-journal-check me-2"></i>Normas e instrucciones</span></div>
+  <div class="mdl-body">
+    <section class="cs"><div class="cs-t"><i class="bi bi-info-circle"></i> Instrucciones predeterminadas</div><div class="cs-hint">Se insertan en los itinerarios desde el paso «Instrucciones».</div><div class="rt" data-ed="nins" data-ph="Escribí las instrucciones predeterminadas…"></div></section>
+    <section class="cs"><div class="cs-t"><i class="bi bi-list-check"></i> Normas y reglamento</div><div class="rt" data-ed="nnor" data-ph="Escribí las normas y el reglamento…"></div></section>
+    <div class="d-flex gap-2 mt-3"><button class="btn btn-outline-secondary flex-fill" id="normback" type="button"><i class="bi bi-arrow-left"></i> Volver</button><button class="btn btn-primary flex-fill" id="normsave" type="button"><i class="bi bi-save"></i> Guardar</button></div>
+  </div>
+</div></div>
+
+<!-- ===== Página: Elegir contactos para el itinerario ===== -->
+<div class="pg" id="mCliP"><div class="mdl-box">
+  <div class="mdl-head"><span><i class="bi bi-people me-2"></i>Elegir contactos</span></div>
+  <div class="mdl-body">
+    <input id="clpsearch" class="form-control mb-2" placeholder="Buscar contacto…">
+    <div id="clpk"></div>
+    <div class="d-flex gap-2 mt-3"><button class="btn btn-outline-secondary flex-fill" id="clpback" type="button"><i class="bi bi-arrow-left"></i> Volver</button><button class="btn btn-primary flex-fill" id="clpok" type="button"><i class="bi bi-check-lg"></i> Listo</button></div>
+  </div>
 </div></div>
 
 <button class="pgfab" id="pgfab" title="Volver"><i class="bi bi-arrow-left"></i></button>
