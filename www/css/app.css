@@ -547,6 +547,13 @@ input,select,textarea,.form-control,.form-select{max-width:100%;box-sizing:borde
 .fs-n{margin-left:auto;font-size:.72rem;color:var(--mut);padding-right:4px}
 .fs-cat .fs-ck{display:none}
 .fs-back{color:var(--acc2)}
+.fsheet-ov.full{align-items:stretch;padding:0;background:#fff}
+body.dark .fsheet-ov.full{background:#0b1220}
+.fsheet-ov.full .fsheet{max-width:none;max-height:none;height:100%;border-radius:0;box-shadow:none;transform:translateX(40px);padding-bottom:0}
+.fsheet-ov.full .fs-grab{display:none}
+.fsheet-ov.full .fs-h{padding-top:calc(10px + env(safe-area-inset-top))}
+.fsheet-ov.full .fs-ft{padding-bottom:calc(14px + env(safe-area-inset-bottom))}
+.fsheet-ov.full .fs-o{border-radius:10px;padding:11px 10px}
 .qpk-sub{margin:0 0 4px 12px;padding-left:8px;border-left:2px solid rgba(99,102,241,.2)}
 .qctas{margin-top:8px;font-size:.78rem;text-align:left;display:flex;flex-direction:column;gap:6px;word-break:break-word}
 .qctas a{color:inherit;text-decoration:underline}
