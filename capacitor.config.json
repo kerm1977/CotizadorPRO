@@ -1,0 +1,6 @@
+{
+  "appId": "com.cotizacionespro.app",
+  "appName": "CotizacionesPro",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}

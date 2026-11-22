@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CotizacionesPro</title>
+<link rel="stylesheet" href="css/bootstrap.css?v=2">
+<link rel="stylesheet" href="css/bootstrap-icons.css?v=2">
+<link rel="stylesheet" href="css/app.css?v=35">
+</head>
+<body>
+<div class="container py-3" style="max-width:720px">
+<div class="pg on" id="pg-home">
+  <div class="mb-3" style="position:relative;text-align:center">
+    <i class="bi bi-file-earmark-text brand me-1" style="font-size:1.3rem;vertical-align:-2px"></i><h1 class="brand h5 mb-0 d-inline">CotizacionesPro</h1>
+    <div class="mut" id="hdco" style="font-size:.78rem;line-height:1.2"></div>
+    <span class="mut d-none" id="folio"></span>
+    <span id="build-tag" class="mut d-none" style="cursor:pointer" title="Toca: OTA manual · Mantén: volver al paquete"></span>
+    <button class="avbtn" id="avatarBtn" title="Mi perfil" style="position:absolute;right:0;top:50%;transform:translateY(-50%)"><img id="avatarImg" alt="avatar"><i class="bi bi-person-badge" id="avatarPh"></i></button>
+  </div>
+
+  <div class="mb-3" style="position:relative;text-align:center;margin-top:76px">
+    <button class="halo-btn" id="qsearchbtn" type="button"><i class="bi bi-search"></i><span>Buscador</span></button>
+    <div id="qsearchbox" class="halo-btn d-none" style="padding:0">
+      <input id="qsearch" class="halo-inp" placeholder="Buscar: cliente, factura, empresa, precio…" autocomplete="off">
+      <div id="qresults" class="d-none" style="position:absolute;z-index:60;left:0;right:0;top:100%;margin-top:6px;background:var(--glass-hi);border:1px solid var(--line);border-radius:12px;max-height:50vh;overflow:auto;box-shadow:0 10px 28px rgba(0,0,0,.18)"></div>
+    </div>
+  </div>
+
+  <div class="secn">
+    <button class="secbt" data-open="mLogo" id="addlogo" style="display:none"><i class="bi bi-images"></i><span>Agrega tu logo</span><small>Avatar de la empresa</small></button>
+    <button class="secbt" data-open="mLogo" id="infobtn"><i class="bi bi-person-badge"></i><span>Crear Tu Información</span><small>Empresa y datos</small></button>
+    <button class="secbt" data-open="mSrv"><i class="bi bi-pencil-square"></i><span>Crear Servicio</span></button>
+    <button class="secbt" data-open="mEnv"><i class="bi bi-send"></i><span>Enviar Cotización</span></button>
+    <button class="secbt" data-open="mGuard"><i class="bi bi-archive"></i><span>Cotizaciones Guardadas</span></button>
+    <button class="secbt" data-open="mCli" id="climgr2"><i class="bi bi-people"></i><span>Clientes</span></button>
+  </div>
+</div>
+
+<!-- ===== Página: Mi Perfil (avatar + información) ===== -->
+<div class="pg" id="mLogo"><div class="mdl-box">
+  <div class="mdl-head"><span><i class="bi bi-person-badge me-2"></i>Mi Perfil</span></div>
+  <div class="mdl-body">
+    <input type="file" id="logo" accept="image/*" class="d-none">
+    <div class="avwrap mb-1">
+      <canvas id="lc" width="240" height="240" style="background:var(--hov);border-radius:50%;touch-action:none;cursor:grab;display:block;margin-left:auto;margin-right:auto;max-width:200px"></canvas>
+      <button class="avpencil" id="avpencil" type="button" title="Editar imagen"><i class="bi bi-pencil-fill"></i></button>
+    </div>
+    <div class="mut mb-2" id="logoname" style="font-size:.75rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></div>
+    <div id="rz" class="d-none">
+      <div class="d-flex gap-2 mb-2">
+        <button class="btn btn-outline-primary flex-fill" id="picklab" type="button"><i class="bi bi-image"></i> Elegir imagen</button>
+        <button class="btn btn-outline-primary flex-fill" id="pickcam" type="button"><i class="bi bi-camera"></i> Cámara</button>
+      </div>
+      <div class="mut mb-2" style="font-size:.68rem;text-align:center">Arrastrá para mover · Pellizcá para zoom · Dos dedos para girar</div>
+      <button class="btn btn-outline-secondary w-100 mb-2" id="tooltog" type="button"><i class="bi bi-tools"></i> Herramientas</button>
+      <div id="toolsbox" class="d-none">
+      <div class="row g-1 mb-2">
+        <div class="col-6"><label class="mut">X <span class="slv" id="v-lx">0</span></label><input id="lx" type="range" min="-100" max="100" value="0" class="form-range"></div>
+        <div class="col-6"><label class="mut">Y <span class="slv" id="v-ly">0</span></label><input id="ly" type="range" min="-60" max="60" value="0" class="form-range"></div>
+        <div class="col-6"><label class="mut">Zoom <span class="slv" id="v-lz">100%</span></label><input id="lz" type="range" min="5" max="300" value="100" class="form-range"></div>
+        <div class="col-6"><label class="mut">Giro <span class="slv" id="v-lr">0°</span></label><input id="lr" type="range" min="-180" max="180" value="0" class="form-range"></div>
+      </div>
+      <div class="row g-1 mb-2">
+        <div class="col-6"><label class="mut">Brillo <span class="slv" id="v-lbri">100%</span></label><input id="lbri" type="range" min="0" max="200" value="100" class="form-range"></div>
+        <div class="col-6"><label class="mut">Contraste <span class="slv" id="v-lcon">100%</span></label><input id="lcon" type="range" min="0" max="200" value="100" class="form-range"></div>
+        <div class="col-6"><label class="mut">Blur <span class="slv" id="v-lblu">0</span></label><input id="lblu" type="range" min="0" max="20" value="0" class="form-range"></div>
+        <div class="col-6"><label class="mut">Viñeta <span class="slv" id="v-lvig">0%</span></label><input id="lvig" type="range" min="0" max="100" value="0" class="form-range"></div>
+      </div>
+      <div class="d-flex gap-2 mb-2">
+        <button class="btn btn-outline-primary btn-sm flex-fill" id="flipx" type="button"><i class="bi bi-symmetry-vertical"></i> Espejo H</button>
+        <button class="btn btn-outline-primary btn-sm flex-fill" id="flipy" type="button"><i class="bi bi-symmetry-horizontal"></i> Espejo V</button>
+      </div>
+      <button class="btn btn-outline-danger btn-sm w-100 mb-2" id="lgreset" type="button"><i class="bi bi-arrow-counterclockwise"></i> Resetear imagen</button>
+      </div>
+      <button class="btn btn-primary w-100" id="logogo"><i class="bi bi-check-lg"></i> Aplicar logo</button>
+      <button class="btn btn-outline-danger btn-sm w-100 mt-2" id="dellogo" type="button"><i class="bi bi-trash"></i> Eliminar imagen</button>
+    </div>
+    <hr class="my-3" style="border-color:var(--line)">
+    <div id="iview" class="iview"></div>
+    <button class="btn btn-primary w-100 mt-3" id="editinfo" type="button" style="border-radius:10px"><i class="bi bi-pencil-square"></i> Editar información</button>
+    <button class="btn btn-outline-primary w-100 mt-3" id="bankgo" type="button" style="border-radius:10px"><i class="bi bi-bank"></i> Cuentas</button>
+    <div id="sharebox" class="d-none mt-3" style="margin-bottom:140px">
+      <div class="form-check mb-2" style="display:flex;align-items:center;gap:8px;justify-content:center">
+        <input class="form-check-input" type="checkbox" id="shdet">
+        <label class="form-check-label mut" for="shdet" style="font-size:.85rem">Incluir detalle en la tarjeta</label>
+      </div>
+      <button class="sharefab" id="sharecard" type="button" title="Compartir tarjeta"><i class="bi bi-share"></i></button>
+    </div>
+    <div id="iedit">
+    <div id="edhint" class="edhint"><i class="bi bi-arrow-down"></i></div>
+    <div class="mut" style="font-weight:700;font-size:1.05rem;text-align:center;margin:22px 0 16px">Datos de mi empresa</div>
+    <div id="irow">
+    <div class="acc open"><button type="button" class="acc-h"><i class="bi bi-person-vcard"></i><span>Información principal</span><i class="bi bi-chevron-down acc-c"></i></button><div class="acc-b"><div class="row g-2">
+      <div class="col-12"><label class="mut" style="font-size:.72rem;margin-right:10px;margin-left:10px">Nombre</label><input id="in_emp" class="form-control" placeholder="Nombre de la empresa"></div>
+      <div class="col-6 ifc"><label class="mut">Teléfono</label><input id="in_tel" class="form-control" placeholder="Teléfono" type="tel" inputmode="numeric" pattern="[0-9]*"></div>
+      <div class="col-6 ifc"><label class="mut">Teléfono 2</label><input id="in_tel2" class="form-control" placeholder="Otro teléfono" type="tel" inputmode="numeric" pattern="[0-9]*"></div>
+      <div class="col-6 ifc"><label class="mut">Tel. de contacto</label><input id="in_telc" class="form-control" placeholder="Opcional" type="tel" inputmode="numeric" pattern="[0-9]*"></div>
+      <div class="col-6 ifc"><label class="mut">WhatsApp</label><input id="in_wa" class="form-control" placeholder="WhatsApp" type="tel" inputmode="numeric" pattern="[0-9]*"></div>
+      <div class="col-12"><label class="mut" style="font-size:.72rem;margin-right:10px;margin-left:10px">Correo electrónico</label><input id="in_mail" class="form-control" placeholder="Email"></div>
+    </div></div></div>
+    <div class="acc"><button type="button" class="acc-h"><i class="bi bi-geo-alt"></i><span>Dirección y redes sociales</span><i class="bi bi-chevron-down acc-c"></i></button><div class="acc-b"><div class="row g-2">
+      <div class="col-12"><label class="mut" style="font-size:.72rem;margin-right:10px;margin-left:10px">Dirección</label><input id="in_dir" class="form-control" placeholder="Dirección"></div>
+      <div class="col-12" id="ifslot"><select id="ifadd" class="form-select form-select-sm" style="font-size:.8rem"><option value="">+ Agregar campo</option><option value="waze">Waze</option><option value="gmaps">Google Maps</option><option value="web">Página web</option><option value="ig">Instagram</option><option value="fb">Facebook</option><option value="tt">TikTok</option><option value="yt">YouTube</option><option value="tg">Telegram</option><option value="pin">Pinterest</option><option value="dias">Días de apertura</option><option value="horas">Horas de atención</option><option value="fer">Feriados</option><option value="sinpe">SINPE</option><option value="tarjeta">Tarjetas</option><option value="__new">＋ Nombre personalizado…</option></select></div>
+    </div></div></div>
+    <div class="acc"><button type="button" class="acc-h"><i class="bi bi-journal-text"></i><span>Detalle y descripción</span><i class="bi bi-chevron-down acc-c"></i></button><div class="acc-b"><div class="row g-2">
+      <div class="col-12"><label class="mut" style="font-size:.72rem;margin-right:10px;margin-left:10px">Descripción</label><div class="rt"><div class="rt-bar" id="rtbar"><button type="button" data-cmd="bold" title="Negrita"><i class="bi bi-type-bold"></i></button><button type="button" data-cmd="strikeThrough" title="Tachado"><i class="bi bi-type-strikethrough"></i></button><span class="sep"></span><button type="button" data-cmd="quote" title="Cita"><i class="bi bi-quote"></i></button><button type="button" data-cmd="insertUnorderedList" title="Viñetas"><i class="bi bi-list-ul"></i></button><button type="button" data-cmd="insertOrderedList" title="Lista numerada"><i class="bi bi-list-ol"></i></button><span class="sep"></span><button type="button" data-cmd="justifyLeft" title="Izquierda"><i class="bi bi-text-left"></i></button><button type="button" data-cmd="justifyCenter" title="Centro"><i class="bi bi-text-center"></i></button><button type="button" data-cmd="justifyRight" title="Derecha"><i class="bi bi-text-right"></i></button><span class="sep"></span><button type="button" data-cmd="undo" title="Deshacer"><i class="bi bi-arrow-counterclockwise"></i></button><button type="button" data-cmd="redo" title="Rehacer"><i class="bi bi-arrow-clockwise"></i></button></div><div id="in_nota" class="rt-ed" contenteditable="true" data-ph="Descripción de tu empresa…"></div></div></div>
+    </div></div></div>
+    </div>
+    <div class="d-flex gap-2 mt-3" style="margin-bottom:120px"><button class="btn btn-outline-secondary flex-fill" id="cancelinfo" type="button" style="border-radius:10px"><i class="bi bi-x-lg"></i> Cancelar</button><button class="btn btn-primary flex-fill" id="saveinfo" style="border-radius:10px"><i class="bi bi-save"></i> Guardar info</button></div>
+    </div>
+    <hr class="my-3" style="border-color:var(--line)">
+    <div class="mut mb-2" style="font-weight:700;font-size:.9rem;text-align:center">Temas</div>
+    <button class="btn btn-outline-primary w-100 mb-3" id="renbrand" type="button"><i class="bi bi-pencil-square"></i> Cambiar nombre del título</button>
+    <button class="btn btn-outline-warning w-100 mt-3" id="genprueba" type="button"><i class="bi bi-magic"></i> Generar Prueba</button>
+    <div id="palrow" class="d-flex justify-content-center gap-2 mt-4"></div>
+  </div>
+</div></div>
+
+<!-- ===== Página: Vista previa tarjeta ===== -->
+<div class="pg" id="mShare"><div class="mdl-box wide">
+  <div class="mdl-head"><span><i class="bi bi-card-image me-2"></i>Vista previa de tarjeta</span></div>
+  <div class="mdl-body">
+    <div id="shareprev" style="display:flex;justify-content:center"></div>
+    <div class="d-flex gap-2 mt-3">
+      <button class="btn btn-outline-primary flex-fill" id="shpng" type="button"><i class="bi bi-file-earmark-image"></i> PNG</button>
+      <button class="btn btn-success flex-fill" id="shwa" type="button"><i class="bi bi-whatsapp"></i> WhatsApp</button>
+      <button class="btn btn-outline-secondary flex-fill" id="shcancel" type="button"><i class="bi bi-x-lg"></i> Cerrar</button>
+    </div>
+  </div>
+</div></div>
+
+<!-- ===== Página: Crear Servicios (paso 1) ===== -->
+<div class="pg" id="mSrv"><div class="mdl-box wide">
+  <div class="mdl-head"><span><i class="bi bi-pencil-square me-2"></i>Crear Servicios</span></div>
+  <div class="mdl-body">
+    <div class="stp"><span class="stp-d on">1</span><span class="stp-l"></span><span class="stp-d" data-go="mPago">2</span><span class="stp-l"></span><span class="stp-d" data-go="mCot">3</span></div>
+    <div class="stp-t">Paso 1 · Selecciona qué querés crear</div>
+    <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de paso</div>
+    <div class="srv-g">
+      <button type="button" class="srv-o" data-srv="cot"><i class="bi bi-receipt"></i><b>Cotizar</b><small>Cotización con conceptos, impuesto y total</small></button>
+      <button type="button" class="srv-o" data-srv="iti"><i class="bi bi-map"></i><b>Itinerario</b><small>Plan de viaje o agenda por días</small></button>
+      <button type="button" class="srv-o" data-srv="ven"><i class="bi bi-cart-check"></i><b>Venta</b><small>Registro de una venta realizada</small></button>
+      <button type="button" class="srv-o" data-srv="srv"><i class="bi bi-tools"></i><b>Servicios</b><small>Orden o detalle de un servicio</small></button>
+    </div>
+  </div>
+</div></div>
+
+<!-- ===== Página: Información de pago (paso 2) ===== -->
+<div class="pg" id="mPago"><div class="mdl-box wide">
+  <div class="mdl-head"><span><i class="bi bi-pencil-square me-2"></i>Crear Servicios</span></div>
+  <div class="mdl-body">
+    <div class="stp"><span class="stp-d ok" data-go="mSrv"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">2</span><span class="stp-l"></span><span class="stp-d" data-go="mCot">3</span></div>
+    <div class="stp-t">Paso 2 · Información de pago</div>
+    <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de paso</div>
+    <section class="cs">
+      <div class="cs-t"><i class="bi bi-wallet2"></i> Información de pago</div>
+      <span class="cs-l">Moneda</span>
+      <div><select id="cur" class="form-select" data-ic="bi-currency-exchange"></select></div>
+      <span class="cs-l mt-3">Tipo de pago</span>
+      <div><select id="cf-pago" class="form-select" data-ic="bi-credit-card"><option value="">Seleccionar</option><option data-ic="bi-calendar-check" data-sub="Pago a plazo">Crédito</option><option data-ic="bi-cash-coin" data-sub="Pago inmediato">Contado</option></select></div>
+    </section>
+    <button type="button" class="btn btn-primary w-100" data-go="mCot" style="border-radius:10px">Continuar <i class="bi bi-arrow-right"></i></button>
+  </div>
+</div></div>
+
+<!-- ===== Página: Crear Cotización (paso 3) ===== -->
+<div class="pg" id="mCot"><div class="mdl-box wide">
+  <div class="mdl-head"><span><i class="bi bi-pencil-square me-2"></i>Crear Servicios</span></div>
+  <div class="mdl-body">
+    <div class="stp"><span class="stp-d ok" data-go="mSrv"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d ok" data-go="mPago"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">3</span></div>
+    <div class="stp-t">Paso 3 · Cotizar</div>
+    <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de paso</div>
+    <!-- 1. Detalles -->
+    <section class="cs">
+      <div class="cs-t"><i class="bi bi-sliders"></i> Detalles</div>
+      <span class="cs-l">Tipo de ítem</span>
+      <select id="tipo" class="form-select"><option value="srv">Servicio</option><option value="prod">Producto</option></select>
+      <div class="cs-hint"><b>Servicio:</b> trabajo o mano de obra. <b>Producto:</b> artículo físico que se vende.</div>
+    </section>
+    <datalist id="cat-srv"></datalist><datalist id="cat-prod"></datalist>
+
+    <!-- 2. Conceptos -->
+    <section class="cs">
+      <div class="cs-t"><i class="bi bi-list-check"></i> <span id="itemlbl">Concepto de servicio</span></div>
+      <div id="items"></div>
+      <button class="btn btn-outline-primary w-100" id="add"><i class="bi bi-plus-lg"></i> Agregar más servicios</button>
+    </section>
+
+    <!-- 3. Impuesto y total -->
+    <section class="cs">
+      <div class="cs-t justify-content-between"><span><i class="bi bi-calculator"></i> Impuesto y total</span>
+        <div class="form-check form-switch mb-0"><input class="form-check-input" id="taxtog" type="checkbox" checked><label class="form-check-label" for="taxtog" style="font-size:.78rem;text-transform:none;letter-spacing:0">Activo</label></div>
+      </div>
+      <div id="taxwrap" class="mb-2"><span class="cs-l">Impuesto %</span><input id="tax" type="number" min="0" value="13" class="form-control"></div>
+      <div class="cs-tot">
+        <div class="r"><span class="mut">Subtotal</span><b id="subt"></b></div>
+        <div class="r" id="taxsum" style="display:none"><span class="mut">Impuesto (<span id="taxpc"></span>%)</span><b id="taxamt"></b></div>
+        <div class="r grand" id="totrow" style="display:none"><b>Total</b><b id="totamt"></b></div>
+      </div>
+    </section>
+
+    <!-- 4. Notas -->
+    <section class="cs">
+      <div class="cs-t"><i class="bi bi-journal-text"></i> Notas</div>
+      <textarea id="notas" class="form-control" rows="4" placeholder="Condiciones, vigencia…" style="resize:vertical"></textarea>
+    </section>
+
+    <!-- 5. Cliente -->
+    <section class="cs">
+      <div class="cs-t justify-content-between"><span><i class="bi bi-person"></i> Cliente</span>
+        <button class="btn btn-sm btn-outline-success" id="cligo" title="Agregar / editar cliente" style="text-transform:none;letter-spacing:0"><i class="bi bi-person-plus"></i> Nuevo</button>
+      </div>
+      <select id="clipick" class="form-select"><option value="">— Clientes guardados —</option></select>
+      <div id="clicard" class="d-none mt-2 cs-cli">
+        <div class="d-flex align-items-center justify-content-between gap-2">
+          <div style="min-width:0"><b id="clicard-n"></b> <span class="mut" id="clicard-k"></span><br><span class="mut" id="clicard-c" style="font-size:.78rem"></span></div>
+          <button class="btn btn-sm btn-outline-primary flex-shrink-0" id="cliedit" type="button"><i class="bi bi-pencil"></i> Editar</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Vista previa (al fondo) -->
+    <section class="cs cs-prev">
+      <button class="btn btn-primary w-100" id="prevtog"><i class="bi bi-eye"></i> Visualizar cotización</button>
+      <div class="qprev mt-3" id="prev" style="display:none"></div>
+    </section>
+  </div>
+</div></div>
+<button class="pgfab" id="pgfab" title="Volver"><i class="bi bi-arrow-left"></i></button>
+<button class="savefab" id="savefab" title="Guardar cotización" style="display:none"><i class="bi bi-save"></i> Guardar</button>
+
+<!-- ===== Página: Enviar Cotización ===== -->
+<div class="pg" id="mEnv"><div class="mdl-box wide">
+  <div class="mdl-head"><span><i class="bi bi-send me-2"></i>Enviar Cotización</span></div>
+  <div class="mdl-body">
+    <p class="mut mb-2">Genera la cotización actual en imagen, PDF o envíala por WhatsApp.</p>
+    <div class="d-flex gap-2 mb-2">
+      <button class="btn btn-sm btn-primary flex-fill" id="vmob" style="border-radius:999px"><i class="bi bi-phone"></i> Vista móvil</button>
+      <button class="btn btn-sm btn-outline-primary flex-fill" id="vdet" style="border-radius:999px"><i class="bi bi-file-earmark-image"></i> Vista detalle</button>
+    </div>
+    <div class="qprev mt-3" id="prev2"></div>
+    <canvas id="prevCanvas" class="w-100" style="background:#fff;border-radius:12px;display:none;height:auto"></canvas>
+    <div class="d-flex flex-wrap gap-2 no-print mt-3">
+      <button class="btn btn-outline-secondary flex-fill" id="png"><i class="bi bi-filetype-png"></i> PNG</button>
+      <button class="btn btn-outline-secondary flex-fill" id="jpg"><i class="bi bi-filetype-jpg"></i> JPG</button>
+      <button class="btn btn-outline-secondary flex-fill" id="pdf"><i class="bi bi-filetype-pdf"></i> PDF</button>
+      <button class="btn btn-outline-secondary flex-fill" id="txt"><i class="bi bi-filetype-txt"></i> TXT</button>
+      <button class="btn btn-outline-secondary flex-fill" id="json"><i class="bi bi-filetype-json"></i> JSON</button>
+      <button class="btn btn-success flex-fill" id="wa"><i class="bi bi-whatsapp"></i> WhatsApp</button>
+    </div>
+  </div>
+</div></div>
+
+<!-- ===== Página: Cotizaciones Guardadas ===== -->
+<div class="pg" id="mGuard"><div class="mdl-box">
+  <div class="mdl-head"><span><i class="bi bi-archive me-2"></i>Cotizaciones Guardadas</span></div>
+  <div class="mdl-body"><div id="hist"></div></div>
+</div></div>
+
+<!-- ===== Página: Nuevo campo personalizado ===== -->
+<div class="pg" id="mCf"><div class="mdl-box" style="max-width:340px">
+  <div class="mdl-head"><span><i class="bi bi-plus-lg me-2"></i>Nuevo campo</span></div>
+  <div class="mdl-body">
+    <label class="mut d-block mb-1" style="font-size:.8rem">¿Cómo se llama el campo?</label>
+    <input id="cfn" class="form-control mb-3" placeholder="Ej: RNC, Patente, Cédula jurídica">
+    <div class="d-flex gap-2">
+      <button class="btn btn-outline-secondary flex-fill" id="cfno">Cancelar</button>
+      <button class="btn btn-primary flex-fill" id="cfok"><i class="bi bi-check-lg"></i> Crear campo</button>
+    </div>
+  </div>
+</div></div>
+
+<!-- ===== Página: Confirmar eliminación ===== -->
+<div class="pg" id="mDel"><div class="mdl-box" style="max-width:360px">
+  <div class="mdl-head"><span><i class="bi bi-exclamation-triangle me-2"></i>Confirmar</span></div>
+  <div class="mdl-body">
+    <p id="delmsg" class="mb-3"></p>
+    <div class="d-flex gap-2">
+      <button class="btn btn-outline-secondary flex-fill" id="delno">Cancelar</button>
+      <button class="btn btn-danger flex-fill" id="delyes"><i class="bi bi-trash"></i> Eliminar</button>
+    </div>
+  </div>
+</div></div>
+
+<!-- ===== Página: Base de Clientes ===== -->
+<div class="pg" id="mCli"><div class="mdl-box">
+  <div class="mdl-head"><span><i class="bi bi-people me-2"></i>Clientes</span></div>
+  <div class="mdl-body">
+    <button class="btn btn-primary w-100 mb-3" id="clinew" type="button"><i class="bi bi-person-plus-fill"></i> Agregar nuevo cliente</button>
+    <div id="clilist2"></div>
+  </div>
+</div></div>
+
+<!-- ===== Página: Agregar Clientes ===== -->
+<div class="pg" id="mCliNew"><div class="mdl-box wide">
+  <div class="mdl-head"><span><i class="bi bi-people me-2"></i>Clientes</span></div>
+  <div class="mdl-body">
+    <label class="mut mb-1">Cliente</label>
+    <input id="cli" class="form-control mb-2" placeholder="Nombre de cliente">
+    <input id="ape" class="form-control mb-2" placeholder="Apellidos">
+    <div class="mb-2"><select id="cpais" class="form-select" data-ic="bi-globe-americas"><option value="">País del cliente</option></select></div>
+    <input id="tel" class="form-control mb-2" placeholder="Teléfono" inputmode="numeric">
+    <input id="mail" class="form-control mb-2" placeholder="Email">
+    <input id="cdir" class="form-control mb-2" placeholder="Dirección">
+    <div id="cfcli"></div>
+    <button class="btn btn-sm btn-outline-primary w-100 mb-2" id="cfnew" type="button"><i class="bi bi-plus-lg"></i> Agregar campo</button>
+    <select id="ctipo" class="form-select mb-2"><option value="">Tipo de cliente</option><option>Persona</option><option>Empresa</option></select>
+    <div id="empcli" class="d-none">
+      <input id="cf-empn" class="form-control mb-2" placeholder="Nombre de la empresa">
+      <input id="cf-empc" class="form-control mb-2" placeholder="Contacto de la empresa">
+      <input id="cf-empt" class="form-control mb-2" placeholder="Teléfono de la empresa" inputmode="numeric">
+    </div>
+    <select id="cfadd" class="form-select form-select-sm mb-2 d-none" style="font-size:.8rem"><option value="">+ Campo</option><option value="whatsapp">WhatsApp</option><option value="omail">Otro Mail</option><option value="emp2">Empresa</option><option value="nota">Nota</option></select>
+    <div id="cfex"></div>
+    <button class="btn btn-primary w-100 mt-2" id="clisave" type="button"><i class="bi bi-save"></i> Guardar cliente</button>
+  </div>
+</div></div>
+</div>
+
+<!-- ===== Página: Cuentas (información bancaria) ===== -->
+<div class="pg" id="mBank"><div class="mdl-box">
+  <div class="mdl-head"><span><i class="bi bi-bank me-2"></i>Cuentas</span></div>
+  <div class="mdl-body">
+    <div class="bk-title">Agrega tu información bancaria</div>
+    <section class="cs">
+      <span class="cs-l">1. Selecciona tu país</span>
+      <select id="bk-pais" class="form-select"></select>
+      <span class="cs-l mt-3">2. Selecciona el tipo de cuenta</span>
+      <select id="bk-cat" class="form-select" disabled></select>
+      <span class="cs-l mt-3">3. Selecciona la entidad</span>
+      <select id="bk-ent" class="form-select" disabled></select>
+      <div id="bk-desc" class="cs-hint"></div>
+      <div id="bk-fields"></div>
+      <button class="btn btn-primary w-100 mt-3 d-none" id="bk-save" type="button"><i class="bi bi-save"></i> Guardar cuenta</button>
+    </section>
+    <div class="cs-t" id="bk-mt" title="Plegar o desplegar"><i class="bi bi-wallet2"></i> Mis cuentas<i class="bi bi-chevron-down bk-mc"></i></div>
+    <div id="bk-list"></div>
+  </div>
+</div></div>
+
+<!-- ===== Consola de depuración flotante ===== -->
+<div id="consolaBox" class="consola-box">
+  <div class="consola-head"><span><i class="bi bi-terminal"></i> Consola <span class="mut" id="concount"></span></span>
+  <span class="d-flex gap-1">
+    <button class="conbtn" id="concopy" title="Copiar todos los eventos"><i class="bi bi-clipboard"></i></button>
+    <button class="conbtn" id="conwa" title="Enviar por WhatsApp"><i class="bi bi-whatsapp"></i></button>
+    <button class="conbtn" id="conclear" title="Limpiar"><i class="bi bi-trash"></i></button>
+    <button class="conbtn" id="conexp" title="Expandir / contraer"><i class="bi bi-arrows-angle-expand"></i></button>
+    <button class="conbtn" id="conx" title="Ocultar consola"><i class="bi bi-x-lg"></i></button>
+  </span></div>
+  <div class="confil" id="confil"><button data-f="all" class="on">Todos</button><button data-f="e">Errores <b id="cnE">0</b></button><button data-f="w">Advertencias <b id="cnW">0</b></button><button data-f="i">Eventos</button></div>
+  <div id="consola" class="consola"></div>
+</div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3"><div id="toast" class="toast"></div></div>
+<script src="js/buildstamp.js"></script>
+<script src="js/ota_stamp.js"></script>
+<script src="js/plantilla.js"></script>
+<script src="js/app.js?v=35"></script>
+<script src="js/exports.js?v=3"></script>
+<script src="js/paises.js?v=1"></script>
+<script src="js/cuentas.js?v=12"></script>
+<script src="js/ota.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">CotizacionesPro</string>
+    <string name="title_activity_main">CotizacionesPro</string>
+    <string name="package_name">com.cotizacionespro.app</string>
+    <string name="custom_url_scheme">com.cotizacionespro.app</string>
+</resources>

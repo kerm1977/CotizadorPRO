@@ -1,0 +1,11 @@
+node_modules/
+apks/
+backup/
+logs/
+dist/
+__pycache__/
+*.pyc
+desktop/dist/
+nul
+*.log
+.DS_Store
