@@ -536,7 +536,12 @@ input,select,textarea,.form-control,.form-select{max-width:100%;box-sizing:borde
 .it-sw input{accent-color:var(--acc2)}
 .it-pick{cursor:pointer;background:var(--hov)}
 .fs-fx{padding:0 18px 8px;flex:0 0 auto}
-.fs-ft{padding:2px 18px 14px;flex:0 0 auto}
+.fs-ft{padding:6px 18px 14px;flex:0 0 auto;display:flex;flex-direction:column;gap:8px}
+.fs-all{border:1px solid var(--line);background:transparent;color:var(--ink);font-size:.82rem;padding:8px;border-radius:10px;display:flex;align-items:center;justify-content:center;gap:6px}
+.fs-all:hover{background:var(--hov)}
+.fs-oth{display:flex;gap:8px}
+.fs-oth input{flex:1;font-size:.85rem}
+.fs-add{border:0;width:38px;border-radius:10px;background:var(--acc2);color:#fff;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
 .fs-other{border:0;background:transparent;color:var(--acc2);font-size:.82rem;padding:6px 0;display:flex;align-items:center;gap:6px}
 .fs-other:hover{text-decoration:underline}
 .stp-nav{display:flex;gap:10px;align-items:stretch}
