@@ -164,7 +164,7 @@
       <div><button type="button" id="qpick" class="fsel"><span class="fsel-i"><i class="bi bi-wallet2"></i></span><span class="fsel-v">Todas mis cuentas</span><i class="bi bi-chevron-down fsel-ch"></i></button>
       <div id="qpick-cards"></div></div>
     </section>
-    <button type="button" class="btn btn-primary w-100" data-go="mDet" style="border-radius:10px">Siguiente · Detalles <i class="bi bi-arrow-right"></i></button>
+    <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mSrv"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mDet">Siguiente · Detalles <i class="bi bi-arrow-right"></i></button></div>
   </div>
 </div></div>
 
@@ -179,10 +179,10 @@
     <section class="cs">
       <div class="cs-t"><i class="bi bi-sliders"></i> Detalles</div>
       <span class="cs-l">Tipo de ítem</span>
-      <select id="tipo" class="form-select"><option value="srv">Servicio</option><option value="prod">Producto</option><option value="esp">Servicio especial</option></select>
-      <div class="cs-hint"><b>Servicio:</b> trabajo o mano de obra. <b>Producto:</b> artículo físico que se vende. <b>Servicio especial:</b> lavandería, mudanzas, plomería, masajes…</div>
+      <select id="tipo" class="form-select"><option value="srv">Servicio</option><option value="prod">Producto</option></select>
+      <div class="cs-hint"><b>Servicio:</b> trabajo o mano de obra. <b>Producto:</b> artículo físico que se vende.</div>
     </section>
-    <button type="button" class="btn btn-primary w-100" data-go="mItems" style="border-radius:10px">Siguiente · Conceptos <i class="bi bi-arrow-right"></i></button>
+    <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mPago"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mItems">Siguiente · Conceptos <i class="bi bi-arrow-right"></i></button></div>
   </div>
 </div></div>
 
@@ -199,8 +199,8 @@
       <div id="items"></div>
       <button class="btn btn-outline-primary w-100" id="add"><i class="bi bi-plus-lg"></i> Agregar más servicios</button>
     </section>
-    <datalist id="cat-srv"></datalist><datalist id="cat-prod"></datalist><datalist id="cat-esp"></datalist><datalist id="cat-ptipo"></datalist>
-    <button type="button" class="btn btn-primary w-100" data-go="mTax" style="border-radius:10px">Siguiente · Impuestos <i class="bi bi-arrow-right"></i></button>
+    <datalist id="cat-srv"></datalist><datalist id="cat-prod"></datalist><datalist id="cat-ptipo"></datalist>
+    <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mDet"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mTax">Siguiente · Impuestos <i class="bi bi-arrow-right"></i></button></div>
   </div>
 </div></div>
 
@@ -223,7 +223,7 @@
         <div class="r grand" id="totrow" style="display:none"><b>Total</b><b id="totamt"></b></div>
       </div>
     </section>
-    <button type="button" class="btn btn-primary w-100" data-go="mNotas" style="border-radius:10px">Siguiente · Notas <i class="bi bi-arrow-right"></i></button>
+    <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mItems"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mNotas">Siguiente · Notas <i class="bi bi-arrow-right"></i></button></div>
   </div>
 </div></div>
 
@@ -239,7 +239,7 @@
       <div class="cs-t"><i class="bi bi-journal-text"></i> Notas</div>
       <textarea id="notas" class="form-control" rows="4" placeholder="Condiciones, vigencia…" style="resize:vertical"></textarea>
     </section>
-    <button type="button" class="btn btn-primary w-100" data-go="mQCli" style="border-radius:10px">Siguiente · Cliente <i class="bi bi-arrow-right"></i></button>
+    <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mTax"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mQCli">Siguiente · Cliente <i class="bi bi-arrow-right"></i></button></div>
   </div>
 </div></div>
 
@@ -267,7 +267,7 @@
       <button class="btn btn-primary w-100" id="prevtog"><i class="bi bi-eye"></i> Visualizar cotización</button>
       <div class="qprev mt-3" id="prev" style="display:none"></div>
     </section>
-    <button type="button" class="btn btn-primary w-100" data-go="mCot" style="border-radius:10px">Continuar <i class="bi bi-arrow-right"></i></button>
+    <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mNotas"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mCot">Continuar <i class="bi bi-arrow-right"></i></button></div>
   </div>
 </div></div>
 
@@ -419,6 +419,7 @@
 <script src="js/buildstamp.js"></script>
 <script src="js/ota_stamp.js"></script>
 <script src="js/plantilla.js"></script>
+<script src="js/catalog.js?v=1"></script>
 <script src="js/app.js?v=36"></script>
 <script src="js/exports.js?v=4"></script>
 <script src="js/paises.js?v=1"></script>
