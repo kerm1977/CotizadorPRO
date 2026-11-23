@@ -475,6 +475,10 @@ input,select,textarea,.form-control,.form-select{max-width:100%;box-sizing:borde
 #items .it.it-min .it-pp{display:inline;font-weight:700;color:var(--acc2);font-size:.85rem;margin-left:auto}
 #items .it[data-t="prod"]{background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.25)}
 .it-vw{display:flex;gap:8px;margin:-4px 0 12px}
+.it-legend{display:flex;align-items:center;gap:6px;font-size:.72rem;color:var(--mut);margin:-4px 0 10px}
+.it-legend .lg{width:11px;height:11px;border-radius:3px;display:inline-block;flex:0 0 auto}
+.it-legend .lg-s{background:var(--hov);border:1px solid var(--line)}
+.it-legend .lg-p{background:rgba(16,185,129,.4);border:1px solid rgba(16,185,129,.5)}
 .it-vw button{border:1px solid var(--acc2);background:transparent;color:var(--acc2);font-size:.78rem;padding:6px 12px;border-radius:10px;display:flex;align-items:center;gap:6px;font-weight:600;transition:opacity .15s,border-color .15s,color .15s}
 .it-vw button.dis{border-color:var(--line);color:var(--mut);opacity:.5}
 #mCot #add{animation:none}#mCot #add::after{display:none}
