@@ -155,13 +155,8 @@
     <div class="stp"><span class="stp-d on" data-go="mSrv">1</span><span class="stp-l"></span><span class="stp-d" data-go="mPago">2</span><span class="stp-l"></span><span class="stp-d" data-go="mCot">3</span></div>
     <div class="stp-t" id="lst-t">Paso 1 · Cotizaciones</div>
     <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de paso</div>
+    <div class="cs-hint mb-2" id="lst-guide" style="font-size:.82rem"></div>
     <button type="button" class="btn btn-primary w-100" id="lst-new" style="border-radius:10px"><i class="bi bi-plus-lg"></i> <span id="lst-newlbl">Nueva cotización</span></button>
-    <section class="cs mt-3">
-      <div class="cs-t justify-content-between"><span><i class="bi bi-wallet2"></i> Info de pago en nuevas</span>
-        <div class="form-check form-switch mb-0"><input class="form-check-input" id="paydef" type="checkbox"><label class="form-check-label" for="paydef" style="font-size:.78rem;text-transform:none;letter-spacing:0">Aplicar</label></div>
-      </div>
-      <div class="cs-hint">Activo: la moneda, el tipo de pago y las cuentas seleccionadas se copian a todas las nuevas.</div>
-    </section>
     <section class="cs">
       <div class="cs-t"><i class="bi bi-archive"></i> <span id="lst-h">Cotizaciones guardadas</span></div>
       <div id="lst"></div>
@@ -315,6 +310,13 @@
     <section class="cs">
       <div class="cs-t"><i class="bi bi-eye"></i> Vista previa final</div>
       <div class="qprev mt-2" id="prevfin"></div>
+    </section>
+    <section class="cs mt-3">
+      <div class="cs-t justify-content-between"><span><i class="bi bi-wallet2"></i> Info de pago en nuevas</span>
+        <div class="form-check form-switch mb-0"><input class="form-check-input" id="paydef" type="checkbox"><label class="form-check-label" for="paydef" style="font-size:.78rem;text-transform:none;letter-spacing:0">Aplicar</label></div>
+      </div>
+      <div class="cs-hint">Activo: la moneda, el tipo de pago y las cuentas seleccionadas se copian a todas las nuevas.</div>
+      <div id="pdctas" class="mt-2 d-none"></div>
     </section>
     <button type="button" class="btn btn-primary w-100" id="save2" style="border-radius:10px"><i class="bi bi-save"></i> Guardar y cerrar</button>
   </div>
