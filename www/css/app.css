@@ -546,7 +546,11 @@ input,select,textarea,.form-control,.form-select{max-width:100%;box-sizing:borde
 .fs-all:hover{background:var(--hov)}
 .fs-sep{border-top:1px solid var(--line);margin:12px 4px 8px;padding-top:12px;font-size:.78rem;font-weight:600;color:var(--mut);display:flex;align-items:center;gap:6px}
 .fs-sep .bi{color:var(--acc2)}
-.fs-tp{border:1px solid var(--inp-line);border-radius:10px;background:var(--card,#fff);color:var(--ink);font-size:.85rem;padding:0 8px;flex:0 0 auto}
+.fs-tp{border:1px solid var(--inp-line);border-radius:10px;background:var(--inp);color:var(--ink);font-size:.85rem;padding:0 8px;flex:0 0 auto}
+.mini-ov{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(15,23,42,.35);opacity:0;transition:opacity .2s}
+.mini-ov.on{opacity:1}
+.mini{background:var(--card,#fff);border:1px solid var(--line);border-radius:14px;padding:16px 18px;max-width:280px;text-align:center;font-size:.88rem;color:var(--ink);display:flex;flex-direction:column;gap:10px;align-items:center;box-shadow:0 10px 34px rgba(0,0,0,.25)}
+.mini .bi{font-size:1.6rem;color:#22c55e}
 .fs-oth{display:flex;gap:8px}
 .fs-oth input{flex:1;font-size:.85rem}
 .fs-add{border:0;width:38px;border-radius:10px;background:var(--acc2);color:#fff;display:flex;align-items:center;justify-content:center;flex:0 0 auto}

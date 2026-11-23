@@ -163,14 +163,15 @@ function svcSheet(r,pick,all){var tp=all?'all':(r&&r.dataset.t)||($('#tipo')?$('
   function catItems(){var out=[],seen={};cats.forEach(function(c){c.subs.forEach(function(s){s.items.forEach(function(n){var k=norm(n);if(!seen[k]){seen[k]=1;out.push(n)}})})});return out.sort(function(a,b){return a.localeCompare(b,'es')})}
   function custItems(){return cust().map(function(x){return x.n}).sort(function(a,b){return a.localeCompare(b,'es')})}
   function allItems(){return catItems().concat(custItems())}
-  function showCats(){curCat=-1;var cs=custItems();L.innerHTML=catItems().map(ib).join('')+(cs.length?'<div class="fs-sep"><i class="bi bi-stars"></i> Servicios y productos personalizados</div>'+cs.map(ib).join(''):'')}
+  function showCats(){curCat=-1;var cs=custItems();L.innerHTML=catItems().map(ib).join('')+(cs.length?'<div class="fs-sep"><i class="bi bi-stars"></i> Aquí están tus servicios y productos personalizados</div>'+cs.map(ib).join(''):'')}
   function showAll(){curCat=-2;L.innerHTML='<button type="button" class="fs-o fs-back"><span class="fs-ic"><i class="bi bi-arrow-left"></i></span><span class="fs-t"><b>Todos los '+ttl.toLowerCase()+'</b></span></button>'+allItems().map(ib).join('')}
   function find(q){var h='',seen={},qq=norm(q);allItems().forEach(function(n){var k=norm(n);if(k.indexOf(qq)>=0&&!seen[k]){seen[k]=1;h+=ib(n)}});return h}
   showCats();
   var inp=ov.querySelector('.fs-fx input');inp.oninput=function(){var q=this.value.trim().toLowerCase();if(!q){showCats();return}var h=find(q);L.innerHTML=h||'<div class="fs-sub">Sin resultados</div><button type="button" class="fs-o" data-c="1" data-n="'+esc(this.value.trim())+'"><span class="fs-ic"><i class="bi bi-stars"></i></span><span class="fs-t">Agregar "'+esc(this.value.trim())+'"<small>Personalizado</small></span></button>'};
   function close(){ov.classList.remove('on');setTimeout(function(){ov.remove()},260)}
+  function miniMsg(txt){var m=document.createElement('div');m.className='mini-ov';m.innerHTML='<div class="mini"><i class="bi bi-check-circle-fill"></i><div>'+esc(txt)+'</div><button type="button" class="btn btn-primary btn-sm">OK</button></div>';document.body.appendChild(m);requestAnimationFrame(function(){m.classList.add('on')});var cc=function(){m.classList.remove('on');setTimeout(function(){m.remove()},200)};m.onclick=function(e){if(e.target===m||e.target.closest('button'))cc()};setTimeout(cc,2600)}
   ov.querySelector('.fs-all').onclick=showAll;
-  var oi=ov.querySelector('.fs-oth input'),ot=ov.querySelector('.fs-tp');function addOther(){var n=oi.value.trim();if(!n)return;oi.value='';n=cap(n);var t=ot?ot.value:'s';custAdd(n,t);typ[n]=t;if(pick){pick(n,'Personalizado');return close()}add(n);render();inp.value='';inp.oninput();toast('Agregado: '+n)}
+  var oi=ov.querySelector('.fs-oth input'),ot=ov.querySelector('.fs-tp');function addOther(){var n=oi.value.trim();if(!n)return;oi.value='';n=cap(n);var t=ot?ot.value:'s';custAdd(n,t);typ[n]=t;if(pick){pick(n,'Personalizado');return close()}add(n);render();inp.value='';inp.oninput();miniMsg('Has agregado un '+(t=='p'?'producto':'servicio')+' personalizado llamado '+n)}
   ov.querySelector('.fs-add').onclick=addOther;oi.onkeydown=function(e){if(e.key=='Enter')addOther()};
   ov.querySelector('.fs-cus').onclick=function(){var f=ov.querySelector('.fs-oth');f.classList.toggle('d-none');if(!f.classList.contains('d-none'))oi.focus()};
   ov.querySelector('.fs-next').onclick=close;
