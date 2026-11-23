@@ -624,3 +624,12 @@ body.dark .fsheet{background:#111827}
 .iop input{margin-top:3px;flex:0 0 auto}
 .iop span{flex:1}
 .iop.done span{text-decoration:line-through;opacity:.55}
+
+/* ===== Hojas de pasos: contenido centrado bajo los puntitos ===== */
+:is(#mSrv,#mLst,#mPago,#mDet,#mItems,#mTax,#mNotas,#mQCli,#mCot,#mIti,#mItiD,#mItiR,#mItiG).on{display:flex;flex-direction:column;min-height:calc(100vh - 32px);min-height:calc(100dvh - 32px)}
+:is(#mSrv,#mLst,#mPago,#mDet,#mItems,#mTax,#mNotas,#mQCli,#mCot,#mIti,#mItiD,#mItiR,#mItiG) .mdl-box{flex:1 1 auto}
+:is(#mSrv,#mLst,#mPago,#mDet,#mItems,#mTax,#mNotas,#mQCli,#mCot,#mIti,#mItiD,#mItiR,#mItiG) .mdl-body{flex:1 1 auto;display:flex;flex-direction:column}
+:is(#mSrv,#mLst,#mPago,#mDet,#mItems,#mTax,#mNotas,#mQCli,#mCot,#mIti,#mItiD,#mItiR,#mItiG) .mdl-body>*{flex:0 0 auto}
+:is(#mSrv,#mLst,#mPago,#mDet,#mItems,#mTax,#mNotas,#mQCli,#mCot,#mIti,#mItiD,#mItiR,#mItiG) .mdl-body>.stp-h~*{width:100%;max-width:620px;margin-left:auto;margin-right:auto}
+:is(#mSrv,#mLst,#mPago,#mDet,#mItems,#mTax,#mNotas,#mQCli,#mCot,#mIti,#mItiD,#mItiR,#mItiG) .mdl-body>.stp-h+*{margin-top:auto}
+:is(#mSrv,#mLst,#mPago,#mDet,#mItems,#mTax,#mNotas,#mQCli,#mCot,#mIti,#mItiD,#mItiR,#mItiG) .mdl-body>*:last-child{margin-bottom:auto}
