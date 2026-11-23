@@ -200,27 +200,26 @@ var _qoff=false;                // trigger: incluir cuentas en la cotización
 var _qret=null;                 // volver a esta hoja tras guardar cuenta en el perfil
 function qpickCards(){var box=Q('#qpick-cards');if(!box)return;var eff=window.cproCtasPick?_qsel==null?window.cproCtas():window.cproCtasPick(_qsel):[];
   box.innerHTML=eff.length?'<div class="qctas">'+eff.map(function(x){return'<div class="qcta"><div class="qcta-h">'+(x.flag?'<span class="qcta-f">'+E(x.flag)+'</span>':'')+'<b>'+E(x.e)+'</b>'+(x.pais?'<span class="qcta-c">'+E(x.pais)+'</span>':'')+'</div>'+(x.num?'<div class="qcta-n">'+E(x.num)+'</div>':'')+(x.det||x.cat?'<div class="qcta-d">'+E([x.det,x.cat].filter(Boolean).join(' · '))+'</div>':'')+(x.tit?'<div class="qcta-t">'+E(x.tit)+'</div>':'')+'</div>'}).join('')+'</div>':''}
-function qpickBtn(){var b=Q('#qpick');if(!b)return;b.querySelector('.fsel-v').textContent=_qsel==null?'Todas mis cuentas':(_qsel.length?_qsel.length==1?'1 cuenta':_qsel.length+' cuentas':'Sin cuentas');b.classList.toggle('ph',_qsel==null);var noAcc=!window.cproCtas().length,he=Q('#ctas-have'),ee=Q('#ctas-empty');if(he)he.classList.toggle('d-none',noAcc);if(ee)ee.classList.toggle('d-none',!noAcc);b.classList.toggle('d-none',_qoff);var pc=Q('#qpick-cards');if(pc)pc.classList.toggle('d-none',_qoff);qpickCards()}
-function qpickSheet(){var all=window.cproCtas();if(!all.length)return T('Configurá cuentas en Mi Perfil → Cuentas');
-  var gps=[],gi={};all.forEach(function(x,i){var k=(x.flag||'')+(x.pais||'Otras');if(gi[k]===undefined){gi[k]=gps.length;gps.push({flag:x.flag,pais:x.pais||'Otras',rows:[]})}gps[gi[k]].rows.push({x:x,i:i})});
+function qpickBtn(){var noAcc=!load().length,he=Q('#ctas-have'),ee=Q('#ctas-empty');if(he)he.classList.toggle('d-none',noAcc);if(ee)ee.classList.toggle('d-none',!noAcc);var pc=Q('#qpick-cards');if(pc)pc.classList.toggle('d-none',_qoff);qpickCards()}
+function ctasSheet(){var all=load();if(!all.length)return T('Configurá cuentas en Mi Perfil → Cuentas');
+  function xNum(x){return(x.f&&x.f.num)||''}
+  function xCat(x){var p=PAISES[x.p],ct=p&&p.cats.filter(function(c){return c.k==x.c})[0];return ct?ct.n:(x.cat||'')}
+  function isOn(x){return x.show!==false&&(_qsel==null||_qsel.some(function(s){return s.e==x.e&&s.num==xNum(x)}))}
+  var gps=[],gi={};all.forEach(function(x,i){var p=PAISES[x.p],k=p?p.n:'Otros medios';if(gi[k]===undefined){gi[k]=gps.length;gps.push({flag:p?p.flag:'🌐',pais:k,rows:[]})}gps[gi[k]].rows.push(i)});
   gps.sort(function(a,b){return a.pais.localeCompare(b.pais,'es')});
-  function isOn(x){return _qsel==null||_qsel.some(function(s){return s.e==x.e&&s.num==x.num})}
   var ov=document.createElement('div');ov.className='fsheet-ov';
-  ov.innerHTML='<div class="fsheet" role="dialog" aria-label="Cuentas de pago"><div class="fs-grab"></div><div class="fs-h"><span class="fs-hi"><i class="bi bi-wallet2"></i></span><b>Cuentas de pago</b><button type="button" class="fs-x" title="Cerrar"><i class="bi bi-x-lg"></i></button></div><div class="fs-l">'+gps.map(function(g,g2){
-    return'<div class="fs-grp"><button type="button" class="fs-o'+(g.rows.every(function(r){return isOn(r.x)})?' on':'')+'" data-g="'+g2+'"><span class="fs-ic">'+(g.flag?E(g.flag):'<i class="bi bi-globe-americas"></i>')+'</span><span class="fs-t"><b>'+E(g.pais)+'</b><small>'+g.rows.length+' cuenta'+(g.rows.length==1?'':'s')+'</small></span><i class="bi bi-check-circle-fill fs-ck"></i></button><div class="qpk-sub">'+g.rows.map(function(r){var x=r.x;
-      return'<button type="button" class="fs-o'+(isOn(x)?' on':'')+'" data-i="'+r.i+'"><span class="fs-ic"><i class="bi '+(CIC[x.c]||'bi-bank')+'"></i></span><span class="fs-t">'+E(x.e)+(x.num||x.cat?'<small>'+E([x.num,x.cat].filter(Boolean).join(' · '))+'</small>':'')+'</span><i class="bi bi-check-circle-fill fs-ck"></i></button>'}).join('')+'</div></div>'}).join('')+'</div></div>';
+  ov.innerHTML='<div class="fsheet" role="dialog" aria-label="Mis cuentas configuradas"><div class="fs-grab"></div><div class="fs-h"><span class="fs-hi"><i class="bi bi-wallet2"></i></span><b>Mis cuentas configuradas</b><button type="button" class="fs-x" title="Cerrar"><i class="bi bi-x-lg"></i></button></div><div class="fs-l">'+gps.map(function(g){
+    return'<div class="fs-grp"><div class="fs-g">'+E(g.flag)+' '+E(g.pais)+' · '+g.rows.length+'</div>'+g.rows.map(function(i){var x=all[i],off=x.show===false;
+      return'<button type="button" class="fs-o'+(isOn(x)?' on':'')+(off?' dis':'')+'" data-i="'+i+'"><span class="fs-ic"><i class="bi '+(CIC[x.c]||'bi-bank')+'"></i></span><span class="fs-t">'+E(x.e)+'<small>'+E([xNum(x),xCat(x),x.f&&x.f.tit].filter(Boolean).join(' · '))+(off?' · oculta':'')+'</small></span><i class="bi bi-check-circle-fill fs-ck"></i></button>'}).join('')+'</div>'}).join('')+'</div><div class="fs-ft"><button type="button" class="btn btn-primary w-100" data-edit><i class="bi bi-pencil-square"></i> Editar mis cuentas</button></div></div>';
   document.body.appendChild(ov);
   function close(){ov.classList.remove('on');setTimeout(function(){ov.remove()},260)}
-  function setOn(x,on){var j=-1;for(var k=0;k<_qsel.length;k++)if(_qsel[k].e==x.e&&_qsel[k].num==x.num)j=k;if(on&&j<0)_qsel.push({e:x.e,num:x.num});if(!on&&j>=0)_qsel.splice(j,1)}
-  function syncG(g2){var g=gps[g2],on=g.rows.every(function(r){return isOn(r.x)});var h=ov.querySelector('[data-g="'+g2+'"]');if(h)h.classList.toggle('on',on)}
-  ov.onclick=function(e){if(e.target===ov||e.target.closest('.fs-x'))return close();var o=e.target.closest('.fs-o');if(!o)return;
-    if(_qsel==null)_qsel=all.map(function(y){return{e:y.e,num:y.num}});
-    if(o.hasAttribute('data-g')){var g=gps[+o.getAttribute('data-g')],on=g.rows.every(function(r){return isOn(r.x)});
-      g.rows.forEach(function(r){setOn(r.x,!on)});o.classList.toggle('on',!on);
-      Array.prototype.forEach.call(o.parentNode.querySelectorAll('[data-i]'),function(r){r.classList.toggle('on',!on)})}
-    else{var x=all[+o.getAttribute('data-i')];o.classList.toggle('on');setOn(x,o.classList.contains('on'));
-      var gp=o.closest('.fs-grp'),gh=gp&&gp.querySelector('[data-g]');if(gh)syncG(+gh.getAttribute('data-g'))}
-    qpickBtn();rer()};
+  function setOn(x,on){var n=xNum(x),j=-1;for(var k=0;k<_qsel.length;k++)if(_qsel[k].e==x.e&&_qsel[k].num==n)j=k;if(on&&j<0)_qsel.push({e:x.e,num:n});if(!on&&j>=0)_qsel.splice(j,1)}
+  ov.onclick=function(e){if(e.target===ov||e.target.closest('.fs-x'))return close();
+    if(e.target.closest('[data-edit]')){close();_qret='mPago';if(typeof pgShow=='function')pgShow('mBank');list();return}
+    var o=e.target.closest('.fs-o');if(!o)return;var x=all[+o.getAttribute('data-i')];if(!x)return;
+    if(x.show===false)return T('Está oculta: activá "Mostrar" en Mi Perfil → Cuentas');
+    if(_qsel==null)_qsel=all.filter(function(y){return y.show!==false}).map(function(y){return{e:y.e,num:xNum(y)}});
+    o.classList.toggle('on');setOn(x,o.classList.contains('on'));qpickBtn();rer()};
   requestAnimationFrame(function(){ov.classList.add('on')})}
 window.cproQSel=function(){return _qsel};
 window.cproQSet=function(s){_qsel=s==null?null:s.map(function(x){return{e:x.e,num:x.num}});qpickBtn()};
@@ -238,7 +237,7 @@ function init(){if(!Q('#mBank'))return;fillPais();
   window.cproFsync=fsync;enhance(Q('#cpais'),'País del cliente');enhance(Q('#cur'),'Moneda');enhance(Q('#cf-pago'),'Tipo de pago');
   var mt=Q('#bk-mt');if(mt)mt.onclick=function(){var l=Q('#bk-list');l.classList.toggle('d-none');mt.classList.toggle('shut',l.classList.contains('d-none'))};
   var g=Q('#bankgo');if(g)g.onclick=function(){if(typeof pgShow=='function')pgShow('mBank');list()};
-  var qp=Q('#qpick');if(qp)qp.onclick=qpickSheet;qpickBtn();
+  var vw=Q('#ctas-view');if(vw)vw.onclick=ctasSheet;qpickBtn();
   var qa=Q('#qacc');if(qa){var qh=qa.querySelector('.acc-h')||qa;qh.onclick=function(){qa.classList.toggle('open')}}
   var goBank=function(){_qret='mPago';if(typeof pgShow=='function')pgShow('mBank');list()};var cg=Q('#ctas-go');if(cg)cg.onclick=goBank;var cg2=Q('#ctas-go2');if(cg2)cg2.onclick=goBank;
   var ng=Q('#npg-on');if(ng)ng.onchange=function(){_qoff=!ng.checked;qpickBtn();rer();T(ng.checked?'Cuentas en la cotización':'Sin cuentas en la cotización')};

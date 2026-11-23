@@ -610,6 +610,7 @@ body.dark .fsheet{background:#111827}
 .fs-o{display:flex;align-items:center;gap:12px;width:100%;border:1px solid transparent;background:transparent;color:var(--ink);text-align:left;padding:10px;border-radius:14px;margin-bottom:2px;transition:background .15s}
 .fs-o:hover,.fs-o:active{background:var(--hov)}
 .fs-o.on{background:linear-gradient(135deg,rgba(139,92,246,.12),rgba(99,102,241,.12));border-color:rgba(99,102,241,.35)}
+.fs-o.dis{opacity:.55}.fs-o.dis .fs-ck{visibility:hidden}
 .fs-ic{width:40px;height:40px;border-radius:12px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;background:linear-gradient(135deg,rgba(139,92,246,.16),rgba(99,102,241,.16));color:var(--acc2)}
 .fs-ic .bi{font-size:1.15rem}
 .fs-t{flex:1;min-width:0;display:flex;flex-direction:column;font-size:.92rem;font-weight:600;line-height:1.25}
