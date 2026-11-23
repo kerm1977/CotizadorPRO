@@ -216,6 +216,7 @@ function ctasSheet(){var all=load();if(!all.length)return T('Configurá cuentas 
   function setOn(x,on){var n=xNum(x),j=-1;for(var k=0;k<_qsel.length;k++)if(_qsel[k].e==x.e&&_qsel[k].num==n)j=k;if(on&&j<0)_qsel.push({e:x.e,num:n});if(!on&&j>=0)_qsel.splice(j,1)}
   ov.onclick=function(e){if(e.target===ov||e.target.closest('.fs-x'))return close();
     if(e.target.closest('[data-edit]')){close();_qret='mPago';if(typeof pgShow=='function')pgShow('mBank');list();return}
+    if(e.target.closest('[data-back]')){close();return}
     var o=e.target.closest('.fs-o');if(!o)return;var x=all[+o.getAttribute('data-i')];if(!x)return;
     if(x.show===false)return T('Está oculta: activá "Mostrar" en Mi Perfil → Cuentas');
     if(_qsel==null)_qsel=all.filter(function(y){return y.show!==false}).map(function(y){return{e:y.e,num:xNum(y)}});
@@ -236,7 +237,8 @@ function init(){if(!Q('#mBank'))return;fillPais();
   Q('#bk-pais').onchange=onPais;Q('#bk-cat').onchange=onCat;Q('#bk-ent').onchange=onEnt;Q('#bk-save').onclick=onSave;
   window.cproFsync=fsync;enhance(Q('#cpais'),'País del cliente');enhance(Q('#cur'),'Moneda');enhance(Q('#cf-pago'),'Tipo de pago');
   var mt=Q('#bk-mt');if(mt)mt.onclick=function(){var l=Q('#bk-list');l.classList.toggle('d-none');mt.classList.toggle('shut',l.classList.contains('d-none'))};
-  var g=Q('#bankgo');if(g)g.onclick=function(){if(typeof pgShow=='function')pgShow('mBank');list()};
+  var g=Q('#bankgo');if(g)g.onclick=function(){_qret='mLogo';if(typeof pgShow=='function')pgShow('mBank');list()};
+  var bb=Q('#bk-back');if(bb)bb.onclick=function(){var d=_qret||'mLogo';_qret=null;if(typeof pgShow=='function')pgShow(d)};
   var vw=Q('#ctas-view');if(vw)vw.onclick=ctasSheet;qpickBtn();
   var qa=Q('#qacc');if(qa){var qh=qa.querySelector('.acc-h')||qa;qh.onclick=function(){qa.classList.toggle('open')}}
   var goBank=function(){_qret='mPago';if(typeof pgShow=='function')pgShow('mBank');list()};var cg=Q('#ctas-go');if(cg)cg.onclick=goBank;var cg2=Q('#ctas-go2');if(cg2)cg2.onclick=goBank;
