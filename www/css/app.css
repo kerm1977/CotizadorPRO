@@ -544,6 +544,9 @@ input,select,textarea,.form-control,.form-select{max-width:100%;box-sizing:borde
 .fs-ft{padding:6px 18px 14px;flex:0 0 auto;display:flex;flex-direction:column;gap:8px}
 .fs-all{border:1px solid var(--line);background:transparent;color:var(--ink);font-size:.82rem;padding:8px;border-radius:10px;display:flex;align-items:center;justify-content:center;gap:6px}
 .fs-all:hover{background:var(--hov)}
+.fs-sep{border-top:1px solid var(--line);margin:12px 4px 8px;padding-top:12px;font-size:.78rem;font-weight:600;color:var(--mut);display:flex;align-items:center;gap:6px}
+.fs-sep .bi{color:var(--acc2)}
+.fs-tp{border:1px solid var(--inp-line);border-radius:10px;background:var(--card,#fff);color:var(--ink);font-size:.85rem;padding:0 8px;flex:0 0 auto}
 .fs-oth{display:flex;gap:8px}
 .fs-oth input{flex:1;font-size:.85rem}
 .fs-add{border:0;width:38px;border-radius:10px;background:var(--acc2);color:#fff;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
