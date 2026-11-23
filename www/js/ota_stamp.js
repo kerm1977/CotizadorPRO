@@ -1,2 +1,2 @@
 // sello OTA generado por ota_watch.py
-window.TRIBAL_OTA = { ts: '2026-11-23 11:34:38', files: 16 };
+window.TRIBAL_OTA = { ts: '2026-11-23 11:41:00', files: 16 };
