@@ -214,6 +214,9 @@
       <span class="cs-l">Tipo de ítem</span>
       <select id="tipo" class="form-select"><option value="srv">Servicio</option><option value="prod">Producto</option></select>
       <div class="cs-hint" id="tipohint"><b>Servicio:</b> trabajo o mano de obra que brindás al cliente. <b>Producto:</b> artículo físico que se vende.</div>
+      <div class="mt-2"><span class="cs-l" id="stipol">Elige la categoría de tu servicio</span>
+        <button type="button" id="stipo" class="form-control it-pick text-start d-flex justify-content-between align-items-center"><span id="stipo-v" class="mut">Tocar para elegir la categoría…</span><i class="bi bi-chevron-down mut"></i></button>
+      </div>
     </section>
     <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mPago"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mItems">Siguiente · Conceptos <i class="bi bi-arrow-right"></i></button></div>
   </div>
@@ -227,14 +230,6 @@
     <div class="stp-t">Paso 2 · Conceptos de servicio</div>
     <div class="stp2"><span class="stp2-d" data-go="mPago"></span><span class="stp2-d" data-go="mDet"></span><span class="stp2-d on"></span><span class="stp2-d" data-go="mTax"></span><span class="stp2-d" data-go="mNotas"></span><span class="stp2-d" data-go="mQCli"></span></div>
     <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de hoja</div>
-    <section class="cs">
-      <div class="cs-t"><i class="bi bi-tag"></i> <span id="snoml">Nombre del servicio</span></div>
-      <input id="snom" class="form-control" placeholder="Ej: Tour de senderismo o equipo de hiking">
-      <div class="mt-2"><span class="cs-l" id="stipol">Elige la categoría de tu servicio</span>
-        <button type="button" id="stipo" class="form-control it-pick text-start d-flex justify-content-between align-items-center"><span id="stipo-v" class="mut">Tocar para elegir la categoría…</span><i class="bi bi-chevron-down mut"></i></button>
-      </div>
-      <div class="cs-hint">Un solo nombre por cotización — es el título en las guardadas.</div>
-    </section>
     <section class="cs">
       <div class="cs-t"><i class="bi bi-list-check"></i> <span id="itemlbl">Concepto de servicio</span></div>
       <div id="items"></div>
