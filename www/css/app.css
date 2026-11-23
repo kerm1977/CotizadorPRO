@@ -469,7 +469,10 @@ input,select,textarea,.form-control,.form-select{max-width:100%;box-sizing:borde
 #items .it .d:placeholder-shown{animation:none}
 #items .it.it-min .it-r2,#items .it.it-min .it-more,#items .it.it-min .it-xtra,#items .it.it-min .it-ft{display:none}
 #items .it.it-min .it-r1{flex-wrap:nowrap;cursor:pointer}
-#items .it.it-min .d{flex:0 0 auto;width:12ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#items .it.it-min .d{flex:0 0 auto;width:17ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.it-vw{margin-left:auto;display:flex;gap:6px;text-transform:none;letter-spacing:0}
+.it-vw button{border:1px solid var(--line);background:transparent;color:var(--mut);font-size:.7rem;padding:4px 9px;border-radius:8px;display:flex;align-items:center;gap:4px}
+.it-vw button:hover{color:var(--acc2);border-color:var(--acc2)}
 #mCot #add{animation:none}#mCot #add::after{display:none}
 /* Cuentas */
 .bk-title{font-weight:700;font-size:1.1rem;text-align:center;margin:2px 0 14px}
