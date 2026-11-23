@@ -592,6 +592,10 @@ input,select,textarea,.form-control,.form-select{max-width:100%;box-sizing:borde
 .noi-lg .cs-t{color:#f1f5f9}
 .pvdoc{aspect-ratio:8.5/11;overflow:hidden;border-radius:6px;box-shadow:0 10px 34px rgba(80,70,160,.16);background:#fff}
 .pvdoc .qprev{height:100%;overflow-y:auto;border:0;border-radius:0;box-shadow:none}
+.pvtg-row{display:flex;align-items:center;gap:10px;padding:7px 2px;border-bottom:1px solid rgba(15,23,42,.06)}
+.pvtg-row:last-child{border-bottom:0}
+.pvtg-row .form-check-input{margin-left:0;cursor:pointer}
+.pvtg-row .form-check-label{cursor:pointer;font-size:.85rem}
 .fs-acts{display:flex;gap:10px;margin-left:auto;flex:0 0 auto}
 .fs-eit,.fs-xit{color:var(--mut);cursor:pointer;font-size:.95rem;padding:2px}
 .fs-eit:hover{color:var(--acc2)}

@@ -387,7 +387,7 @@ function infoSch(i,ok){var h=ok||function(){return true};var p=[];if(i.sinpe&&h(
 var PVH=(function(){try{return JSON.parse(localStorage.getItem('cpro_pvh'))||[]}catch(e){return[]}})();
 function pvShow(k){return PVH.indexOf(k)<0}
 function pvTgFill(){var el=$('#pvtg');if(!el)return;var d=data(),i=d.info||{},o=[];
- function sw(k,l){o.push('<label class="hrow" style="cursor:pointer"><span>'+l+'</span><input type="checkbox" class="form-check-input pvtg" data-k="'+k+'"'+(pvShow(k)?' checked':'')+'></label>')}
+ function sw(k,l){o.push('<div class="form-check form-switch pvtg-row"><input class="form-check-input pvtg" type="checkbox" role="switch" id="pvt-'+k+'" data-k="'+k+'"'+(pvShow(k)?' checked':'')+'><label class="form-check-label" for="pvt-'+k+'">'+l+'</label></div>')}
  if(i.tel)sw('tel','Teléfono');if(i.tel2)sw('tel2','Teléfono 2');if(i.telc)sw('telc','Teléfono contacto');if(i.wa)sw('wa','WhatsApp');if(i.mail)sw('mail','Correo');if(i.dir)sw('dir','Dirección');
  if(i.sinpe)sw('sinpe','SINPE');if(i.tarjeta)sw('tarjeta','Tarjetas');if(i.dias)sw('dias','Días de apertura');if(i.horas)sw('horas','Horas de atención');if(i.fer)sw('fer','Feriados');
  if(Object.keys(i).some(function(k){return k.indexOf('cf_')==0&&i[k]}))sw('cf','Datos personalizados');
