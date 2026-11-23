@@ -546,6 +546,10 @@ input,select,textarea,.form-control,.form-select{max-width:100%;box-sizing:borde
 .fs-add{border:0;width:38px;border-radius:10px;background:var(--acc2);color:#fff;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
 .fs-other{border:0;background:transparent;color:var(--acc2);font-size:.82rem;padding:6px 0;display:flex;align-items:center;gap:6px}
 .fs-other:hover{text-decoration:underline}
+.acc-t{cursor:pointer;display:flex;align-items:center;user-select:none}
+.acc-t>span{flex:1 1 auto}
+.acc-ic{margin-left:auto;color:var(--mut);font-size:.8rem;transition:transform .18s}
+.acc-t.open .acc-ic{transform:rotate(180deg)}
 .stp-nav{display:flex;gap:10px;align-items:stretch}
 .stp-nav .btn-primary{flex:1 1 auto}
 .stp-nav .btn-outline-secondary{flex:0 0 auto;border-radius:10px}
