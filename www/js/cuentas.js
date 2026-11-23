@@ -191,13 +191,16 @@ function onSave(){var c=cat(),en=Q('#bk-ent').value;if(!c||!en)return T('Selecci
   else if(!f.num)return T('Escribí el número');
   for(var i=0;i<c.f.length;i++){var fd=c.f[i];if(fd.re&&f[fd.id]){f[fd.id]=f[fd.id].replace(/[\s-]/g,'').toUpperCase();if(!fd.re.test(f[fd.id]))return T(fd.err||('Revisá '+fd.l))}}
   var a=load(),o={p:Q('#bk-pais').value,c:c.k,e:en,f:f,l:l,ts:Date.now()},up=EDIT>=0&&a[EDIT];if(up){if(a[EDIT].show===false)o.show=false;a[EDIT]=o}else a.push(o);save(a);resetEdit();
-  Q('#bk-ent').value='';onEnt();list();rer();T(up?'Cuenta actualizada':'Cuenta guardada')}
+  Q('#bk-ent').value='';onEnt();list();rer();T(up?'Cuenta actualizada':'Cuenta guardada');
+  if(_qret){var _r=_qret;_qret=null;if(typeof pgShow=='function')pgShow(_r)}}
 
 /* ===== Selector de cuentas para la cotización (Información de pago) ===== */
 var _qsel=null;                 // null = todas (por defecto) · [] = ninguna · [{e,num}]
+var _qoff=false;                // trigger: incluir cuentas en la cotización
+var _qret=null;                 // volver a esta hoja tras guardar cuenta en el perfil
 function qpickCards(){var box=Q('#qpick-cards');if(!box)return;var eff=window.cproCtasPick?_qsel==null?window.cproCtas():window.cproCtasPick(_qsel):[];
   box.innerHTML=eff.length?'<div class="qctas">'+eff.map(function(x){return'<div class="qcta"><div class="qcta-h">'+(x.flag?'<span class="qcta-f">'+E(x.flag)+'</span>':'')+'<b>'+E(x.e)+'</b>'+(x.pais?'<span class="qcta-c">'+E(x.pais)+'</span>':'')+'</div>'+(x.num?'<div class="qcta-n">'+E(x.num)+'</div>':'')+(x.det||x.cat?'<div class="qcta-d">'+E([x.det,x.cat].filter(Boolean).join(' · '))+'</div>':'')+(x.tit?'<div class="qcta-t">'+E(x.tit)+'</div>':'')+'</div>'}).join('')+'</div>':''}
-function qpickBtn(){var b=Q('#qpick');if(!b)return;b.querySelector('.fsel-v').textContent=_qsel==null?'Todas mis cuentas':(_qsel.length?_qsel.length==1?'1 cuenta':_qsel.length+' cuentas':'Sin cuentas');b.classList.toggle('ph',_qsel==null);var noAcc=!window.cproCtas().length,he=Q('#ctas-have'),ee=Q('#ctas-empty');if(he)he.classList.toggle('d-none',noAcc);if(ee)ee.classList.toggle('d-none',!noAcc);qpickCards()}
+function qpickBtn(){var b=Q('#qpick');if(!b)return;b.querySelector('.fsel-v').textContent=_qsel==null?'Todas mis cuentas':(_qsel.length?_qsel.length==1?'1 cuenta':_qsel.length+' cuentas':'Sin cuentas');b.classList.toggle('ph',_qsel==null);var noAcc=!window.cproCtas().length,he=Q('#ctas-have'),ee=Q('#ctas-empty');if(he)he.classList.toggle('d-none',noAcc);if(ee)ee.classList.toggle('d-none',!noAcc);b.classList.toggle('d-none',_qoff);var pc=Q('#qpick-cards');if(pc)pc.classList.toggle('d-none',_qoff);qpickCards()}
 function qpickSheet(){var all=window.cproCtas();if(!all.length)return T('Configurá cuentas en Mi Perfil → Cuentas');
   var gps=[],gi={};all.forEach(function(x,i){var k=(x.flag||'')+(x.pais||'Otras');if(gi[k]===undefined){gi[k]=gps.length;gps.push({flag:x.flag,pais:x.pais||'Otras',rows:[]})}gps[gi[k]].rows.push({x:x,i:i})});
   gps.sort(function(a,b){return a.pais.localeCompare(b.pais,'es')});
@@ -221,7 +224,9 @@ function qpickSheet(){var all=window.cproCtas();if(!all.length)return T('Configu
   requestAnimationFrame(function(){ov.classList.add('on')})}
 window.cproQSel=function(){return _qsel};
 window.cproQSet=function(s){_qsel=s==null?null:s.map(function(x){return{e:x.e,num:x.num}});qpickBtn()};
-window.cproCtasPick=function(sel){var a=window.cproCtas();return sel==null?a:a.filter(function(x){return sel.some(function(s){return s.e==x.e&&s.num==x.num})})};
+window.cproQOff=function(){return _qoff};
+window.cproQOffSet=function(v){_qoff=!!v;var ng=Q('#npg-on');if(ng)ng.checked=!_qoff;qpickBtn()};
+window.cproCtasPick=function(sel){if(_qoff)return[];var a=window.cproCtas();return sel==null?a:a.filter(function(x){return sel.some(function(s){return s.e==x.e&&s.num==x.num})})};
 
 function init(){if(!Q('#mBank'))return;fillPais();
   Q('#bk-pais').setAttribute('data-ic','bi-globe-americas');Q('#bk-cat').setAttribute('data-ic','bi-grid');
@@ -234,18 +239,9 @@ function init(){if(!Q('#mBank'))return;fillPais();
   var mt=Q('#bk-mt');if(mt)mt.onclick=function(){var l=Q('#bk-list');l.classList.toggle('d-none');mt.classList.toggle('shut',l.classList.contains('d-none'))};
   var g=Q('#bankgo');if(g)g.onclick=function(){if(typeof pgShow=='function')pgShow('mBank');list()};
   var qp=Q('#qpick');if(qp)qp.onclick=qpickSheet;qpickBtn();
-  var qa=Q('#qacc');if(qa){var qto=function(){var b=Q('#ctas-body');if(!b)return;b.classList.toggle('d-none');qa.classList.toggle('open',!b.classList.contains('d-none'))};qa.onclick=qto;qa.onkeydown=function(e){if(e.key=='Enter'||e.key==' '){e.preventDefault();qto()}}}
-  var goBank=function(){if(typeof pgShow=='function')pgShow('mBank');list()};var cg=Q('#ctas-go');if(cg)cg.onclick=goBank;var cg2=Q('#ctas-go2');if(cg2)cg2.onclick=goBank;
-  var ng=Q('#npg-on'),nfb=Q('#npg-f');if(ng&&nfb)ng.onchange=function(){nfb.classList.toggle('d-none',!ng.checked)};
-  var na=Q('#npg-add');if(na)na.onclick=function(){
-    var tp=Q('#npg-t').value,en=(Q('#npg-e').value||'').trim(),num=(Q('#npg-n').value||'').trim(),tit=(Q('#npg-tit').value||'').trim();
-    if(!en)return T('Escribí la entidad o servicio');if(!num)return T('Escribí el número, correo o enlace');
-    if(tp=='enlace'&&!/^https?:\/\//i.test(num))num='https://'+num;
-    var NL={billetera:'SINPE Móvil / billetera digital',banco:'Cuenta bancaria',enlace:'Enlace de pago',efectivo:'Efectivo / otro medio'};
-    var a=load(),o={p:'',c:tp,e:en,f:{num:num,tit:tit},l:{num:tp=='enlace'?'Enlace':'Número',tit:'Titular'},cat:NL[tp],show:!!ng.checked,ts:Date.now()};
-    a.push(o);save(a);if(_qsel!=null)_qsel.push({e:o.e,num:o.f.num});
-    Q('#npg-e').value='';Q('#npg-n').value='';Q('#npg-tit').value='';
-    qpickBtn();list();rer();T(ng.checked?'Cuenta agregada a tu cotización':'Cuenta guardada (oculta en esta cotización)')};
+  var qa=Q('#qacc');if(qa){var qh=qa.querySelector('.acc-h')||qa;qh.onclick=function(){qa.classList.toggle('open')}}
+  var goBank=function(){_qret='mPago';if(typeof pgShow=='function')pgShow('mBank');list()};var cg=Q('#ctas-go');if(cg)cg.onclick=goBank;var cg2=Q('#ctas-go2');if(cg2)cg2.onclick=goBank;
+  var ng=Q('#npg-on');if(ng)ng.onchange=function(){_qoff=!ng.checked;qpickBtn();rer();T(ng.checked?'Cuentas en la cotización':'Sin cuentas en la cotización')};
   onPais();list();rer()}
 init();
 window.CPRO_CUENTAS=load;
