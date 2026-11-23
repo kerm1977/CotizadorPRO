@@ -144,7 +144,7 @@ function list(){var a=load(),el=Q('#bk-list');if(!el)return;
     return'<div class="ccard'+(x.show===false?' off':'')+'"><div class="ccard-h"><span class="ccard-av"><i class="bi '+(CIC[x.c]||'bi-bank')+'"></i></span><span class="ccard-t"><b>'+(PAISES[x.p]?PAISES[x.p].flag+' ':'')+E(x.e)+'</b><span class="mut">'+E((x.f&&x.f.num)||'')+' · '+E(cn||lab)+'</span></span><label class="bk-sw form-switch" title="Mostrar en la cotización"><input type="checkbox" class="form-check-input" data-bsw="'+i+'"'+(x.show===false?'':' checked')+'><span>Mostrar</span></label><i class="bi bi-chevron-down ccard-ch"></i></div><div class="ccard-b">'+(det||'<div class="r mut">Sin datos</div>')+
       '<div class="bk-act"><button type="button" class="btn btn-sm btn-outline-primary" data-bed="'+i+'"><i class="bi bi-pencil"></i> Editar</button><button type="button" class="btn btn-sm btn-success" data-bsh="'+i+'"><i class="bi bi-whatsapp"></i> Compartir</button><button type="button" class="btn btn-sm btn-outline-danger" data-bdel="'+i+'"><i class="bi bi-trash"></i> Eliminar</button></div></div></div>'};
   var ord=[],gp={};a.forEach(function(x,i){if(!gp[x.p]){gp[x.p]=[];ord.push(x.p)}gp[x.p].push(card(x,i))});
-  el.innerHTML=a.length?visBar(a)+ord.map(function(k){var p=PAISES[k];return'<div class="bk-grp'+(GCL[k]?'':' open')+'" data-gp="'+E(k)+'"><div class="bk-gh"><span class="bk-gf">'+(p?p.flag:'')+'</span><b>'+E(p?p.n:k)+'</b><span class="bk-gn">'+gp[k].length+'</span><i class="bi bi-chevron-down bk-gc"></i></div><div class="bk-gb">'+gp[k].join('')+'</div></div>'}).join(''):'<p class="mut" style="padding:10px 4px">Todavía no agregaste cuentas</p>';
+  el.innerHTML=a.length?visBar(a)+ord.map(function(k){var p=PAISES[k];return'<div class="bk-grp'+(GCL[k]?'':' open')+'" data-gp="'+E(k)+'"><div class="bk-gh"><span class="bk-gf">'+(p?p.flag:'🌐')+'</span><b>'+E(p?p.n:(k||'Otros medios'))+'</b><span class="bk-gn">'+gp[k].length+'</span><i class="bi bi-chevron-down bk-gc"></i></div><div class="bk-gb">'+gp[k].join('')+'</div></div>'}).join(''):'<p class="mut" style="padding:10px 4px">Todavía no agregaste cuentas</p>';
   el.onchange=function(e){var s=e.target.closest('[data-bsw]');if(!s)return;var a3=load(),k=+s.getAttribute('data-bsw');if(!a3[k])return;a3[k].show=s.checked;save(a3);
     var cd=s.closest('.ccard');if(cd)cd.classList.toggle('off',!s.checked);var vn=Q('#bk-vis-n');if(vn)vn.textContent=visN(a3);rer();T(s.checked?'Se mostrará en la cotización':'Oculta en la cotización')};
   Array.prototype.forEach.call(el.querySelectorAll('[data-ball]'),function(bt){bt.onclick=function(){var v=bt.getAttribute('data-ball')=='1',a3=load();a3.forEach(function(x){x.show=v});save(a3);list();rer();T(v?'Todas las cuentas en la cotización':'Ninguna cuenta en la cotización')}});
@@ -160,7 +160,7 @@ function fmt(x){var f=x.f||{},l=x.l||{},sh=function(k){return String(l[k]||k).sp
 function visN(a){return a.filter(function(x){return x.show!==false}).length+' de '+a.length}
 function visBar(a){return'<div class="bk-vis"><span><i class="bi bi-eye"></i> Mostrar en la cotización: <b id="bk-vis-n">'+visN(a)+'</b></span><div class="bk-vis-b"><button type="button" class="btn btn-sm btn-outline-primary" data-ball="1"><i class="bi bi-check2-all"></i> Todas</button><button type="button" class="btn btn-sm btn-outline-secondary" data-ball="0"><i class="bi bi-eye-slash"></i> Ninguna</button></div></div>'}
 window.cproCtas=function(){return load().filter(function(x){return x.show!==false}).map(function(x){var f=x.f||{},l=x.l||{},p=PAISES[x.p],sh=function(k){return String(l[k]||k).split('(')[0].trim()},ct=p&&p.cats.filter(function(c){return c.k==x.c})[0];
-  return{e:x.e,c:x.c,cat:ct?ct.n:'',flag:p?p.flag:'',pais:p?p.n:'',num:f.num||'',det:[f.tipo,f.mon,f.cci?sh('cci')+': '+f.cci:'',f.doc?sh('doc')+': '+f.doc:'',f.mail].filter(Boolean).join(' · '),tit:f.tit||'',v:fmt(x),u:x.c=='enlace'?f.num:''}})};
+  return{e:x.e,c:x.c,cat:(ct?ct.n:'')||x.cat||'',flag:p?p.flag:'🌐',pais:p?p.n:'',num:f.num||'',det:[f.tipo,f.mon,f.cci?sh('cci')+': '+f.cci:'',f.doc?sh('doc')+': '+f.doc:'',f.mail].filter(Boolean).join(' · '),tit:f.tit||'',v:fmt(x),u:x.c=='enlace'?f.num:''}})};
 function rer(){try{if(typeof render=='function')render()}catch(e){}try{qpickBtn()}catch(e){}}
 function share(x){var p=PAISES[x.p],t=['*'+x.e+'*'+(p?' ('+p.n+')':'')];Object.keys(x.f||{}).forEach(function(k){if(x.f[k])t.push((x.l&&x.l[k]||k)+': '+x.f[k])});
   var txt=t.join('\n'),PL=window.Capacitor&&Capacitor.Plugins;
@@ -236,6 +236,16 @@ function init(){if(!Q('#mBank'))return;fillPais();
   var qp=Q('#qpick');if(qp)qp.onclick=qpickSheet;qpickBtn();
   var qa=Q('#qacc');if(qa){var qto=function(){var b=Q('#ctas-body');if(!b)return;b.classList.toggle('d-none');qa.classList.toggle('open',!b.classList.contains('d-none'))};qa.onclick=qto;qa.onkeydown=function(e){if(e.key=='Enter'||e.key==' '){e.preventDefault();qto()}}}
   var goBank=function(){if(typeof pgShow=='function')pgShow('mBank');list()};var cg=Q('#ctas-go');if(cg)cg.onclick=goBank;var cg2=Q('#ctas-go2');if(cg2)cg2.onclick=goBank;
+  var ng=Q('#npg-on'),nfb=Q('#npg-f');if(ng&&nfb)ng.onchange=function(){nfb.classList.toggle('d-none',!ng.checked)};
+  var na=Q('#npg-add');if(na)na.onclick=function(){
+    var tp=Q('#npg-t').value,en=(Q('#npg-e').value||'').trim(),num=(Q('#npg-n').value||'').trim(),tit=(Q('#npg-tit').value||'').trim();
+    if(!en)return T('Escribí la entidad o servicio');if(!num)return T('Escribí el número, correo o enlace');
+    if(tp=='enlace'&&!/^https?:\/\//i.test(num))num='https://'+num;
+    var NL={billetera:'SINPE Móvil / billetera digital',banco:'Cuenta bancaria',enlace:'Enlace de pago',efectivo:'Efectivo / otro medio'};
+    var a=load(),o={p:'',c:tp,e:en,f:{num:num,tit:tit},l:{num:tp=='enlace'?'Enlace':'Número',tit:'Titular'},cat:NL[tp],show:!!ng.checked,ts:Date.now()};
+    a.push(o);save(a);if(_qsel!=null)_qsel.push({e:o.e,num:o.f.num});
+    Q('#npg-e').value='';Q('#npg-n').value='';Q('#npg-tit').value='';
+    qpickBtn();list();rer();T(ng.checked?'Cuenta agregada a tu cotización':'Cuenta guardada (oculta en esta cotización)')};
   onPais();list();rer()}
 init();
 window.CPRO_CUENTAS=load;
