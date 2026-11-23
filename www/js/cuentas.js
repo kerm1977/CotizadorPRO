@@ -235,7 +235,7 @@ function init(){if(!Q('#mBank'))return;fillPais();
   var g=Q('#bankgo');if(g)g.onclick=function(){if(typeof pgShow=='function')pgShow('mBank');list()};
   var qp=Q('#qpick');if(qp)qp.onclick=qpickSheet;qpickBtn();
   var qa=Q('#qacc');if(qa){var qto=function(){var b=Q('#ctas-body');if(!b)return;b.classList.toggle('d-none');qa.classList.toggle('open',!b.classList.contains('d-none'))};qa.onclick=qto;qa.onkeydown=function(e){if(e.key=='Enter'||e.key==' '){e.preventDefault();qto()}}}
-  var cg=Q('#ctas-go');if(cg)cg.onclick=function(){if(typeof pgShow=='function')pgShow('mBank');list()};
+  var goBank=function(){if(typeof pgShow=='function')pgShow('mBank');list()};var cg=Q('#ctas-go');if(cg)cg.onclick=goBank;var cg2=Q('#ctas-go2');if(cg2)cg2.onclick=goBank;
   onPais();list();rer()}
 init();
 window.CPRO_CUENTAS=load;
