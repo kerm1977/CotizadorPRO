@@ -550,6 +550,8 @@ input,select,textarea,.form-control,.form-select{max-width:100%;box-sizing:borde
 .acc-t>span{flex:1 1 auto}
 .acc-ic{margin-left:auto;color:var(--mut);font-size:.8rem;transition:transform .18s}
 .acc-t.open .acc-ic{transform:rotate(180deg)}
+.lst-pg{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 2px 4px}
+#lst-q{font-size:.85rem}
 .stp-nav{display:flex;gap:10px;align-items:stretch}
 .stp-nav .btn-primary{flex:1 1 auto}
 .stp-nav .btn-outline-secondary{flex:0 0 auto;border-radius:10px}
