@@ -457,6 +457,13 @@ input,select,textarea,.form-control,.form-select{max-width:100%;box-sizing:borde
 #items .it .lb{display:block;font-size:.7rem;color:var(--mut);margin-bottom:3px}
 #items .it-del{border:0;background:transparent;color:#dc2626;min-width:38px;height:38px;flex:0 0 auto;border-radius:8px;font-size:.8rem}
 #items .it-del:hover{background:rgba(220,38,38,.1)}
+#items{counter-reset:itn}
+#items .it{counter-increment:itn}
+#items .it-r1::before{content:counter(itn);width:24px;height:24px;min-width:24px;border-radius:50%;background:linear-gradient(135deg,var(--acc2),#8b5cf6);color:#fff;font-size:.78rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+#items .it .d{border:0!important;background:transparent!important;box-shadow:none!important;font-weight:700;padding:6px 0;cursor:pointer}
+#items .it-ft{border-top:1px solid var(--line);margin-top:10px;padding-top:8px;display:flex;justify-content:flex-end}
+#items .it-delb{border:0;background:transparent;color:#dc2626;font-size:.8rem;display:flex;align-items:center;gap:5px;padding:5px 8px;border-radius:8px}
+#items .it-delb:hover{background:rgba(220,38,38,.1)}
 #items .it .d:placeholder-shown{animation:none}
 #mCot #add{animation:none}#mCot #add::after{display:none}
 /* Cuentas */
@@ -551,6 +558,10 @@ input,select,textarea,.form-control,.form-select{max-width:100%;box-sizing:borde
 .mini-ov.on{opacity:1}
 .mini{background:var(--card,#fff);border:1px solid var(--line);border-radius:14px;padding:16px 18px;max-width:280px;text-align:center;font-size:.88rem;color:var(--ink);display:flex;flex-direction:column;gap:10px;align-items:center;box-shadow:0 10px 34px rgba(0,0,0,.25)}
 .mini .bi{font-size:1.6rem;color:#22c55e}
+.fs-acts{display:flex;gap:10px;margin-left:auto;flex:0 0 auto}
+.fs-eit,.fs-xit{color:var(--mut);cursor:pointer;font-size:.95rem;padding:2px}
+.fs-eit:hover{color:var(--acc2)}
+.fs-xit:hover{color:#ef4444}
 .fs-oth{display:flex;gap:8px}
 .fs-oth input{flex:1;font-size:.85rem}
 .fs-add{border:0;width:38px;border-radius:10px;background:var(--acc2);color:#fff;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
