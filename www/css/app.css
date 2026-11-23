@@ -475,6 +475,7 @@ input,select,textarea,.form-control,.form-select{max-width:100%;box-sizing:borde
 #items .it.it-min .it-ok.on{display:inline-block;width:7px;height:7px;min-width:7px;border-radius:50%;background:#f97316;flex:0 0 auto}
 #items .it.it-min .it-pp{display:inline;font-weight:700;color:var(--acc2);font-size:.85rem;margin-left:auto}
 #items .it[data-t="prod"]{background:rgba(16,185,129,.08);border-color:rgba(16,185,129,.25)}
+#items .it.it-err{outline:2px solid #ef4444;outline-offset:2px}
 .it-vw{display:flex;gap:8px;margin:-4px 0 12px}
 .it-legend{display:flex;align-items:center;gap:6px;font-size:.72rem;color:var(--mut);margin:-4px 0 10px}
 .it-legend .lg{width:11px;height:11px;border-radius:3px;display:inline-block;flex:0 0 auto}
