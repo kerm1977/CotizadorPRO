@@ -275,12 +275,8 @@
     <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de hoja</div>
     <section class="cs">
       <div class="cs-t"><i class="bi bi-journal-text"></i> Notas</div>
-      <textarea id="notas" class="form-control" rows="4" placeholder="Condiciones, vigencia…" style="resize:vertical"></textarea>
-      <div class="it-r2" style="margin-top:8px"><div><label class="it-sw"><input id="inc-t" type="checkbox"><span>Especificar qué incluye el servicio o producto</span></label></div></div>
-      <div id="inc-w" class="d-none" style="margin-top:8px">
-        <div class="it-r2"><div><span class="lb">Incluye</span><textarea id="inc-si" class="form-control" rows="2" placeholder="Transporte, guía, alimentación…" style="resize:vertical"></textarea></div>
-        <div class="it-r2"><div><span class="lb">No incluye</span><textarea id="inc-no" class="form-control" rows="2" placeholder="Propinas, gastos personales…" style="resize:vertical"></textarea></div></div>
-      </div>
+      <div class="rt" data-ed="notas" data-ph="Condiciones, vigencia…"></div>
+      <div class="it-r2" style="margin-top:8px"><div><span class="lb">No incluye — aclará en la cotización qué NO incluye tu servicio o producto</span><div class="rt" data-ed="inc-no" data-ph="Propinas, gastos personales…"></div></div></div>
     </section>
     <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mTax"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mQCli">Siguiente · Cliente <i class="bi bi-arrow-right"></i></button></div>
   </div>
@@ -640,8 +636,8 @@
 <script src="js/ota_stamp.js"></script>
 <script src="js/plantilla.js"></script>
 <script src="js/catalog.js?v=5"></script>
-<script src="js/app.js?v=48"></script>
-<script src="js/exports.js?v=5"></script>
+<script src="js/app.js?v=49"></script>
+<script src="js/exports.js?v=6"></script>
 <script src="js/paises.js?v=1"></script>
 <script src="js/cuentas.js?v=14"></script>
 <script src="js/ota.js"></script>
