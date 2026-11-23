@@ -243,13 +243,17 @@
     <section class="cs">
       <div class="cs-t"><i class="bi bi-tag"></i> <span id="snoml">Nombre del servicio</span></div>
       <input id="snom" class="form-control" placeholder="Ej: Masajes terapéuticos">
+      <div class="mt-2"><span class="cs-l">Tipo de servicio</span>
+        <button type="button" id="stipo" class="form-control it-pick text-start d-flex justify-content-between align-items-center"><span id="stipo-v" class="mut">Tocar para elegir el tipo…</span><i class="bi bi-chevron-down mut"></i></button>
+      </div>
       <div class="cs-hint">Un solo nombre por cotización — es el título en las guardadas.</div>
     </section>
     <section class="cs">
       <div class="cs-t"><i class="bi bi-list-check"></i> <span id="itemlbl">Concepto de servicio</span></div>
       <div id="items"></div>
-      <div id="it-tot" class="it-tot d-none"><span>Total</span><b id="it-tot-v"></b></div>
       <button class="btn btn-outline-primary w-100" id="add"><i class="bi bi-plus-lg"></i> Agregar más servicios</button>
+      <hr id="it-hr" class="d-none" style="border-color:var(--line);margin:12px 0 10px">
+      <div id="it-tot" class="it-tot d-none" style="margin:0"><span>Total sin impuestos</span><b id="it-tot-v"></b></div>
     </section>
     <datalist id="cat-srv"></datalist><datalist id="cat-prod"></datalist><datalist id="cat-ptipo"></datalist>
     <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mDet"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mTax">Siguiente · Impuestos <i class="bi bi-arrow-right"></i></button></div>
