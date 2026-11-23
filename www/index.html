@@ -232,13 +232,7 @@
       <div id="items"></div>
       <button class="btn btn-outline-primary w-100" id="add"><i class="bi bi-plus-lg"></i> Agregar más servicios</button>
       <hr id="it-hr" class="d-none" style="border-color:var(--line);margin:25px 0 12px">
-      <div class="cs-hint d-none" id="it-hint" style="margin-bottom:6px">Tocá «Total» para agregarle un impuesto, un descuento y un precio de envío si lo requerís.</div>
-      <div id="it-tot" class="it-tot d-none" style="margin:0;cursor:pointer"><span>Total</span><b id="it-tot-v"></b></div>
-      <div id="itadj" class="d-none mt-2">
-        <div class="it-r2"><div><label class="it-sw"><input id="ia-tax" type="checkbox"><span>Agregar impuesto</span></label></div><div id="ia-taxw" class="d-none"><span class="lb">% impuesto</span><input id="ia-taxv" type="number" min="0" step="0.01" class="form-control" placeholder="13"></div></div>
-        <div class="it-r2"><div><label class="it-sw"><input id="ia-dsc" type="checkbox"><span>Agregar descuento</span></label></div><div id="ia-dscw" class="d-none"><span class="lb">% descuento general</span><input id="ia-dscv" type="number" min="0" max="100" step="0.01" class="form-control" placeholder="0"></div></div>
-        <div class="it-r2" id="ia-envrow"><div><label class="it-sw"><input id="ia-env" type="checkbox"><span>Agregar precio de envío</span></label></div><div id="ia-envw" class="d-none"><span class="lb">Costo de envío</span><input id="ia-envv" type="number" min="0" step="0.01" class="form-control" placeholder="0"></div></div>
-      </div>
+      <div id="it-tot" class="it-tot d-none" style="margin:0"><span>Total</span><b id="it-tot-v"></b></div>
     </section>
     <datalist id="cat-srv"></datalist><datalist id="cat-prod"></datalist><datalist id="cat-ptipo"></datalist>
     <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mDet"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mTax">Siguiente · Impuestos <i class="bi bi-arrow-right"></i></button></div>
@@ -254,10 +248,10 @@
     <div class="stp2"><span class="stp2-d" data-go="mPago"></span><span class="stp2-d" data-go="mDet"></span><span class="stp2-d" data-go="mItems"></span><span class="stp2-d on"></span><span class="stp2-d" data-go="mNotas"></span><span class="stp2-d" data-go="mQCli"></span></div>
     <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de hoja</div>
     <section class="cs">
-      <div class="cs-t justify-content-between"><span><i class="bi bi-calculator"></i> Impuesto y total</span>
-        <div class="form-check form-switch mb-0"><input class="form-check-input" id="taxtog" type="checkbox" checked><label class="form-check-label" for="taxtog" style="font-size:.78rem;text-transform:none;letter-spacing:0">Activo</label></div>
-      </div>
-      <div id="taxwrap" class="mb-2"><span class="cs-l">Impuesto %</span><input id="tax" type="number" min="0" value="13" class="form-control"></div>
+      <div class="cs-t"><i class="bi bi-calculator"></i> Impuesto y total</div>
+      <div class="it-r2"><div><label class="it-sw"><input id="taxtog" type="checkbox" checked><span>Requiere impuesto</span></label></div><div id="taxwrap"><span class="lb">% impuesto</span><input id="tax" type="number" min="0" value="13" class="form-control"></div></div>
+      <div class="it-r2"><div><label class="it-sw"><input id="ia-dsc" type="checkbox"><span>Aplicar descuento</span></label></div><div id="ia-dscw" class="d-none"><span class="lb">% descuento</span><input id="ia-dscv" type="number" min="0" max="100" step="0.01" class="form-control" placeholder="0"></div></div>
+      <div class="it-r2"><div><label class="it-sw"><input id="ia-env" type="checkbox"><span>Agregar precio de envío</span></label></div><div id="ia-envw" class="d-none"><span class="lb">Costo de envío</span><input id="ia-envv" type="number" min="0" step="1" class="form-control" placeholder="0"></div></div>
       <div class="cs-tot">
         <div class="r"><span class="mut">Subtotal</span><b id="subt"></b></div>
         <div class="r" id="taxsum" style="display:none"><span class="mut">Impuesto (<span id="taxpc"></span>%)</span><b id="taxamt"></b></div>

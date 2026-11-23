@@ -464,8 +464,7 @@ input,select,textarea,.form-control,.form-select{max-width:100%;box-sizing:borde
 #items .it .d{border:0!important;background:transparent!important;box-shadow:none!important;font-weight:700;padding:6px 0;cursor:pointer}
 #items .it-ft{border-top:1px solid var(--line);margin-top:10px;padding-top:8px}
 #items .it-ftr{display:flex;justify-content:space-between;align-items:center}
-#items .it-sub{font-weight:700;color:var(--acc2);font-size:.95rem;cursor:pointer}
-#items .it-sub::after{content:" \25BE";font-size:.7rem;opacity:.7}
+#items .it-sub{font-weight:700;color:var(--acc2);font-size:.95rem}
 #items .it-delb{border:0;background:transparent;color:#dc2626;font-size:.8rem;display:flex;align-items:center;gap:5px;padding:5px 8px;border-radius:8px}
 #items .it-delb:hover{background:rgba(220,38,38,.1)}
 #items .it .d:placeholder-shown{animation:none}
