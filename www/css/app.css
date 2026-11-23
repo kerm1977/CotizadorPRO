@@ -581,6 +581,13 @@ input,select,textarea,.form-control,.form-select{max-width:100%;box-sizing:borde
 .mini .bi{font-size:1.6rem;color:#22c55e}
 .mini .bi-exclamation-triangle-fill{color:#f59e0b}
 .mini .btn-primary{background:linear-gradient(135deg,var(--acc2),#8b5cf6);border:0;color:#fff}
+.noi-ov{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(15,23,42,.45);opacity:0;pointer-events:none;transition:opacity .2s;padding:16px}
+.noi-ov.on{opacity:1;pointer-events:auto}
+.noi{background:#111827;border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:16px;width:100%;max-width:480px;display:flex;flex-direction:column;gap:8px;box-shadow:0 10px 34px rgba(0,0,0,.45)}
+.noi .rt-ed{min-height:200px;color:#f1f5f9}
+.noi .rt-bar button{color:#e2e8f0}
+.noi .btn-primary{background:linear-gradient(135deg,var(--acc2),#8b5cf6);border:0;color:#fff}
+#inc-btn.has{color:var(--acc2);border-color:var(--acc2)}
 .fs-acts{display:flex;gap:10px;margin-left:auto;flex:0 0 auto}
 .fs-eit,.fs-xit{color:var(--mut);cursor:pointer;font-size:.95rem;padding:2px}
 .fs-eit:hover{color:var(--acc2)}
