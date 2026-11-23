@@ -544,6 +544,9 @@ input,select,textarea,.form-control,.form-select{max-width:100%;box-sizing:borde
 .stp2{display:flex;gap:7px;justify-content:center;margin:2px 0 8px}
 .stp2-d{width:7px;height:7px;border-radius:50%;background:var(--line);cursor:pointer;transition:transform .15s,background .15s}
 .stp2-d.on{background:var(--acc2);transform:scale(1.25)}
+#items .it-more{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;margin-top:8px;border:1px dashed var(--line);background:transparent;color:var(--mut);font-size:.8rem;padding:7px 10px;border-radius:10px}
+#items .it-more:hover{color:var(--acc2);border-color:var(--acc2)}
+#items .it-xtra{border-top:1px dashed var(--line);margin-top:8px;padding-top:2px}
 .it-sw{display:flex;align-items:center;gap:7px;font-size:.8rem;cursor:pointer;padding:7px 0;user-select:none}
 .it-sw input{accent-color:var(--acc2)}
 .it-pick{cursor:pointer;background:var(--hov)}
