@@ -197,7 +197,7 @@ function onSave(){var c=cat(),en=Q('#bk-ent').value;if(!c||!en)return T('Selecci
 var _qsel=null;                 // null = todas (por defecto) · [] = ninguna · [{e,num}]
 function qpickCards(){var box=Q('#qpick-cards');if(!box)return;var eff=window.cproCtasPick?_qsel==null?window.cproCtas():window.cproCtasPick(_qsel):[];
   box.innerHTML=eff.length?'<div class="qctas">'+eff.map(function(x){return'<div class="qcta"><div class="qcta-h">'+(x.flag?'<span class="qcta-f">'+E(x.flag)+'</span>':'')+'<b>'+E(x.e)+'</b>'+(x.pais?'<span class="qcta-c">'+E(x.pais)+'</span>':'')+'</div>'+(x.num?'<div class="qcta-n">'+E(x.num)+'</div>':'')+(x.det||x.cat?'<div class="qcta-d">'+E([x.det,x.cat].filter(Boolean).join(' · '))+'</div>':'')+(x.tit?'<div class="qcta-t">'+E(x.tit)+'</div>':'')+'</div>'}).join('')+'</div>':''}
-function qpickBtn(){var b=Q('#qpick');if(!b)return;b.querySelector('.fsel-v').textContent=_qsel==null?'Todas mis cuentas':(_qsel.length?_qsel.length==1?'1 cuenta':_qsel.length+' cuentas':'Sin cuentas');b.classList.toggle('ph',_qsel==null);qpickCards()}
+function qpickBtn(){var b=Q('#qpick');if(!b)return;b.querySelector('.fsel-v').textContent=_qsel==null?'Todas mis cuentas':(_qsel.length?_qsel.length==1?'1 cuenta':_qsel.length+' cuentas':'Sin cuentas');b.classList.toggle('ph',_qsel==null);var noAcc=!window.cproCtas().length,he=Q('#ctas-have'),ee=Q('#ctas-empty');if(he)he.classList.toggle('d-none',noAcc);if(ee)ee.classList.toggle('d-none',!noAcc);qpickCards()}
 function qpickSheet(){var all=window.cproCtas();if(!all.length)return T('Configurá cuentas en Mi Perfil → Cuentas');
   var gps=[],gi={};all.forEach(function(x,i){var k=(x.flag||'')+(x.pais||'Otras');if(gi[k]===undefined){gi[k]=gps.length;gps.push({flag:x.flag,pais:x.pais||'Otras',rows:[]})}gps[gi[k]].rows.push({x:x,i:i})});
   gps.sort(function(a,b){return a.pais.localeCompare(b.pais,'es')});
@@ -234,6 +234,8 @@ function init(){if(!Q('#mBank'))return;fillPais();
   var mt=Q('#bk-mt');if(mt)mt.onclick=function(){var l=Q('#bk-list');l.classList.toggle('d-none');mt.classList.toggle('shut',l.classList.contains('d-none'))};
   var g=Q('#bankgo');if(g)g.onclick=function(){if(typeof pgShow=='function')pgShow('mBank');list()};
   var qp=Q('#qpick');if(qp)qp.onclick=qpickSheet;qpickBtn();
+  var qa=Q('#qacc');if(qa){var qto=function(){var b=Q('#ctas-body');if(!b)return;b.classList.toggle('d-none');qa.classList.toggle('open',!b.classList.contains('d-none'))};qa.onclick=qto;qa.onkeydown=function(e){if(e.key=='Enter'||e.key==' '){e.preventDefault();qto()}}}
+  var cg=Q('#ctas-go');if(cg)cg.onclick=function(){if(typeof pgShow=='function')pgShow('mBank');list()};
   onPais();list();rer()}
 init();
 window.CPRO_CUENTAS=load;
