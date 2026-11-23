@@ -588,6 +588,8 @@ input,select,textarea,.form-control,.form-select{max-width:100%;box-sizing:borde
 .noi .rt-bar button{color:#e2e8f0}
 .noi .btn-primary{background:linear-gradient(135deg,var(--acc2),#8b5cf6);border:0;color:#fff}
 #inc-btn.has{color:var(--acc2);border-color:var(--acc2)}
+.noi-lg{max-width:520px;text-align:left}
+.noi-lg .cs-t{color:#f1f5f9}
 .fs-acts{display:flex;gap:10px;margin-left:auto;flex:0 0 auto}
 .fs-eit,.fs-xit{color:var(--mut);cursor:pointer;font-size:.95rem;padding:2px}
 .fs-eit:hover{color:var(--acc2)}
