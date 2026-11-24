@@ -293,10 +293,8 @@ body.dark #themein i{color:#fbbf24}
 }
 
 /* ===== Paginas SPA ===== */
-.pg{display:none;position:relative}
+.pg{display:none}
 .pg.on{display:block}
-.th-flt{position:absolute;left:0;top:4px;z-index:31;width:42px;height:42px;border-width:2px}
-.th-flt i{font-size:1.1rem}
 .pg .mdl-box{max-width:100%;max-height:none;box-shadow:none;border:none;background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;overflow:visible}
 .pg .mdl-head{position:sticky;top:0;z-index:20;background:var(--glass-hi);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px)}
 .pg .mdl-body{overflow:visible;padding-bottom:48px}
