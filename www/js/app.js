@@ -226,14 +226,14 @@ var _bn=localStorage.getItem('cpro_brand');if(_bn){var _bh2=document.querySelect
 $$('.secbt').forEach(function(b){b.onclick=function(){if(b.dataset.open=='mEnv')envLatest();openModal(b.dataset.open)}});
 function envLatest(){if(_lstDraft())return;idb('getAll').then(function(a){var qs=(a||[]).filter(function(q){return(q.srv||'cot')=='cot'}).sort(function(x,y){return y.id-x.id});if(qs.length)load(qs[0])})}
 var _emr=$('#env-more');if(_emr)_emr.onclick=function(){openModal('mGuard')};
-(function(){var _pd2=$('#prev2');if(!_pd2)return;var host=_pd2.parentElement;if(!host||!host.classList.contains('pvdoc'))return;var lens=null,lin=null,Z=1.1,LR=78,HZ=.45,tim=null,locked=false;
-function _mv(e){if(!lens)return;var r=host.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;lens.style.left=(x-LR)+'px';lens.style.top=(y-LR*2-26)+'px';lin.style.left=(LR-x/HZ*Z)+'px';lin.style.top=(LR-y/HZ*Z)+'px'}
+(function(){var _pd2=$('#prev2');if(!_pd2)return;var host=_pd2.parentElement;if(!host||!host.classList.contains('pvdoc'))return;var lens=null,lin=null,Z=1.1,LR=78,HZ=.45,tim=null,locked=false,gx=LR,gy=LR*2+26;
+function _mv(e){if(!lens)return;var r=host.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;var lx=x-gx,ly=y-gy;lens.style.left=lx+'px';lens.style.top=ly+'px';var cx=lx+LR,cy=ly+LR;lin.style.left=(LR-cx/HZ*Z)+'px';lin.style.top=(LR-cy/HZ*Z)+'px'}
 function _mk(){lens=document.createElement('div');lens.className='qlens';lin=document.createElement('div');lin.className='qlens-in';var c=_pd2.cloneNode(true);c.id='';c.style.zoom=Z;c.style.height='auto';lin.appendChild(c);lens.appendChild(lin);host.appendChild(lens)}
 function _hd(){clearTimeout(tim);tim=null;locked=false;if(lens){lens.remove();lens=null}}
 host.style.touchAction='none';
 host.addEventListener('contextmenu',function(e){e.preventDefault()});
 host.addEventListener('dragstart',function(e){e.preventDefault()});
-host.addEventListener('pointerdown',function(e){e.preventDefault();if(!lens)_mk();_mv(e);clearTimeout(tim);tim=setTimeout(function(){if(locked)_hd();else locked=true},locked?3000:1000);try{host.setPointerCapture(e.pointerId)}catch(x){}});
+host.addEventListener('pointerdown',function(e){e.preventDefault();var r=host.getBoundingClientRect();if(!lens){_mk();gx=LR;gy=LR*2+26}else{gx=e.clientX-r.left-parseFloat(lens.style.left||0);gy=e.clientY-r.top-parseFloat(lens.style.top||0)}_mv(e);clearTimeout(tim);tim=setTimeout(function(){if(locked)_hd();else locked=true},locked?3000:1000);try{host.setPointerCapture(e.pointerId)}catch(x){}});
 host.addEventListener('pointermove',_mv);
 host.addEventListener('pointerup',function(){clearTimeout(tim);tim=null;if(!locked)_hd()});
 host.addEventListener('pointercancel',function(){clearTimeout(tim);tim=null;if(!locked)_hd()})})();
