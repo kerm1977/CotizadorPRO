@@ -258,7 +258,12 @@ function render(){$$('.qprev').forEach(function(el){el.innerHTML=qbody()});var _
 var dr=$('#dscrow'),erw=$('#envrow');if(dr){dr.style.display=Tf.da?'':'none';var dp=$('#dscpc'),da2=$('#dscamt');if(dp)dp.textContent=Tf.g;if(da2)da2.textContent=money(Tf.da)}if(erw){erw.style.display=Tf.e?'':'none';var ea2=$('#envamt');if(ea2)ea2.textContent=money(Tf.e)}var _erw=$('#ia-envr');if(_erw)_erw.style.display=$$('#items .it[data-t="prod"]').length?'':'none'
 var sv=$('#svsum');if(sv){var dd=data(),SL={cot:'Cotización',iti:'Itinerario',ven:'Venta',srv:'Servicios'};sv.innerHTML='<div class="r"><span class="mut">Tipo</span><b>'+(SL[_swSel]||'Cotización')+'</b></div><div class="r"><span class="mut">Conceptos</span><b>'+dd.items.length+'</b></div><div class="r grand"><b>Total</b><b>'+money(Tf.t)+'</b></div>'+((on||iv)?'<div class="mut" style="font-size:.75rem;text-align:right;margin-top:2px">Impuesto de venta incluido</div>':'')}
 var _icb2=$('#inc-btn'),_ice=$('#inc-no');if(_icb2&&_ice)_icb2.classList.toggle('has',!!_ice.textContent.trim());stipoSync();draftNow()}
-function openModal(id){clog('modal '+id);if(id=='mLst'){_swSel='cot';_swNext=null;lstFill()}if(id=='mGuard')hist();pgShow(id);if(id=='mLogo'){setEdit(!lg.img||!hasInfData());iwGo(1)}}
+function openModal(id){clog('modal '+id);if(id=='mLst'){_swSel='cot';_swNext=null;lstFill()}if(id=='mGuard')hist();if(id=='mEnv'&&curId)seenAdd(curId);pgShow(id);if(id=='mLogo'){setEdit(!lg.img||!hasInfData());iwGo(1)}}
+function unseenGet(){try{return JSON.parse(localStorage.getItem('cpro_unseen'))||[]}catch(e){return[]}}
+function unseenSet(u){try{localStorage.setItem('cpro_unseen',JSON.stringify(u))}catch(e){}updBadge()}
+function unseenAdd(id){var u=unseenGet();if(u.indexOf(id)<0){u.push(id);unseenSet(u)}}
+function seenAdd(id){var u=unseenGet(),i=u.indexOf(id);if(i>=0){u.splice(i,1);unseenSet(u)}}
+function updBadge(){var b=$('#bGuard'),u=unseenGet();if(b){b.textContent=u.length;b.style.display=u.length?'flex':'none'}}
 var _pf=$('#pgfab');if(_pf)_pf.onclick=pgHome;
 var PALS=['#fbd3e0','#ffe0b8','#ffc9c9','#c9f2e2','#cfe6fb','#e3d7f7','#fbd0e4'];
 var _pr=$('#palrow');if(_pr){_pr.innerHTML=PALS.map(function(c){return'<button class="pal-dot" data-c="'+c+'" style="background:'+c+'" title="Fondo pastel"></button>'}).join('');$$('#palrow .pal-dot').forEach(function(b){b.onclick=function(){document.body.style.background=b.dataset.c;localStorage.setItem('cpro_bg',b.dataset.c)}})}
@@ -358,7 +363,7 @@ function nueva(){try{localStorage.removeItem('cpro_draft')}catch(x){}curId=null;
 $('#cur').value=localStorage.getItem('cpro_cur')||'crc';if(!CURS[$('#cur').value])$('#cur').value='crc';CUR=curSym($('#cur').value);var _tg=$('#taxtog');if(_tg){_tg.checked=localStorage.getItem('cpro_taxtog')=='1';_tg.onchange=function(){localStorage.setItem('cpro_taxtog',this.checked?'1':'0');var _iax=$('#ia-tax');if(_iax){_iax.checked=this.checked;var w=$('#ia-taxw');if(w)w.classList.toggle('d-none',!this.checked);var tv2=$('#ia-taxv');if(tv2&&this.checked)tv2.value=($('#tax')||{value:''}).value}render()}};
 $('#cur').onchange=function(){CUR=curSym(this.value);localStorage.setItem('cpro_cur',this.value);$$('#items .cur-sym').forEach(function(s){s.textContent=CUR});render()};
 var _cfp=$('#cf-pago');if(_cfp)_cfp.onchange=render;
-async function save(){var d=data(),nw=!curId;d.id=curId||Date.now();if(nw){d.folio=folioReal();$('#folio').textContent=d.folio}await idb('put',0,d);d.items.forEach(function(i){if(i.d)idb('put',0,{id:i.t+'|'+i.d.toLowerCase(),t:i.t,d:i.d},'cat')});if(d.cn.trim())idb('put',0,{id:'c|'+(d.cn+' '+d.ca).trim().toLowerCase(),n:d.cn,a:d.ca,p:d.cp,t:d.ct,m:d.cm,d:d.cd,k:d.ck,x:d.cx},'cli');fillCat();fillCli();curId=d.id;try{localStorage.removeItem('cpro_draft');if(localStorage.getItem('cpro_paydef_on')=='1')paydefSave()}catch(e){}toast(nw?'Factura guardada':'Factura actualizada');hist()}
+async function save(){var d=data(),nw=!curId;d.id=curId||Date.now();if(nw){d.folio=folioReal();$('#folio').textContent=d.folio}await idb('put',0,d);d.items.forEach(function(i){if(i.d)idb('put',0,{id:i.t+'|'+i.d.toLowerCase(),t:i.t,d:i.d},'cat')});if(d.cn.trim())idb('put',0,{id:'c|'+(d.cn+' '+d.ca).trim().toLowerCase(),n:d.cn,a:d.ca,p:d.cp,t:d.ct,m:d.cm,d:d.cd,k:d.ck,x:d.cx},'cli');fillCat();fillCli();curId=d.id;if(nw)unseenAdd(d.id);try{localStorage.removeItem('cpro_draft');if(localStorage.getItem('cpro_paydef_on')=='1')paydefSave()}catch(e){}toast(nw?'Factura guardada':'Factura actualizada');hist()}
 
 
 var PTIPO=['Electrónico','Ropa y calzado','Alimento','Bebida','Cosmética','Hogar','Ferretería','Papelería','Juguetería','Deportes','Herramienta','Mueble','Electrodoméstico','Accesorio','Repuesto','Artesanía','Souvenir','Medicamento','Material de construcción','Otro'];
@@ -511,7 +516,7 @@ function readCf(){var o={};$$('#cfex input,#empcli input,#cf-pago,#cfcli input')
 $('#cfadd').onchange=function(){addCf(this.value);this.value=''};
 function empCliToggle(){$('#empcli').classList.toggle('d-none',$('#ctipo').value!='Empresa')}
 $('#ctipo').onchange=function(){empCliToggle();render()};
-fillInfo();fillCat();fillCli();
+fillInfo();fillCat();fillCli();updBadge();
 var SRCL=localStorage.getItem('cpro_logo_src')||'';if(SRCL||LOGO){setTimeout(function(){loadPick(SRCL||LOGO)},400);if(LOGO)syncAvatar()}
 else if(P&&P.Filesystem)P.Filesystem.readFile({path:'upload/logo.png',directory:'DATA'}).then(function(r){var u='data:image/png;base64,'+r.data;localStorage.setItem('cpro_logo',u);LOGO=u;LIM.src=u;loadPick(u);syncAvatar();render();clog('logo restaurado de archivo')}).catch(function(){});
 [{s:'#cli',f:'cap'},{s:'#ape',f:'cap'},{s:'#cdir',f:'cap'},{s:'#in_emp',f:'cap'},{s:'#in_dir',f:'cap'},{s:'#mail',f:'low'},{s:'#in_mail',f:'low'},{s:'#tel',f:'num'},{s:'#in_tel',f:'num'},{s:'#in_tel2',f:'num'},{s:'#in_telc',f:'num'},{s:'#in_wa',f:'num'}].forEach(function(o){var el=$(o.s);if(!el)return;el.oninput=function(){if(o.f=='cap'&&(o.s=='#cli'||o.s=='#ape')){var cp=this.selectionStart,cv=cap(this.value);if(cv!==this.value){this.value=cv;try{this.setSelectionRange(cp,cp)}catch(x){}}}if(o.f=='num')this.value=this.value.replace(/\D/g,'');if(o.f=='low')this.value=this.value.toLowerCase()};var old=el.onchange;el.onchange=function(){if(o.f=='cap')this.value=cap(this.value);if(old)old.call(this);render()}});

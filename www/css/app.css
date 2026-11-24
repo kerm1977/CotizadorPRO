@@ -126,6 +126,7 @@ body.dark .btn-outline-danger:hover,body.dark .btn-outline-danger:focus,body.dar
 /* ===== Botones de sección (página principal) ===== */
 .secn{display:flex;flex-direction:column;gap:12px;margin-top:60px}
 .secbt{
+  position:relative;
   display:flex;align-items:center;gap:14px;width:100%;
   padding:15px 22px;border-radius:999px;cursor:pointer;text-align:left;
   border:1px solid rgba(255,255,255,.75);
@@ -139,6 +140,7 @@ body.dark .btn-outline-danger:hover,body.dark .btn-outline-danger:focus,body.dar
 .secbt i{font-size:1.35rem;color:var(--acc2);flex:0 0 auto}
 .secbt small{margin-left:auto;color:var(--mut);font-weight:600;font-size:.75rem;text-transform:uppercase;letter-spacing:.4px}
 body.dark .secbt{border-color:var(--line)}
+.bdg{position:absolute;top:-6px;right:10px;background:#e5484d;color:#fff;border-radius:999px;font-size:.72rem;font-weight:800;min-width:22px;height:22px;padding:0 6px;display:none;align-items:center;justify-content:center;line-height:1;box-shadow:0 2px 8px rgba(229,72,77,.5)}
 .secbt:hover{background:var(--glass-hi)}
 
 /* ===== Modales ===== */
