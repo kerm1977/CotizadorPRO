@@ -104,7 +104,7 @@
             var d = new Date(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +m[6]);
             txt = d.toLocaleString('es-CR');
         }
-        t.textContent = 'v ' + txt + ' · CR';
+        t.textContent = 'v ' + txt;
     }
     verTag(); setTimeout(verTag, 1500);
 

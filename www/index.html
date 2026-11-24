@@ -31,7 +31,7 @@
   <div class="secn">
     <button class="secbt" data-open="mLogo" id="addlogo" style="display:none"><i class="bi bi-images"></i><span>Agrega tu logo</span><small>Avatar de la empresa</small></button>
     <button class="secbt" data-open="mLogo" id="infobtn"><i class="bi bi-person-badge"></i><span>Crear Tu Información</span><small>Empresa y datos</small></button>
-    <button class="secbt" data-open="mSrv"><i class="bi bi-pencil-square"></i><span>Crear Servicio</span></button>
+    <button class="secbt" data-open="mLst"><i class="bi bi-pencil-square"></i><span>Crear Itinerario</span></button>
     <button class="secbt" data-open="mEnv"><i class="bi bi-send"></i><span>Enviar Cotización</span></button>
     <button class="secbt" data-open="mGuard"><i class="bi bi-archive"></i><span>Cotizaciones Guardadas</span></button>
     <button class="secbt" data-open="mCli" id="climgr2"><i class="bi bi-people"></i><span>Clientes</span></button>
@@ -154,7 +154,7 @@
 <div class="pg" id="mLst"><div class="mdl-box wide">
 
   <div class="mdl-body">
-    <div class="stp"><span class="stp-d on" data-go="mSrv">1</span><span class="stp-l"></span><span class="stp-d" data-go="mPago">2</span><span class="stp-l"></span><span class="stp-d" data-go="mCot">3</span></div>
+    <div class="stp"><span class="stp-d on">1</span><span class="stp-l"></span><span class="stp-d" data-go="mPago">2</span><span class="stp-l"></span><span class="stp-d" data-go="mCot">3</span></div>
     <div class="stp-t" id="lst-t">Paso 1 · Cotizaciones</div>
     <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de paso</div>
     <div class="cs-hint mb-2" id="lst-guide" style="font-size:.82rem"></div>
@@ -171,7 +171,7 @@
         </div>
       </div>
     </section>
-    <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mSrv"><i class="bi bi-arrow-left"></i> Volver</button></div>
+    <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" id="lsthome"><i class="bi bi-arrow-left"></i> Volver</button></div>
   </div>
 </div></div>
 
@@ -179,7 +179,7 @@
 <div class="pg" id="mPago"><div class="mdl-box wide">
 
   <div class="mdl-body">
-    <div class="stp"><span class="stp-d ok" data-go="mSrv"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">2</span><span class="stp-l"></span><span class="stp-d" data-go="mCot">3</span></div>
+    <div class="stp"><span class="stp-d ok" data-go="mLst"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">2</span><span class="stp-l"></span><span class="stp-d" data-go="mCot">3</span></div>
     <div class="stp-t">Paso 2 · Información de pago</div>
     <div class="stp2"><span class="stp2-d on"></span><span class="stp2-d" data-go="mDet"></span><span class="stp2-d" data-go="mItems"></span><span class="stp2-d" data-go="mTax"></span><span class="stp2-d" data-go="mNotas"></span><span class="stp2-d" data-go="mQCli"></span></div>
     <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de hoja</div>
@@ -196,7 +196,7 @@
         <button type="button" class="btn btn-outline-primary w-100 mt-2" id="ctas-go2"><i class="bi bi-plus-lg"></i> Agregar otra cuenta</button></div>
       </div></div>
     </section>
-    <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mSrv"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mDet">Siguiente · Detalles <i class="bi bi-arrow-right"></i></button></div>
+    <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mLst"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mDet">Siguiente · Detalles <i class="bi bi-arrow-right"></i></button></div>
   </div>
 </div></div>
 
@@ -204,7 +204,7 @@
 <div class="pg" id="mDet"><div class="mdl-box wide">
 
   <div class="mdl-body">
-    <div class="stp"><span class="stp-d ok" data-go="mSrv"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">2</span><span class="stp-l"></span><span class="stp-d" data-go="mCot">3</span></div>
+    <div class="stp"><span class="stp-d ok" data-go="mLst"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">2</span><span class="stp-l"></span><span class="stp-d" data-go="mCot">3</span></div>
     <div class="stp-t">Paso 2 · Detalles</div>
     <div class="stp2"><span class="stp2-d" data-go="mPago"></span><span class="stp2-d on"></span><span class="stp2-d" data-go="mItems"></span><span class="stp2-d" data-go="mTax"></span><span class="stp2-d" data-go="mNotas"></span><span class="stp2-d" data-go="mQCli"></span></div>
     <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de hoja</div>
@@ -222,7 +222,7 @@
 <div class="pg" id="mItems"><div class="mdl-box wide">
 
   <div class="mdl-body">
-    <div class="stp"><span class="stp-d ok" data-go="mSrv"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">2</span><span class="stp-l"></span><span class="stp-d" data-go="mCot">3</span></div>
+    <div class="stp"><span class="stp-d ok" data-go="mLst"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">2</span><span class="stp-l"></span><span class="stp-d" data-go="mCot">3</span></div>
     <div class="stp-t">Paso 2 · Conceptos de servicio</div>
     <div class="stp2"><span class="stp2-d" data-go="mPago"></span><span class="stp2-d" data-go="mDet"></span><span class="stp2-d on"></span><span class="stp2-d" data-go="mTax"></span><span class="stp2-d" data-go="mNotas"></span><span class="stp2-d" data-go="mQCli"></span></div>
     <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de hoja</div>
@@ -244,7 +244,7 @@
 <div class="pg" id="mTax"><div class="mdl-box wide">
 
   <div class="mdl-body">
-    <div class="stp"><span class="stp-d ok" data-go="mSrv"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">2</span><span class="stp-l"></span><span class="stp-d" data-go="mCot">3</span></div>
+    <div class="stp"><span class="stp-d ok" data-go="mLst"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">2</span><span class="stp-l"></span><span class="stp-d" data-go="mCot">3</span></div>
     <div class="stp-t">Paso 2 · Impuestos</div>
     <div class="stp2"><span class="stp2-d" data-go="mPago"></span><span class="stp2-d" data-go="mDet"></span><span class="stp2-d" data-go="mItems"></span><span class="stp2-d on"></span><span class="stp2-d" data-go="mNotas"></span><span class="stp2-d" data-go="mQCli"></span></div>
     <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de hoja</div>
@@ -270,7 +270,7 @@
 <div class="pg" id="mNotas"><div class="mdl-box wide">
 
   <div class="mdl-body">
-    <div class="stp"><span class="stp-d ok" data-go="mSrv"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">2</span><span class="stp-l"></span><span class="stp-d" data-go="mCot">3</span></div>
+    <div class="stp"><span class="stp-d ok" data-go="mLst"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">2</span><span class="stp-l"></span><span class="stp-d" data-go="mCot">3</span></div>
     <div class="stp-t">Paso 2 · Notas</div>
     <div class="stp2"><span class="stp2-d" data-go="mPago"></span><span class="stp2-d" data-go="mDet"></span><span class="stp2-d" data-go="mItems"></span><span class="stp2-d" data-go="mTax"></span><span class="stp2-d on"></span><span class="stp2-d" data-go="mQCli"></span></div>
     <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de hoja</div>
@@ -288,7 +288,7 @@
 <div class="pg" id="mQCli"><div class="mdl-box wide">
 
   <div class="mdl-body">
-    <div class="stp"><span class="stp-d ok" data-go="mSrv"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">2</span><span class="stp-l"></span><span class="stp-d" data-go="mCot">3</span></div>
+    <div class="stp"><span class="stp-d ok" data-go="mLst"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">2</span><span class="stp-l"></span><span class="stp-d" data-go="mCot">3</span></div>
     <div class="stp-t">Paso 2 · Cliente</div>
     <div class="stp2"><span class="stp2-d" data-go="mPago"></span><span class="stp2-d" data-go="mDet"></span><span class="stp2-d" data-go="mItems"></span><span class="stp2-d" data-go="mTax"></span><span class="stp2-d" data-go="mNotas"></span><span class="stp2-d on"></span></div>
     <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de hoja</div>
@@ -316,7 +316,7 @@
 <div class="pg" id="mCot"><div class="mdl-box wide">
 
   <div class="mdl-body">
-    <div class="stp"><span class="stp-d ok" data-go="mSrv"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d ok" data-go="mPago"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">3</span></div>
+    <div class="stp"><span class="stp-d ok" data-go="mLst"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d ok" data-go="mPago"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">3</span></div>
     <div class="stp-t">Paso 3 · Guardar</div>
     <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de paso</div>
     <section class="cs">
@@ -339,7 +339,7 @@
 <div class="pg" id="mPrev"><div class="mdl-box wide">
 
   <div class="mdl-body">
-    <div class="stp"><span class="stp-d ok" data-go="mSrv"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d ok" data-go="mPago"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d ok" data-go="mCot"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">4</span></div>
+    <div class="stp"><span class="stp-d ok" data-go="mLst"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d ok" data-go="mPago"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d ok" data-go="mCot"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">4</span></div>
     <div class="stp-t">Paso 4 · Vista previa y guardar</div>
     <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de paso</div>
     <div class="pvdoc"><div class="qprev" id="pvdoc"></div></div>
@@ -481,7 +481,7 @@
   <div class="mdl-body">
     <div class="cs-hint mb-2">Tocá un itinerario para marcar el progreso de cada día.</div>
     <div id="ctllist"></div>
-    <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mSrv"><i class="bi bi-arrow-left"></i> Volver</button></div>
+    <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mLst"><i class="bi bi-arrow-left"></i> Volver</button></div>
   </div>
 </div></div>
 
@@ -654,10 +654,10 @@
 <script src="js/ota_stamp.js"></script>
 <script src="js/plantilla.js"></script>
 <script src="js/catalog.js?v=5"></script>
-<script src="js/app.js?v=55"></script>
+<script src="js/app.js?v=56"></script>
 <script src="js/exports.js?v=6"></script>
 <script src="js/paises.js?v=1"></script>
 <script src="js/cuentas.js?v=14"></script>
-<script src="js/ota.js?v=2"></script>
+<script src="js/ota.js?v=3"></script>
 </body>
 </html>
