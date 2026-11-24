@@ -121,7 +121,7 @@ function sheet(sel,title){
 
 /* ===== Datos ===== */
 function load(){try{return JSON.parse(localStorage.getItem(KEY))||[]}catch(e){return[]}}
-function save(a){localStorage.setItem(KEY,JSON.stringify(a))}
+function save(a){localStorage.setItem(KEY,JSON.stringify(a));if(window.dbsyncCfg)dbsyncCfg()}
 function cat(){var p=PAISES[Q('#bk-pais').value];return p&&p.cats.filter(function(c){return c.k==Q('#bk-cat').value})[0]}
 function syncAll(){['#bk-pais','#bk-cat','#bk-ent'].forEach(function(s){fsync(Q(s))})}
 
