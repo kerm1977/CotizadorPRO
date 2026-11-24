@@ -596,7 +596,7 @@ body.dark #items .it[data-t="prod"] .form-control,body.dark #items .it[data-t="p
 .noi-lg{max-width:520px;text-align:left}
 .noi-lg .cs-t{color:#f1f5f9}
 .pvdoc{aspect-ratio:210/297;overflow:hidden;border-radius:6px;box-shadow:0 10px 34px rgba(80,70,160,.16);background:#fff}
-.pvdoc .qprev{height:100%;overflow-y:auto;border:0;border-radius:0;box-shadow:none;zoom:.7;padding:22px 18px}
+.pvdoc .qprev{height:100%;overflow-y:auto;border:0;border-radius:0;box-shadow:none;zoom:.45;padding:16px 14px}
 .pvtg-row{display:flex;align-items:center;gap:10px;padding:7px 2px;border-bottom:1px solid rgba(15,23,42,.06)}
 .pvtg-row:last-child{border-bottom:0}
 .pvtg-row .form-check-input{margin-left:0;cursor:pointer}
