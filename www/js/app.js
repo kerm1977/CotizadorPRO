@@ -437,7 +437,7 @@ function envView(m){var mob=$('#vmob'),det=$('#vdet'),pv=$('#prev2'),cv=$('#prev
 var _vm=$('#vmob'),_vd=$('#vdet');if(_vm)_vm.onclick=function(){envView('mob')};if(_vd)_vd.onclick=function(){envView('det')};
 var II=['pais','emp','tel','telc','wa','mail','dir'];
 (function(){var s=document.getElementById('in_pais');if(s){s.innerHTML='<option value="">Seleccioná el país…</option>'+Object.keys(CPA).map(function(k){return'<option value="'+k+'">'+CPA[k][1]+' '+CPA[k][0]+'</option>'}).join('');s.onchange=function(){setCC();snomPh()}}})();
-var IEX={waze:'Waze',gmaps:'Google Maps',web:'Página web',ig:'Instagram',fb:'Facebook',tt:'TikTok',yt:'YouTube',tg:'Telegram',pin:'Pinterest',dias:'Días de apertura',horas:'Horas de atención',fer:'Feriados',sinpe:'SINPE',tarjeta:'Tarjetas',nota:'Nota / Detalle'};
+var IEX={waze:'Waze',gmaps:'Google Maps',web:'Página web',ig:'Instagram',fb:'Facebook',tt:'TikTok',yt:'YouTube',tg:'Telegram',pin:'Pinterest',dias:'Días de apertura',horas:'Horas de atención',fer:'Feriados',tarjeta:'Tarjetas',nota:'Nota / Detalle'};
 var IPH={dias:'Ej: Lunes a Viernes',horas:'Ej: 8:00 - 17:00'};
 var ILBL={web:'Web',ig:'Instagram',fb:'Facebook',tt:'TikTok',yt:'YouTube',tg:'Telegram',pin:'Pinterest',gmaps:'Google Maps',waze:'Waze'};
 function normUrl(u){u=String(u||'').trim();if(!u)return'';return/^https?:\/\//i.test(u)?u:'https://'+u}
