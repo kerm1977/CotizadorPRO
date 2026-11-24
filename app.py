@@ -6,7 +6,7 @@
 # ==============================================================================
 
 import os
-from flask import Flask
+from flask import Flask, jsonify
 from flask_cors import CORS
 
 # 1. Inicializamos la aplicación MAESTRA
@@ -27,6 +27,7 @@ CORS(app, resources={
 
 # Importamos "La Tribu" (El Padre) - Ahora modular
 from tribu import tribu_bp
+from cpro import cpro_bp
 
 # 🚀 En el futuro, aquí importarás tus nuevas apps principales:
 # from ventas import ventas_bp
@@ -38,6 +39,7 @@ from tribu import tribu_bp
 
 # El abuelo solo registra a los padres
 app.register_blueprint(tribu_bp)
+app.register_blueprint(cpro_bp)
 
 # app.register_blueprint(ventas_bp)
 # app.register_blueprint(inventario_bp)
@@ -86,8 +88,8 @@ def system_health():
         "version": "2.0.0-Modular",
         "architecture": "Modular-Multi-App",
         "apps": {
-            "tribu": "active"
-            # Agregar aquí más apps cuando las implementes
+            "tribu": "active",
+            "cpro": "active"
         }
     })
 

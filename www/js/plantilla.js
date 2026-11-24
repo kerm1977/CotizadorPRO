@@ -10,7 +10,7 @@ function pgShow(id){
   var m=document.getElementById(id);
   if(m){m.classList.add('on');window.scrollTo(0,0)}
   var f=document.getElementById('savefab');if(f)f.style.display='none';
-  var pf=document.getElementById('pgfab');if(pf){var FL=(window.FLOW||['mSrv','mPago','mDet','mItems','mTax','mNotas','mQCli','mCot']).concat(window.FITI||[]);pf.style.display=(id=='pg-home'||id=='mBank'||FL.indexOf(id)>=0)?'none':'flex'}
+  var pf=document.getElementById('pgfab');if(pf){var FL=(window.FLOW||['mSrv','mPago','mDet','mItems','mTax','mNotas','mQCli','mCot']).concat(window.FITI||[]);pf.style.display=(id=='pg-home'||id=='mBank'||id=='mItiV'||FL.indexOf(id)>=0)?'none':'flex'}
 }
 function pgBack(){
   var t=_pgStack.length?_pgStack.pop():'pg-home';
