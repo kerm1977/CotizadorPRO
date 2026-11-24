@@ -755,3 +755,4 @@ body.dark .fsheet{background:#111827}
 .pvz button{border:0;background:transparent;font-size:1.05rem;font-weight:800;width:26px;height:26px;border-radius:50%;color:#22303f;line-height:1;padding:0}
 .pvz button:active{background:rgba(99,102,241,.16)}
 .pvz span{min-width:38px;text-align:center;color:#5b6b80;font-weight:700;font-size:.78rem}
+#mNorm .mdl-body{padding-top:64px}
