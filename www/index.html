@@ -6,7 +6,7 @@
 <title>CotizacionesPro</title>
 <link rel="stylesheet" href="css/bootstrap.css?v=2">
 <link rel="stylesheet" href="css/bootstrap-icons.css?v=2">
-<link rel="stylesheet" href="css/app.css?v=92">
+<link rel="stylesheet" href="css/app.css?v=93">
 </head>
 <body>
 <div class="container py-3" style="max-width:720px">
@@ -401,11 +401,11 @@
       <div class="it-r2 mb-2"><div><label class="it-sw"><input id="icuron" type="checkbox"><span>Mostrar moneda</span></label></div><div id="icurw" class="d-none"><span class="lb">Moneda</span><b id="icurv" style="font-size:.88rem"></b></div></div>
       <div class="row g-2">
         <div class="col-6"><span class="cs-l">País</span><input id="ipais" class="form-control" readonly placeholder="Tocar para elegir…"></div>
+        <div class="col-6"><span class="cs-l">Cantidad de días</span><input id="idias" type="number" min="1" class="form-control" placeholder="Ej: 7"></div>
         <div class="col-6"><span class="cs-l">Pasajeros mín.</span><input id="ipaxmin" type="number" min="1" class="form-control" placeholder="1"></div>
         <div class="col-6"><span class="cs-l">Pasajeros máx.</span><input id="ipaxmax" type="number" min="1" class="form-control" placeholder="—"></div>
         <div class="col-6"><span class="cs-l">Fecha inicio</span><input id="idesde" type="date" class="form-control"></div>
         <div class="col-6"><span class="cs-l">Fecha fin</span><input id="ihasta" type="date" class="form-control"></div>
-        <div class="col-6"><span class="cs-l">Cantidad de días</span><input id="idias" type="number" min="1" class="form-control" placeholder="Ej: 7"></div>
       </div>
     </section>
     <section class="cs">
@@ -427,12 +427,6 @@
       <div class="cs-t justify-content-between"><span><i class="bi bi-calendar3"></i> Días del itinerario</span><button type="button" class="btn btn-sm btn-outline-primary" id="idayb" style="text-transform:none;letter-spacing:0"><i class="bi bi-plus-lg"></i> Día</button></div>
       <div class="cs-hint">Cada día hereda la fecha desde el inicio del viaje. Agregá las opciones que querás por día.</div>
       <div id="idays" class="mt-2"></div>
-    </section>
-    <section class="cs">
-      <div class="cs-t"><i class="bi bi-geo-alt"></i> Enlaces de mapas</div>
-      <div class="cs-hint">Solo para uso interno — no se exportan al PDF.</div>
-      <div id="imaps"></div>
-      <div class="it mt-1"><input id="imapin" class="form-control" placeholder="Pegá un enlace de Google Maps"><button type="button" class="btn btn-outline-primary" id="imapb"><i class="bi bi-plus-lg"></i></button></div>
     </section>
     <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mIti"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mItiR">Continuar <i class="bi bi-arrow-right"></i></button></div>
   </div>
@@ -720,7 +714,7 @@
 <script src="js/ota_stamp.js"></script>
 <script src="js/plantilla.js?v=2"></script>
 <script src="js/catalog.js?v=9"></script>
-<script src="js/app.js?v=159"></script>
+<script src="js/app.js?v=160"></script>
 <script src="js/exports.js?v=11"></script>
 <script src="js/paises.js?v=1"></script>
 <script src="js/cuentas.js?v=16"></script>

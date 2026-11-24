@@ -161,7 +161,7 @@ body.dark .secbt{border-color:var(--line)}
 }
 .mdl-box.wide{max-width:700px}
 .mdl-head{
-  display:flex;align-items:center;justify-content:space-between;
+  display:none;align-items:center;justify-content:space-between;
   padding:15px 20px;border-bottom:1px solid var(--line);
   font-weight:700;font-size:1rem;flex:0 0 auto;
 }
