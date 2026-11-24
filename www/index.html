@@ -6,7 +6,7 @@
 <title>CotizacionesPro</title>
 <link rel="stylesheet" href="css/bootstrap.css?v=2">
 <link rel="stylesheet" href="css/bootstrap-icons.css?v=2">
-<link rel="stylesheet" href="css/app.css?v=52">
+<link rel="stylesheet" href="css/app.css?v=53">
 </head>
 <body>
 <div class="container py-3" style="max-width:720px">
@@ -322,7 +322,11 @@
       <div id="svsum" class="cs-tot"></div>
     </section>
     <section class="cs mt-3">
-      <div class="cs-t"><i class="bi bi-wallet2"></i> Información de pago</div>
+      <div class="cs-t justify-content-between"><span><i class="bi bi-wallet2"></i> Información de pago</span>
+        <div class="form-check form-switch mb-0"><input class="form-check-input" id="paydef" type="checkbox"><label class="form-check-label" for="paydef" style="font-size:.78rem;text-transform:none;letter-spacing:0">Aplicar</label></div>
+      </div>
+      <div class="cs-hint">Activo: la moneda, el tipo de pago y las cuentas seleccionadas se copian a todas las nuevas.</div>
+      <div id="pdctas" class="mt-2 d-none"></div>
       <div id="ctas-empty" class="d-none"><div class="cs-hint" style="margin-bottom:8px">Aún no tienes cuentas configuradas.</div><button type="button" class="btn btn-outline-primary w-100" id="ctas-go"><i class="bi bi-plus-lg"></i> Agregar una nueva cuenta</button></div>
       <div id="ctas-have">
       <button type="button" class="btn btn-outline-primary w-100" id="ctas-view"><i class="bi bi-eye"></i> Ver mis cuentas configuradas</button>
