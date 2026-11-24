@@ -488,7 +488,7 @@ $('#saveinfo').onclick=function(){var i={};II.forEach(function(k){i[k]=$('#in_'+
 function setTheme(d){document.body.classList.toggle('dark',d);localStorage.setItem('cpro_theme',d?'1':'0');$$('#theme,#themein,.mdl-theme').forEach(function(b){b.innerHTML=d?'<i class="bi bi-sun"></i>':'<i class="bi bi-moon-stars"></i>'})}
 function togTheme(){setTheme(!document.body.classList.contains('dark'))}
 setTheme(localStorage.getItem('cpro_theme')=='1');var th=$('#theme');if(th)th.onclick=togTheme;
-var _ti=$('#themein');if(_ti)_ti.onclick=togTheme;
+var _ti=$('#themein');if(_ti)_ti.onclick=togTheme;// BLINDADO: #themein es el unico boton de tema de toda la app, fijo arriba-izquierda — no modificar
 
 $$('.mdl-head').forEach(function(h){h.style.cursor='pointer';h.addEventListener('click',function(e){if(h.closest('#mLogo'))return;if(e.target.closest('button'))return;pgHome()})});
 function syncHome(){var b=$('#infobtn');if(!b)return;var i=getInfo(),has=Object.keys(i).some(function(k){return i[k]});b.style.display=has?'none':'';var h=$('#hdco');if(h)h.textContent=i.emp||''}
