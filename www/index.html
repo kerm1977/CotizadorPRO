@@ -29,7 +29,6 @@
   </div>
 
   <div class="secn">
-    <button class="secbt" data-open="mLogo" id="addlogo" style="display:none"><i class="bi bi-images"></i><span>Agrega tu logo</span><small>Avatar de la empresa</small></button>
     <button class="secbt" data-open="mLogo" id="infobtn"><i class="bi bi-person-badge"></i><span>Crear Tu Información</span><small>Empresa y datos</small></button>
     <button class="secbt" data-open="mLst"><i class="bi bi-pencil-square"></i><span>Crear Cotización</span></button>
     <button class="secbt" data-open="mEnv"><i class="bi bi-send"></i><span>Enviar Cotización</span></button>
@@ -49,7 +48,26 @@
       <button class="avpencil" id="avpencil" type="button" title="Editar imagen"><i class="bi bi-pencil-fill"></i></button>
     </div>
     <div class="mut mb-2" id="logoname" style="font-size:.75rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"></div>
-    <div id="rz" class="d-none">
+    <hr class="my-3" style="border-color:var(--line)">
+    <div id="iview" class="iview"></div>
+    <button class="btn btn-primary w-100 mt-3" id="editinfo" type="button" style="border-radius:10px"><i class="bi bi-pencil-square"></i> Editar información</button>
+    <button class="btn btn-outline-primary w-100 mt-3" id="bankgo" type="button" style="border-radius:10px"><i class="bi bi-bank"></i> Cuentas</button>
+    <button class="btn btn-outline-primary w-100 mt-3" id="normsgo" type="button" style="border-radius:10px"><i class="bi bi-journal-check"></i> Normas e instrucciones</button>
+    <div id="sharebox" class="d-none mt-3" style="margin-bottom:140px">
+      <div class="form-check mb-2" style="display:flex;align-items:center;gap:8px;justify-content:center">
+        <input class="form-check-input" type="checkbox" id="shdet">
+        <label class="form-check-label mut" for="shdet" style="font-size:.85rem">Incluir detalle en la tarjeta</label>
+      </div>
+      <button class="sharefab" id="sharecard" type="button" title="Compartir tarjeta"><i class="bi bi-share"></i></button>
+    </div>
+    <!-- BLINDADO: asistente por pasos del perfil — no modificar -->
+    <div id="iwiz" class="d-none">
+      <div class="stp"><span class="stp-d on" data-iw="1">1</span><span class="stp-l"></span><span class="stp-d" data-iw="2">2</span><span class="stp-l"></span><span class="stp-d" data-iw="3">3</span><span class="stp-l"></span><span class="stp-d" data-iw="4">4</span></div>
+      <div class="stp-t" id="iw-t">Paso 1 · Tu logo</div>
+      <div id="irow">
+      <div class="iw-p" id="iw1">
+        <div class="cs-hint no-ln">Elegí una imagen o tomá una foto del logo; ajustala arrastrando, pellizcando para zoom o con las herramientas.</div>
+        <div id="rz" class="mt-2">
       <div class="d-flex gap-2 mb-2">
         <button class="btn btn-outline-primary flex-fill" id="picklab" type="button"><i class="bi bi-image"></i> Elegir imagen</button>
         <button class="btn btn-outline-primary flex-fill" id="pickcam" type="button"><i class="bi bi-camera"></i> Cámara</button>
@@ -77,24 +95,10 @@
       </div>
       <button class="btn btn-primary w-100" id="logogo"><i class="bi bi-check-lg"></i> Aplicar logo</button>
       <button class="btn btn-outline-danger btn-sm w-100 mt-2" id="dellogo" type="button"><i class="bi bi-trash"></i> Eliminar imagen</button>
-    </div>
-    <hr class="my-3" style="border-color:var(--line)">
-    <div id="iview" class="iview"></div>
-    <button class="btn btn-primary w-100 mt-3" id="editinfo" type="button" style="border-radius:10px"><i class="bi bi-pencil-square"></i> Editar información</button>
-    <button class="btn btn-outline-primary w-100 mt-3" id="bankgo" type="button" style="border-radius:10px"><i class="bi bi-bank"></i> Cuentas</button>
-    <button class="btn btn-outline-primary w-100 mt-3" id="normsgo" type="button" style="border-radius:10px"><i class="bi bi-journal-check"></i> Normas e instrucciones</button>
-    <button class="btn btn-outline-danger w-100 mt-3" id="delacct" type="button" style="border-radius:10px"><i class="bi bi-trash3"></i> Eliminar cuenta</button>
-    <div id="sharebox" class="d-none mt-3" style="margin-bottom:140px">
-      <div class="form-check mb-2" style="display:flex;align-items:center;gap:8px;justify-content:center">
-        <input class="form-check-input" type="checkbox" id="shdet">
-        <label class="form-check-label mut" for="shdet" style="font-size:.85rem">Incluir detalle en la tarjeta</label>
+        </div>
+        <div class="stp-nav"><button type="button" class="btn btn-outline-danger" id="delacct"><i class="bi bi-trash3"></i> Eliminar cuenta</button><button type="button" class="btn btn-primary" data-iw="2">Siguiente · Datos <i class="bi bi-arrow-right"></i></button></div>
       </div>
-      <button class="sharefab" id="sharecard" type="button" title="Compartir tarjeta"><i class="bi bi-share"></i></button>
-    </div>
-    <div id="iedit">
-    <div id="edhint" class="edhint"><i class="bi bi-arrow-down"></i></div>
-    <div class="mut" style="font-weight:700;font-size:1.05rem;text-align:center;margin:22px 0 16px">Datos de mi empresa</div>
-    <div id="irow">
+      <div class="iw-p d-none" id="iw2">
     <div class="acc open"><button type="button" class="acc-h"><i class="bi bi-person-vcard"></i><span>Información principal</span><i class="bi bi-chevron-down acc-c"></i></button><div class="acc-b"><div class="row g-2">
       <div class="col-12"><label class="mut" style="font-size:.72rem;margin-right:10px;margin-left:10px">Nombre</label><input id="in_emp" class="form-control" placeholder="Nombre de la empresa"></div>
       <div class="col-6 ifc"><label class="mut">Teléfono</label><input id="in_tel" class="form-control" placeholder="Teléfono" type="tel" inputmode="numeric" pattern="[0-9]*"></div>
@@ -103,15 +107,22 @@
       <div class="col-6 ifc"><label class="mut">WhatsApp</label><input id="in_wa" class="form-control" placeholder="WhatsApp" type="tel" inputmode="numeric" pattern="[0-9]*"></div>
       <div class="col-12"><label class="mut" style="font-size:.72rem;margin-right:10px;margin-left:10px">Correo electrónico</label><input id="in_mail" class="form-control" placeholder="Email"></div>
     </div></div></div>
-    <div class="acc"><button type="button" class="acc-h"><i class="bi bi-geo-alt"></i><span>Dirección y redes sociales</span><i class="bi bi-chevron-down acc-c"></i></button><div class="acc-b"><div class="row g-2">
+        <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-iw="1"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-iw="3">Siguiente · Redes sociales <i class="bi bi-arrow-right"></i></button></div>
+      </div>
+      <div class="iw-p d-none" id="iw3">
+    <div class="acc open"><button type="button" class="acc-h"><i class="bi bi-geo-alt"></i><span>Dirección y redes sociales</span><i class="bi bi-chevron-down acc-c"></i></button><div class="acc-b"><div class="row g-2">
       <div class="col-12"><label class="mut" style="font-size:.72rem;margin-right:10px;margin-left:10px">Dirección</label><input id="in_dir" class="form-control" placeholder="Dirección"></div>
       <div class="col-12" id="ifslot"><select id="ifadd" class="form-select form-select-sm" style="font-size:.8rem"><option value="">+ Agregar campo</option><option value="waze">Waze</option><option value="gmaps">Google Maps</option><option value="web">Página web</option><option value="ig">Instagram</option><option value="fb">Facebook</option><option value="tt">TikTok</option><option value="yt">YouTube</option><option value="tg">Telegram</option><option value="pin">Pinterest</option><option value="dias">Días de apertura</option><option value="horas">Horas de atención</option><option value="fer">Feriados</option><option value="sinpe">SINPE</option><option value="tarjeta">Tarjetas</option><option value="__new">＋ Nombre personalizado…</option></select></div>
     </div></div></div>
-    <div class="acc"><button type="button" class="acc-h"><i class="bi bi-journal-text"></i><span>Detalle y descripción</span><i class="bi bi-chevron-down acc-c"></i></button><div class="acc-b"><div class="row g-2">
+        <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-iw="2"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-iw="4">Siguiente · Descripción <i class="bi bi-arrow-right"></i></button></div>
+      </div>
+      <div class="iw-p d-none" id="iw4">
+    <div class="acc open"><button type="button" class="acc-h"><i class="bi bi-journal-text"></i><span>Detalle y descripción</span><i class="bi bi-chevron-down acc-c"></i></button><div class="acc-b"><div class="row g-2">
       <div class="col-12"><label class="mut" style="font-size:.72rem;margin-right:10px;margin-left:10px">Descripción</label><div class="rt"><div class="rt-bar" id="rtbar"><button type="button" data-cmd="bold" title="Negrita"><i class="bi bi-type-bold"></i></button><button type="button" data-cmd="strikeThrough" title="Tachado"><i class="bi bi-type-strikethrough"></i></button><span class="sep"></span><button type="button" data-cmd="quote" title="Cita"><i class="bi bi-quote"></i></button><button type="button" data-cmd="insertUnorderedList" title="Viñetas"><i class="bi bi-list-ul"></i></button><button type="button" data-cmd="insertOrderedList" title="Lista numerada"><i class="bi bi-list-ol"></i></button><span class="sep"></span><button type="button" data-cmd="justifyLeft" title="Izquierda"><i class="bi bi-text-left"></i></button><button type="button" data-cmd="justifyCenter" title="Centro"><i class="bi bi-text-center"></i></button><button type="button" data-cmd="justifyRight" title="Derecha"><i class="bi bi-text-right"></i></button><span class="sep"></span><button type="button" data-cmd="undo" title="Deshacer"><i class="bi bi-arrow-counterclockwise"></i></button><button type="button" data-cmd="redo" title="Rehacer"><i class="bi bi-arrow-clockwise"></i></button></div><div id="in_nota" class="rt-ed" contenteditable="true" data-ph="Descripción de tu empresa…"></div></div></div>
     </div></div></div>
+    <div class="stp-nav" style="margin-bottom:120px"><button class="btn btn-outline-secondary" type="button" data-iw="3"><i class="bi bi-arrow-left"></i> Volver</button><button class="btn btn-outline-secondary" id="cancelinfo" type="button"><i class="bi bi-x-lg"></i> Cancelar</button><button class="btn btn-primary" id="saveinfo" style="border-radius:10px"><i class="bi bi-save"></i> Guardar info</button></div>
     </div>
-    <div class="d-flex gap-2 mt-3" style="margin-bottom:120px"><button class="btn btn-outline-secondary flex-fill" id="cancelinfo" type="button" style="border-radius:10px"><i class="bi bi-x-lg"></i> Cancelar</button><button class="btn btn-primary flex-fill" id="saveinfo" style="border-radius:10px"><i class="bi bi-save"></i> Guardar info</button></div>
+      </div>
     </div>
     <hr class="my-3" style="border-color:var(--line)">
     <div class="mut mb-2" style="font-weight:700;font-size:.9rem;text-align:center">Temas</div>
@@ -670,7 +681,7 @@
 <script src="js/ota_stamp.js"></script>
 <script src="js/plantilla.js?v=2"></script>
 <script src="js/catalog.js?v=9"></script>
-<script src="js/app.js?v=104"></script>
+<script src="js/app.js?v=105"></script>
 <script src="js/exports.js?v=10"></script>
 <script src="js/paises.js?v=1"></script>
 <script src="js/cuentas.js?v=15"></script>
