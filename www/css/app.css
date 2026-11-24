@@ -540,7 +540,7 @@ body.dark #items .it[data-t="prod"] .form-control,body.dark #items .it[data-t="p
 .pg.sw-l{animation:swl .25s ease-out}
 .pg.sw-r{animation:swr .25s ease-out}
 .stp-d[data-go]{cursor:pointer}
-.stp-h{text-align:center;font-size:.72rem;color:var(--mut);margin:10px 0 14px}
+.stp-h{text-align:center;font-size:.72rem;color:var(--mut);margin:0 0 14px}
 .srv-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .srv-o{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:20px 12px;min-height:150px;border:1px solid var(--inp-line);border-radius:16px;background:linear-gradient(135deg,rgba(139,92,246,.08),rgba(99,102,241,.08));color:var(--ink);text-align:center;transition:transform .15s,box-shadow .15s}
 .srv-o:active{transform:scale(.96)}
