@@ -216,14 +216,16 @@ function render(){$$('.qprev').forEach(function(el){el.innerHTML=qbody()});var _
 var dr=$('#dscrow'),erw=$('#envrow');if(dr){dr.style.display=Tf.da?'':'none';var dp=$('#dscpc'),da2=$('#dscamt');if(dp)dp.textContent=Tf.g;if(da2)da2.textContent=money(Tf.da)}if(erw){erw.style.display=Tf.e?'':'none';var ea2=$('#envamt');if(ea2)ea2.textContent=money(Tf.e)}var _erw=$('#ia-envr');if(_erw)_erw.style.display=$$('#items .it[data-t="prod"]').length?'':'none'
 var sv=$('#svsum');if(sv){var dd=data(),SL={cot:'Cotización',iti:'Itinerario',ven:'Venta',srv:'Servicios'};sv.innerHTML='<div class="r"><span class="mut">Tipo</span><b>'+(SL[_swSel]||'Cotización')+'</b></div><div class="r"><span class="mut">Conceptos</span><b>'+dd.items.length+'</b></div><div class="r grand"><b>Total</b><b>'+money(Tf.t)+'</b></div>'+((on||iv)?'<div class="mut" style="font-size:.75rem;text-align:right;margin-top:2px">Impuesto de venta incluido</div>':'')}
 var _icb2=$('#inc-btn'),_ice=$('#inc-no');if(_icb2&&_ice)_icb2.classList.toggle('has',!!_ice.textContent.trim());stipoSync();draftNow()}
-function openModal(id){clog('modal '+id);if(id=='mLst'){_swSel='cot';_swNext=null;lstFill()}pgShow(id);if(id=='mLogo')setEdit(!lg.img||!hasInfData())}
+function openModal(id){clog('modal '+id);if(id=='mLst'){_swSel='cot';_swNext=null;lstFill()}if(id=='mGuard')hist();pgShow(id);if(id=='mLogo')setEdit(!lg.img||!hasInfData())}
 var _pf=$('#pgfab');if(_pf)_pf.onclick=pgHome;
 var PALS=['#fbd3e0','#ffe0b8','#ffc9c9','#c9f2e2','#cfe6fb','#e3d7f7','#fbd0e4'];
 var _pr=$('#palrow');if(_pr){_pr.innerHTML=PALS.map(function(c){return'<button class="pal-dot" data-c="'+c+'" style="background:'+c+'" title="Fondo pastel"></button>'}).join('');$$('#palrow .pal-dot').forEach(function(b){b.onclick=function(){document.body.style.background=b.dataset.c;localStorage.setItem('cpro_bg',b.dataset.c)}})}
 try{localStorage.removeItem('cpro_bg')}catch(e){}
 var _rb=$('#renbrand');if(_rb)_rb.onclick=function(){var n=prompt('Nombre personalizado del título:','CotizacionesPro');if(n===null)return;n=n.trim()||'CotizacionesPro';localStorage.setItem('cpro_brand',n);var h=document.querySelector('h1.brand');if(h)h.textContent=n;document.title=n;toast('Título actualizado')};
 var _bn=localStorage.getItem('cpro_brand');if(_bn){var _bh2=document.querySelector('h1.brand');if(_bh2)_bh2.textContent=_bn;document.title=_bn}
-$$('.secbt').forEach(function(b){b.onclick=function(){openModal(b.dataset.open)}});
+$$('.secbt').forEach(function(b){b.onclick=function(){if(b.dataset.open=='mEnv')envLatest();openModal(b.dataset.open)}});
+function envLatest(){if(_lstDraft())return;idb('getAll').then(function(a){var qs=(a||[]).filter(function(q){return(q.srv||'cot')=='cot'}).sort(function(x,y){return y.id-x.id});if(qs.length)load(qs[0])})}
+var _emr=$('#env-more');if(_emr)_emr.onclick=function(){openModal('mGuard')};
 var FLOW=['mLst','mPago','mDet','mItems','mTax','mNotas','mCot','mPrev'],FITI=['mIti','mItiD','mItiR','mItiI','mItiN','mItiG'],SW={mSrv:1,mLst:2,mPago:3,mDet:4,mItems:5,mTax:6,mNotas:7,mQCli:8,mCot:9,mPrev:10,mIti:3,mItiD:4,mItiR:5,mItiI:6,mItiN:7,mItiG:8,mCtl:3,mCtlV:4,mPais:4},_swNext=null,_swSel='';
 var SRVL={cot:['cotización','Cotizaciones','Nueva'],iti:['itinerario','Itinerarios','Nuevo'],ven:['venta','Ventas','Nueva'],srv:['servicio','Servicios','Nuevo']};
 $$('.srv-o').forEach(function(b){b.onclick=function(){if(b.dataset.srv=='ctl'){ctlList();stepGo('mCtl',false);return}_swSel=b.dataset.srv;_swNext='mLst';lstFill();stepGo('mLst',false)}});
