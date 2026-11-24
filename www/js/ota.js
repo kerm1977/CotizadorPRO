@@ -67,6 +67,7 @@
     }
 
     // ---------------- modales mínimos (sin dependencias de CSS) ----------------
+    function esc(s) { return String(s == null ? '' : s).replace(/[<>&]/g, function (c) { return { '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]; }); }
     function overlay(titulo, html, btn) {
         var ov = document.createElement('div');
         ov.style.cssText = 'position:fixed;inset:0;z-index:2147483647;' +
@@ -91,6 +92,15 @@
             new Date().toLocaleString('es-CR'));
     }
 
+    // ---------------- sello de versión instalada (fijo, 25px del borde) -------
+    function verTag() {
+        var t = document.getElementById('ver-tag');
+        if (!t) return;
+        var O = window.TRIBAL_OTA;
+        t.textContent = O && O.ts ? 'v ' + O.ts : '';
+    }
+    verTag(); setTimeout(verTag, 1500);
+
     // ---------------- push del PC: TribalFtp dispara 'tribalOta' ----------------
     var FTP = window.Capacitor && window.Capacitor.Plugins &&
         window.Capacitor.Plugins.TribalFtp;
@@ -99,6 +109,9 @@
             L('evento tribalOta recibido: ' + (e && e.url || '(sin url)'));
             if (e && e.url) {
                 lsSet(KEY, e.url);
+                overlay('OTA recibida',
+                    'La PC empujó una actualización.<br>Instalando versión <b>' +
+                    esc(e.version || 'ota') + '</b>…');
                 pull(e.url, e.version || ('ota-' + Date.now()), e.checksum || '');
             }
         });
