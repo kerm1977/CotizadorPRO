@@ -97,7 +97,14 @@
         var t = document.getElementById('ver-tag');
         if (!t) return;
         var O = window.TRIBAL_OTA;
-        t.textContent = O && O.ts ? 'v ' + O.ts : '';
+        if (!O || !O.ts) { t.textContent = ''; return; }
+        var m = O.ts.match(/(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2}):(\d{2})/);
+        var txt = O.ts;
+        if (m) {
+            var d = new Date(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +m[6]);
+            txt = d.toLocaleString('es-CR');
+        }
+        t.textContent = 'v ' + txt + ' · CR';
     }
     verTag(); setTimeout(verTag, 1500);
 
