@@ -491,6 +491,7 @@ setTheme(localStorage.getItem('cpro_theme')=='1');var th=$('#theme');if(th)th.on
 var _ti=$('#themein');if(_ti)_ti.onclick=togTheme;
 var _ti2=$('#themein2');if(_ti2)_ti2.onclick=togTheme;
 $$('.mdl-head').forEach(function(h){if(h.querySelector('.mdl-theme'))return;var b=document.createElement('button');b.className='mdl-theme';b.type='button';b.title='Modo claro / oscuro';b.innerHTML='<i class="bi bi-moon-stars"></i>';b.onclick=togTheme;var x=h.querySelector('.pgback');h.insertBefore(b,x||null)});
+$$('.pg').forEach(function(p){if(p.querySelector('.mdl-head')||p.querySelector('#themein'))return;var b=document.createElement('button');b.className='mdl-theme flt';b.type='button';b.title='Modo claro / oscuro';b.innerHTML='<i class="bi bi-moon-stars"></i>';b.onclick=togTheme;p.insertBefore(b,p.firstChild)});
 $$('.mdl-head').forEach(function(h){h.style.cursor='pointer';h.addEventListener('click',function(e){if(h.closest('#mLogo'))return;if(e.target.closest('button'))return;pgHome()})});
 function syncHome(){var b=$('#infobtn');if(!b)return;var i=getInfo(),has=Object.keys(i).some(function(k){return i[k]});b.style.display=has?'none':'';var h=$('#hdco');if(h)h.textContent=i.emp||''}
 var CFX={whatsapp:'WhatsApp',omail:'Otro Mail',emp2:'Empresa',nota:'Nota'};
