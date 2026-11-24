@@ -10,7 +10,9 @@ function cap(s){return s.toLowerCase().replace(/(^|\s)\S/g,function(c){return c.
 var CPA={cr:['Costa Rica','🇨🇷'],pa:['Panamá','🇵🇦'],ni:['Nicaragua','🇳🇮'],hn:['Honduras','🇭🇳'],sv:['El Salvador','🇸🇻'],gt:['Guatemala','🇬🇹'],bz:['Belice','🇧🇿'],mx:['México','🇲🇽'],co:['Colombia','🇨🇴'],pe:['Perú','🇵🇪'],cl:['Chile','🇨🇱'],us:['Estados Unidos','🇺🇸'],es:['España','🇪🇸'],ot:['Otro país','🌎']};
 (function(){var s=document.getElementById('cpais');if(s)Object.keys(CPA).forEach(function(k){var o=document.createElement('option');o.value=k;o.textContent=CPA[k][0];o.setAttribute('data-ic',CPA[k][1]);s.appendChild(o)})})();
 var CPD={cr:'+506',pa:'+507',ni:'+505',hn:'+504',sv:'+503',gt:'+502',bz:'+501',mx:'+52',co:'+57',pe:'+51',cl:'+56',us:'+1',es:'+34',ot:''};
-function setPais(v){var s=document.getElementById('cpais');if(!s)return;s.value=v||'';if(window.cproFsync)window.cproFsync(s);telWa()}
+var CPE={cr:'Ej. Volcán Arenal o Manuel Antonio',pa:'Ej. Canal de Panamá o Bocas del Toro',ni:'Ej. Volcán Masaya o Isla de Ometepe',hn:'Ej. Ruinas de Copán o Cayos Cochinos',sv:'Ej. Volcán de Izalco o Ruta de las Flores',gt:'Ej. Tikal o Lago de Atitlán',bz:'Ej. Gran Agujero Azul o Cayo Caulker',mx:'Ej. Chichén Itzá o Barrancas del Cobre',co:'Ej. Parque Tayrona o Valle de Cocora',pe:'Ej. Machu Picchu o Lago Titicaca',cl:'Ej. Torres del Paine o Desierto de Atacama',us:'Ej. Gran Cañón o Parque Yosemite',es:'Ej. Camino de Santiago o Picos de Europa',ot:'Ej. Lugar emblemático del viaje'};
+function snomPh(){var s=$('#snom'),p=$('#cpais');if(s)s.placeholder=CPE[p?p.value:'']||CPE.ot}
+function setPais(v){var s=document.getElementById('cpais');if(!s)return;s.value=v||'';if(window.cproFsync)window.cproFsync(s);telWa();snomPh()}
 function telWa(){var s=$('#cpais'),tc=$('#telcode'),bw=$('#telwa'),t=$('#tel');if(!t||!tc||!bw)return;var cd=s?CPD[s.value]||'':'',num=t.value.replace(/\D/g,'');tc.classList.toggle('d-none',!cd);tc.textContent=cd;var on=!!(cd&&num);bw.classList.toggle('d-none',!on);bw.dataset.num=on?(cd.replace(/\D/g,'')+num):''}
 var LOGO=localStorage.getItem('cpro_logo')||'',LIM=new Image();if(LOGO)LIM.src=LOGO;
 var lg={img:null,x:0,y:0,z:1,r:0,fx:1,fy:1,bri:1,con:1,blu:0,vig:0};
@@ -534,7 +536,7 @@ var _cb=$('#icovb'),_ci=$('#icov');if(_cb&&_ci)_cb.onclick=function(){_ci.click(
 var _cx=$('#icovx');if(_cx)_cx.onclick=function(){icovSet('')};
 var _si=$('#saveIti');if(_si)_si.onclick=function(){saveIti().then(pgHome)};
 var _pd2=$('#itipdf');if(_pd2)_pd2.onclick=itiPdf;
-var _tcp=$('#cpais');if(_tcp)_tcp.addEventListener('change',telWa);var _ttl=$('#tel');if(_ttl)_ttl.addEventListener('input',telWa);
+var _tcp=$('#cpais');if(_tcp)_tcp.addEventListener('change',function(){telWa();snomPh()});snomPh();var _ttl=$('#tel');if(_ttl)_ttl.addEventListener('input',telWa);
 var _tw=$('#telwa');if(_tw)_tw.onclick=function(){if(this.dataset.num)window.open('https://wa.me/'+this.dataset.num,'_blank')};
 var _csq=$('#clisearch');if(_csq)_csq.oninput=climgrList;
 var _icliSel=[];
