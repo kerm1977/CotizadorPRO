@@ -468,6 +468,8 @@ input,select,textarea,.form-control,.form-select{max-width:100%;box-sizing:borde
 #items .it-delb{border:0;background:transparent;color:#dc2626;font-size:.8rem;display:flex;align-items:center;gap:5px;padding:5px 8px;border-radius:8px}
 #items .it-delb:hover{background:rgba(220,38,38,.1)}
 #items .it .d:placeholder-shown{animation:none}
+#items .it:not(.it-min){box-shadow:0 8px 22px rgba(0,0,0,.18);transform:scale(1.012);transition:box-shadow .18s,transform .18s}
+#items .it.it-min{transition:box-shadow .18s,transform .18s}
 #items .it.it-min .it-r2,#items .it.it-min .it-more,#items .it.it-min .it-xtra,#items .it.it-min .it-ft{display:none}
 #items .it.it-min .it-r1{flex-wrap:nowrap;cursor:pointer}
 #items .it .d{display:none!important}
