@@ -165,7 +165,7 @@ function svcSheet(r,pick,all){var tp=all?'all':(r&&r.dataset.t)||($('#tipo')?$('
   function catItems(){var out=[],seen={};cats.forEach(function(c){c.subs.forEach(function(s){s.items.forEach(function(n){var k=norm(n);if(!seen[k]){seen[k]=1;out.push(n)}})})});return out.sort(function(a,b){return a.localeCompare(b,'es')})}
   function custItems(){return cust().map(function(x){return x.n}).sort(function(a,b){return a.localeCompare(b,'es')})}
   function allItems(){return catItems().concat(custItems())}
-  function showCats(){curCat=-1;var cs=custItems();L.innerHTML=catItems().map(ib).join('')+(cs.length?'<div class="fs-sep"><i class="bi bi-stars"></i> Aquí están tus servicios y productos personalizados</div>'+cs.map(ib).join(''):'')}
+  function showCats(){curCat=-1;var its=catItems(),sv=its.filter(function(n){return typ[n]!='p'}),pr=its.filter(function(n){return typ[n]=='p'}),cs=custItems();L.innerHTML=(sv.length?'<div class="fs-sep"><i class="bi bi-briefcase"></i> Servicios</div>'+sv.map(ib).join(''):'')+(pr.length?'<hr class="fs-hr"><div class="fs-sep"><i class="bi bi-box"></i> Productos</div>'+pr.map(ib).join(''):'')+(cs.length?'<hr class="fs-hr"><div class="fs-sep"><i class="bi bi-stars"></i> Aquí están tus servicios y productos personalizados</div>'+cs.map(ib).join(''):'')}
   function showAll(){curCat=-2;L.innerHTML='<button type="button" class="fs-o fs-back"><span class="fs-ic"><i class="bi bi-arrow-left"></i></span><span class="fs-t"><b>Todos los '+ttl.toLowerCase()+'</b></span></button>'+allItems().map(ib).join('')}
   function find(q){var h='',seen={},qq=norm(q);allItems().forEach(function(n){var k=norm(n);if(k.indexOf(qq)>=0&&!seen[k]){seen[k]=1;h+=ib(n)}});return h}
   showCats();

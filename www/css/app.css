@@ -574,6 +574,7 @@ input,select,textarea,.form-control,.form-select{max-width:100%;box-sizing:borde
 .fs-all:hover{background:var(--hov)}
 .fs-sep{border-top:1px solid var(--line);margin:12px 4px 8px;padding-top:12px;font-size:.78rem;font-weight:600;color:var(--mut);display:flex;align-items:center;gap:6px}
 .fs-sep .bi{color:var(--acc2)}
+.fs-hr{border:0;border-top:2px solid var(--line);margin:14px 0 0}
 .fs-tp{border:1px solid var(--inp-line);border-radius:10px;background:var(--inp);color:var(--ink);font-size:.85rem;padding:0 8px;flex:0 0 auto}
 .mini-ov{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(15,23,42,.35);opacity:0;transition:opacity .2s}
 .mini-ov.on{opacity:1}
