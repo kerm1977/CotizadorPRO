@@ -215,7 +215,7 @@ function ctasSheet(){var all=load();if(!all.length)return T('Configurá cuentas 
   function close(){ov.classList.remove('on');setTimeout(function(){ov.remove()},260)}
   function setOn(x,on){var n=xNum(x),j=-1;for(var k=0;k<_qsel.length;k++)if(_qsel[k].e==x.e&&_qsel[k].num==n)j=k;if(on&&j<0)_qsel.push({e:x.e,num:n});if(!on&&j>=0)_qsel.splice(j,1)}
   ov.onclick=function(e){if(e.target===ov||e.target.closest('.fs-x'))return close();
-    if(e.target.closest('[data-edit]')){close();_qret='mCot';if(typeof pgShow=='function')pgShow('mBank');list();return}
+    if(e.target.closest('[data-edit]')){close();_qret='mCot';if(typeof pgShow=='function')pgShow('mBank');prePais();list();return}
     if(e.target.closest('[data-back]')){close();return}
     var o=e.target.closest('.fs-o');if(!o)return;var x=all[+o.getAttribute('data-i')];if(!x)return;
     if(x.show===false)return T('Está oculta: activá "Mostrar" en Mi Perfil → Cuentas');
@@ -228,6 +228,7 @@ window.cproQOff=function(){return _qoff};
 window.cproQOffSet=function(v){_qoff=!!v;var ng=Q('#npg-on');if(ng)ng.checked=!_qoff;qpickBtn()};
 window.cproCtasPick=function(sel){if(_qoff)return[];var a=window.cproCtas();return sel==null?a:a.filter(function(x){return sel.some(function(s){return s.e==x.e&&s.num==x.num})})};
 
+function prePais(){try{var g=(typeof getInfo=='function'&&getInfo())?getInfo().pais:'';if(g&&PAISES[g]&&Q('#bk-pais')){Q('#bk-pais').value=g;onPais()}}catch(e){}}
 function init(){if(!Q('#mBank'))return;fillPais();
   Q('#bk-pais').setAttribute('data-ic','bi-globe-americas');Q('#bk-cat').setAttribute('data-ic','bi-grid');
   enhance(Q('#bk-pais'),'Selecciona tu país');enhance(Q('#bk-cat'),'Tipo de cuenta');enhance(Q('#bk-ent'),'Selecciona la entidad');
@@ -237,11 +238,11 @@ function init(){if(!Q('#mBank'))return;fillPais();
   Q('#bk-pais').onchange=onPais;Q('#bk-cat').onchange=onCat;Q('#bk-ent').onchange=onEnt;Q('#bk-save').onclick=onSave;
   window.cproFsync=fsync;enhance(Q('#cpais'),'País del cliente');enhance(Q('#cur'),'Moneda');enhance(Q('#cf-pago'),'Tipo de pago');
   var mt=Q('#bk-mt');if(mt)mt.onclick=function(){var l=Q('#bk-list');l.classList.toggle('d-none');mt.classList.toggle('shut',l.classList.contains('d-none'))};
-  var g=Q('#bankgo');if(g)g.onclick=function(){_qret='mLogo';if(typeof pgShow=='function')pgShow('mBank');list()};
+  var g=Q('#bankgo');if(g)g.onclick=function(){_qret='mLogo';if(typeof pgShow=='function')pgShow('mBank');prePais();list()};
   var bb=Q('#bk-back');if(bb)bb.onclick=function(){var d=_qret||'mLogo';_qret=null;if(typeof pgShow=='function')pgShow(d)};
   var vw=Q('#ctas-view');if(vw)vw.onclick=ctasSheet;qpickBtn();
   var qa=Q('#qacc');if(qa){var qh=qa.querySelector('.acc-h')||qa;qh.onclick=function(){qa.classList.toggle('open')}}
-  var goBank=function(){_qret='mCot';if(typeof pgShow=='function')pgShow('mBank');list()};var cg=Q('#ctas-go');if(cg)cg.onclick=goBank;var cg2=Q('#ctas-go2');if(cg2)cg2.onclick=goBank;
+  var goBank=function(){_qret='mCot';if(typeof pgShow=='function')pgShow('mBank');prePais();list()};var cg=Q('#ctas-go');if(cg)cg.onclick=goBank;var cg2=Q('#ctas-go2');if(cg2)cg2.onclick=goBank;
   var ng=Q('#npg-on');if(ng)ng.onchange=function(){_qoff=!ng.checked;qpickBtn();rer();T(ng.checked?'Cuentas en la cotización':'Sin cuentas en la cotización')};
   onPais();list();rer()}
 init();
