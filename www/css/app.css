@@ -595,7 +595,7 @@ body.dark #items .it[data-t="prod"] .form-control,body.dark #items .it[data-t="p
 #inc-btn.has{color:#fff;border-color:var(--acc2)}
 .noi-lg{max-width:520px;text-align:left}
 .noi-lg .cs-t{color:#f1f5f9}
-.pvdoc{aspect-ratio:210/297;overflow:hidden;border-radius:6px;box-shadow:0 10px 34px rgba(80,70,160,.16);background:#fff;position:relative}
+.pvdoc{aspect-ratio:210/297;overflow:hidden;border-radius:6px;box-shadow:0 10px 34px rgba(80,70,160,.16);background:#fff;position:relative;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 .qlens{position:absolute;width:156px;height:156px;border-radius:50%;overflow:hidden;border:3px solid var(--acc);box-shadow:0 6px 24px rgba(0,0,0,.35);z-index:60;pointer-events:none;background:#fff}
 .qlens-in{position:absolute;left:0;top:0}
 .pvdoc .qprev{height:100%;overflow-y:auto;border:0;border-radius:0;box-shadow:none;zoom:.45;padding:16px 14px}
