@@ -470,7 +470,9 @@ input,select,textarea,.form-control,.form-select{max-width:100%;box-sizing:borde
 #items .it .d:placeholder-shown{animation:none}
 #items .it.it-min .it-r2,#items .it.it-min .it-more,#items .it.it-min .it-xtra,#items .it.it-min .it-ft{display:none}
 #items .it.it-min .it-r1{flex-wrap:nowrap;cursor:pointer}
-#items .it.it-min .d{flex:0 0 auto;width:17ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#items .it.it-min .d{display:none!important}
+#items .it .d-vw{display:none}
+#items .it.it-min .d-vw{display:block;flex:1;min-width:0;font-weight:700;padding:6px 0;cursor:pointer;overflow-wrap:anywhere;word-break:break-word;line-height:1.25}
 #items .it .it-ok,#items .it .it-pp{display:none}
 #items .it.it-min .it-ok.on{display:inline-block;width:7px;height:7px;min-width:7px;border-radius:50%;background:#f97316;flex:0 0 auto}
 #items .it.it-min .it-pp{display:inline;font-weight:700;color:var(--acc2);font-size:.85rem;margin-left:auto}
