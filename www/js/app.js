@@ -226,6 +226,15 @@ var _bn=localStorage.getItem('cpro_brand');if(_bn){var _bh2=document.querySelect
 $$('.secbt').forEach(function(b){b.onclick=function(){if(b.dataset.open=='mEnv')envLatest();openModal(b.dataset.open)}});
 function envLatest(){if(_lstDraft())return;idb('getAll').then(function(a){var qs=(a||[]).filter(function(q){return(q.srv||'cot')=='cot'}).sort(function(x,y){return y.id-x.id});if(qs.length)load(qs[0])})}
 var _emr=$('#env-more');if(_emr)_emr.onclick=function(){openModal('mGuard')};
+(function(){var _pd2=$('#prev2');if(!_pd2)return;var host=_pd2.parentElement;if(!host||!host.classList.contains('pvdoc'))return;var lens=null,lin=null,Z=1.1,LR=78,HZ=.45;
+function _mv(e){if(!lens)return;var r=host.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;lens.style.left=(x-LR)+'px';lens.style.top=(y-LR*2-26)+'px';lin.style.left=(LR-x/HZ*Z)+'px';lin.style.top=(LR-y/HZ*Z)+'px'}
+function _sh(e){if(!lens){lens=document.createElement('div');lens.className='qlens';lin=document.createElement('div');lin.className='qlens-in';var c=_pd2.cloneNode(true);c.id='';c.style.zoom=Z;c.style.height='auto';lin.appendChild(c);lens.appendChild(lin);host.appendChild(lens)}_mv(e)}
+function _hd(){if(lens){lens.remove();lens=null}}
+host.style.touchAction='none';
+host.addEventListener('pointerdown',function(e){_sh(e);try{host.setPointerCapture(e.pointerId)}catch(x){}});
+host.addEventListener('pointermove',_mv);
+host.addEventListener('pointerup',_hd);
+host.addEventListener('pointercancel',_hd)})();
 var FLOW=['mLst','mPago','mDet','mItems','mTax','mNotas','mCot','mPrev'],FITI=['mIti','mItiD','mItiR','mItiI','mItiN','mItiG'],SW={mSrv:1,mLst:2,mPago:3,mDet:4,mItems:5,mTax:6,mNotas:7,mQCli:8,mCot:9,mPrev:10,mIti:3,mItiD:4,mItiR:5,mItiI:6,mItiN:7,mItiG:8,mCtl:3,mCtlV:4,mPais:4},_swNext=null,_swSel='';
 var SRVL={cot:['cotización','Cotizaciones','Nueva'],iti:['itinerario','Itinerarios','Nuevo'],ven:['venta','Ventas','Nueva'],srv:['servicio','Servicios','Nuevo']};
 $$('.srv-o').forEach(function(b){b.onclick=function(){if(b.dataset.srv=='ctl'){ctlList();stepGo('mCtl',false);return}_swSel=b.dataset.srv;_swNext='mLst';lstFill();stepGo('mLst',false)}});
