@@ -720,7 +720,7 @@ body.dark .fsheet{background:#111827}
 .fs-o.on .fs-ck{opacity:1}
 .fs-none{text-align:center;color:var(--mut);padding:24px 0}
 /* Botones de inicio: radio de 10px */
-.secbt[data-open="mCliNew"],.secbt[data-open="mCot"],.secbt[data-open="mSrv"],.secbt[data-open="mEnv"],.secbt[data-open="mGuard"],.secbt[data-open="mCli"]{border-radius:10px}
+.secbt[data-open="mCliNew"],.secbt[data-open="mCot"],.secbt[data-open="mSrv"],.secbt[data-open="mEnv"]{border-radius:10px}
 
 /* Itinerario: progreso y opciones del control */
 .iprg{height:6px;border-radius:4px;background:var(--hov);overflow:hidden}
