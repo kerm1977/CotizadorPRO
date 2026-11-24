@@ -469,7 +469,8 @@ input,select,textarea,.form-control,.form-select{max-width:100%;box-sizing:borde
 #items .it-delb:hover{background:rgba(220,38,38,.1)}
 #items .it .d:placeholder-shown{animation:none}
 #items .it:not(.it-min){box-shadow:0 8px 22px rgba(0,0,0,.18);transform:scale(1.022);transition:box-shadow .18s,transform .18s,opacity .18s}
-#items .it.it-min{opacity:.78;transition:box-shadow .18s,transform .18s,opacity .18s}
+#items .it.it-min .it-r1{opacity:.75;transition:opacity .18s}
+#items .it.it-min{transition:box-shadow .18s,transform .18s}
 #items .it.it-min .it-r2,#items .it.it-min .it-more,#items .it.it-min .it-xtra,#items .it.it-min .it-ft{display:none}
 #items .it.it-min .it-r1{flex-wrap:nowrap;cursor:pointer}
 #items .it .d{display:none!important}
