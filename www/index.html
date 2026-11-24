@@ -203,7 +203,7 @@
         <button type="button" class="btn btn-outline-danger w-100 mt-2" id="lst-cancel" style="border-radius:10px"><i class="bi bi-x-lg"></i> Cancelar el proceso de mi cotización actual</button>
       </div>
     </section>
-    <section class="cs">
+    <section class="cs" id="lst-accsec">
       <div class="cs-t acc-t" id="lst-acc" role="button" tabindex="0"><i class="bi bi-archive"></i> <span id="lst-h">Cotizaciones guardadas</span><i class="bi bi-chevron-down acc-ic" id="lst-ic"></i></div>
       <div id="lst" class="d-none">
         <input type="search" id="lst-q" class="form-control mb-2" placeholder="Buscar cotizaciones…">
@@ -600,7 +600,15 @@
 <!-- ===== Página: Cotizaciones Guardadas ===== -->
 <div class="pg" id="mGuard"><div class="mdl-box">
   <div class="mdl-head"><span><i class="bi bi-archive me-2"></i>Cotizaciones Guardadas</span></div>
-  <div class="mdl-body"><div id="hist"></div></div>
+  <div class="mdl-body">
+    <input type="search" id="gd-q" class="form-control mb-2" placeholder="Buscar cotizaciones…">
+    <div id="gd-rows"></div>
+    <div id="gd-pg" class="lst-pg d-none">
+      <button type="button" class="btn btn-sm btn-outline-secondary" id="gd-prev"><i class="bi bi-chevron-left"></i> Anterior</button>
+      <span class="mut" id="gd-pgnfo"></span>
+      <button type="button" class="btn btn-sm btn-outline-secondary" id="gd-next">Siguiente <i class="bi bi-chevron-right"></i></button>
+    </div>
+  </div>
 </div></div>
 
 <!-- ===== Página: Nuevo campo personalizado ===== -->
@@ -708,7 +716,7 @@
 <script src="js/ota_stamp.js"></script>
 <script src="js/plantilla.js?v=2"></script>
 <script src="js/catalog.js?v=9"></script>
-<script src="js/app.js?v=157"></script>
+<script src="js/app.js?v=158"></script>
 <script src="js/exports.js?v=11"></script>
 <script src="js/paises.js?v=1"></script>
 <script src="js/cuentas.js?v=16"></script>
