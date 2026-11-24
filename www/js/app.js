@@ -3,6 +3,7 @@ var DB=null,P=window.Capacitor&&window.Capacitor.Plugins;
 var esc=function(s){return String(s||'').replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
 var CUR='₡';
 var CURS={crc:['Colones','₡','🇨🇷','Costa Rica'],usd:['Dólares','$','🇺🇸','EE. UU., El Salvador, Panamá y más'],pen:['Soles','S/','🇵🇪','Perú'],bzd:['Dólares beliceños','BZ$','🇧🇿','Belice'],gtq:['Quetzales','Q','🇬🇹','Guatemala'],hnl:['Lempiras','L','🇭🇳','Honduras'],nio:['Córdobas','C$','🇳🇮','Nicaragua'],pab:['Balboas','B/.','🇵🇦','Panamá'],cop:['Pesos colombianos','COL$','🇨🇴','Colombia'],clp:['Pesos chilenos','CLP$','🇨🇱','Chile'],mxn:['Pesos mexicanos','MX$','🇲🇽','México'],eur:['Euros','€','🇪🇸','España']};
+var C2M={cr:'crc',pa:'pab',ni:'nio',hn:'hnl',sv:'usd',gt:'gtq',bz:'bzd',mx:'mxn',co:'cop',pe:'pen',cl:'clp',us:'usd',es:'eur'};
 function curSym(v){return(CURS[v]||CURS.crc)[1]}
 function fsx(){if(window.cproFsync){cproFsync(document.getElementById('cur'));cproFsync(document.getElementById('cf-pago'))}}
 (function(){var s=document.getElementById('cur');if(s)s.innerHTML=Object.keys(CURS).map(function(k){var c=CURS[k];return'<option value="'+k+'" data-ic="'+c[2]+'" data-sub="'+c[3]+'">'+c[1]+' '+c[0]+' ('+k.toUpperCase()+')</option>'}).join('')})();
@@ -563,7 +564,7 @@ var _cb=$('#icovb'),_ci=$('#icov');if(_cb&&_ci)_cb.onclick=function(){_ci.click(
 var _cx=$('#icovx');if(_cx)_cx.onclick=function(){icovSet('')};
 var _si=$('#saveIti');if(_si)_si.onclick=function(){saveIti().then(pgHome)};
 var _pd2=$('#itipdf');if(_pd2)_pd2.onclick=itiPdf;
-var _tcp=$('#cpais');if(_tcp)_tcp.addEventListener('change',function(){telWa();snomPh()});snomPh();var _ttl=$('#tel');if(_ttl)_ttl.addEventListener('input',telWa);
+var _tcp=$('#cpais');if(_tcp)_tcp.addEventListener('change',function(){telWa();snomPh();var _cm=C2M[this.value];if(_cm){var _cu=$('#cur');if(_cu){_cu.value=_cm;fsx()}}});snomPh();var _ttl=$('#tel');if(_ttl)_ttl.addEventListener('input',telWa);
 var _tw=$('#telwa');if(_tw)_tw.onclick=function(){if(this.dataset.num)window.open('https://wa.me/'+this.dataset.num,'_blank')};
 var _csq=$('#clisearch');if(_csq)_csq.oninput=climgrList;
 var _icliSel=[];
