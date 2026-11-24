@@ -539,6 +539,8 @@ body.dark #items .it[data-t="prod"] .form-control,body.dark #items .it[data-t="p
 .rt-ed:empty:before{content:attr(data-ph);color:var(--mut)}
 .rt-ed blockquote,.pv-nota blockquote,.qprev blockquote{margin:6px 0;padding:4px 10px;border-left:3px solid var(--acc2);background:rgba(99,102,241,.07);border-radius:0 6px 6px 0}
 .rt-ed ul,.rt-ed ol{padding-left:22px;margin:4px 0}
+#iwstp{position:relative;padding-top:2px}
+.iw-th{position:absolute;left:2px;top:2px}
 .stp{display:flex;align-items:center;justify-content:center;gap:8px;margin:6px 0 8px}
 .stp-d{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;border:2px solid var(--inp-line);color:var(--mut);background:var(--inp)}
 .stp-d.on{border-color:transparent;color:#fff;background:linear-gradient(135deg,#8b5cf6,#6366f1);box-shadow:0 4px 12px rgba(99,102,241,.35)}
