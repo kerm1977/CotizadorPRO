@@ -705,5 +705,5 @@ body.dark .fsheet{background:#111827}
 :is(#mSrv,#mLst,#mPago,#mDet,#mItems,#mTax,#mNotas,#mQCli,#mCot,#mIti,#mItiD,#mItiR,#mItiG) .mdl-body>*:last-child{margin-bottom:auto}
 
 #pdctas .hrow{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;padding:9px 4px;border-bottom:1px solid var(--line);cursor:pointer;font-size:.86rem;color:var(--ink)}
-#pdctas .hrow;overflow-wrap:anywhere;word-break:break-word}
+#pdctas .hrow>span{min-width:0;overflow-wrap:anywhere;word-break:break-word}
 .qhr{border:0;border-top:1.3px solid var(--line,#d8dce3);margin:14px 0 2px}
