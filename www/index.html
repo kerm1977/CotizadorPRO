@@ -453,8 +453,12 @@
     <div class="stp-t">Paso 3 · Instrucciones</div>
     <section class="cs">
       <div class="cs-t"><i class="bi bi-info-circle"></i> Agregar instrucciones</div>
-      <div class="cs-hint">Texto predeterminado — editá lo que necesités. Se integra al PDF.</div>
-      <select id="inssel" class="form-select form-select-sm mb-2"><option value="">＋ Insertar guardadas del perfil…</option><option value="ins">Instrucciones del perfil</option><option value="nor">Normas del perfil</option></select>
+      <div class="cs-hint">¿Instrucciones propias para este viaje o las generales de tu perfil? Se integran al PDF.</div>
+      <label class="it-sw mb-2"><input id="insprof" type="checkbox"><span>Usar las instrucciones del perfil</span></label>
+      <div class="row g-2 mb-2">
+        <div class="col-6"><button type="button" class="btn btn-sm btn-outline-primary w-100" id="insadd-ins"><i class="bi bi-plus-lg"></i> Ingresar instrucciones</button></div>
+        <div class="col-6"><button type="button" class="btn btn-sm btn-outline-primary w-100" id="insadd-nor"><i class="bi bi-plus-lg"></i> Ingresar normas</button></div>
+      </div>
       <div class="rt" data-ed="iins" data-ph="Escribí las instrucciones del viaje…"></div>
     </section>
     <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mItiR"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mItiN">Siguiente · No incluye <i class="bi bi-arrow-right"></i></button></div>
@@ -469,8 +473,12 @@
     <div class="stp-t">Paso 3 · No incluye</div>
     <section class="cs">
       <div class="cs-t"><i class="bi bi-slash-circle"></i> El servicio no incluye</div>
-      <div class="cs-hint">Lo que el viaje no cubre — se integra al PDF.</div>
-      <select id="ninsel" class="form-select form-select-sm mb-2"><option value="">＋ Insertar guardadas del perfil…</option><option value="ins">Instrucciones del perfil</option><option value="nor">Normas del perfil</option></select>
+      <div class="cs-hint">¿Normas propias para este viaje o las generales de tu perfil? Se integran al PDF.</div>
+      <label class="it-sw mb-2"><input id="ninprof" type="checkbox"><span>Usar las normas del perfil</span></label>
+      <div class="row g-2 mb-2">
+        <div class="col-6"><button type="button" class="btn btn-sm btn-outline-primary w-100" id="ninadd-ins"><i class="bi bi-plus-lg"></i> Ingresar instrucciones</button></div>
+        <div class="col-6"><button type="button" class="btn btn-sm btn-outline-primary w-100" id="ninadd-nor"><i class="bi bi-plus-lg"></i> Ingresar normas</button></div>
+      </div>
       <div class="rt" data-ed="ini" data-ph="Ej: alimentación, propinas, transporte…"></div>
     </section>
     <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mItiI"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mItiG">Siguiente · Opciones <i class="bi bi-arrow-right"></i></button></div>
@@ -715,7 +723,7 @@
 <script src="js/ota_stamp.js"></script>
 <script src="js/plantilla.js?v=3"></script>
 <script src="js/catalog.js?v=9"></script>
-<script src="js/app.js?v=163"></script>
+<script src="js/app.js?v=164"></script>
 <script src="js/exports.js?v=11"></script>
 <script src="js/paises.js?v=1"></script>
 <script src="js/cuentas.js?v=16"></script>
