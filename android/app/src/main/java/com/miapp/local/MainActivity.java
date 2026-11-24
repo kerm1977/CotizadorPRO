@@ -1,7 +1,10 @@
 package com.miapp.local;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.util.DisplayMetrics;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -32,6 +35,23 @@ import java.util.List;
 // evento 'tribalInbox'. El módulo js/media/inbox.js importa lo recibido.
 public class MainActivity extends BridgeActivity {
 
+    // La escala de fuente y de pantalla del sistema (letra/íconos más
+    // grandes en Ajustes) no debe descuadrar la interfaz: se fija la
+    // configuración al tamaño estándar para toda la app.
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        try {
+            Configuration cfg = new Configuration(
+                newBase.getResources().getConfiguration());
+            cfg.fontScale = 1.0f;
+            cfg.densityDpi = DisplayMetrics.DENSITY_DEVICE_STABLE;
+            super.attachBaseContext(
+                newBase.createConfigurationContext(cfg));
+        } catch (Throwable ignored) {
+            super.attachBaseContext(newBase);
+        }
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         registerPlugin(TribalFtpPlugin.class);
@@ -39,6 +59,23 @@ public class MainActivity extends BridgeActivity {
         super.onCreate(savedInstanceState);
         setupSystemBarsSafeArea();
         requestAllPermissions();
+        lockWebViewTextZoom();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        lockWebViewTextZoom();
+    }
+
+    // Zoom de texto del WebView clavado en 100%: la fuente del sistema no
+    // agranda el texto dentro de las páginas de la app.
+    private void lockWebViewTextZoom() {
+        try {
+            android.webkit.WebView wv =
+                getBridge() != null ? getBridge().getWebView() : null;
+            if (wv != null) wv.getSettings().setTextZoom(100);
+        } catch (Throwable ignored) {}
     }
 
     // Garantiza que el WebView respete la barra superior de estado y la barra
