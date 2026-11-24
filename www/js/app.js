@@ -435,7 +435,7 @@ var _sv=$('#savefab')||$('#save');if(_sv)_sv.onclick=save;var _sv2=$('#save2');i
 var _pt=$('#prevtog');if(_pt)_pt.onclick=function(){var p=$('#prev');if(!p)return;var on=p.style.display=='none';p.style.display=on?'block':'none';this.innerHTML=on?'<i class="bi bi-eye-slash"></i> Ocultar cotización':'<i class="bi bi-eye"></i> Visualizar cotización'};
 function envView(m){var mob=$('#vmob'),det=$('#vdet'),pv=$('#prev2'),cv=$('#prevCanvas');if(mob)mob.className='btn btn-sm flex-fill '+(m=='mob'?'btn-primary':'btn-outline-primary');if(det)det.className='btn btn-sm flex-fill '+(m=='det'?'btn-primary':'btn-outline-primary');if(pv)pv.style.display=m=='mob'?'':'none';if(cv){cv.style.display=m=='det'?'block':'none';if(m=='det'&&window.drawQ)drawQ(cv)}}
 var _vm=$('#vmob'),_vd=$('#vdet');if(_vm)_vm.onclick=function(){envView('mob')};if(_vd)_vd.onclick=function(){envView('det')};
-var II=['pais','emp','tel','tel2','telc','wa','mail','dir'];
+var II=['pais','emp','tel','telc','wa','mail','dir'];
 (function(){var s=document.getElementById('in_pais');if(s){s.innerHTML='<option value="">Seleccioná el país…</option>'+Object.keys(CPA).map(function(k){return'<option value="'+k+'">'+CPA[k][1]+' '+CPA[k][0]+'</option>'}).join('');s.onchange=function(){setCC();snomPh()}}})();
 var IEX={waze:'Waze',gmaps:'Google Maps',web:'Página web',ig:'Instagram',fb:'Facebook',tt:'TikTok',yt:'YouTube',tg:'Telegram',pin:'Pinterest',dias:'Días de apertura',horas:'Horas de atención',fer:'Feriados',sinpe:'SINPE',tarjeta:'Tarjetas',nota:'Nota / Detalle'};
 var IPH={dias:'Ej: Lunes a Viernes',horas:'Ej: 8:00 - 17:00'};
