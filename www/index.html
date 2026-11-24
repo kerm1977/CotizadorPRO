@@ -41,7 +41,6 @@
 
 <!-- ===== Página: Mi Perfil (avatar + información) ===== -->
 <div class="pg" id="mLogo"><div class="mdl-box">
-  <div class="mdl-head"><span><i class="bi bi-person-badge me-2"></i>Mi Perfil</span></div>
   <div class="mdl-body">
     <input type="file" id="logo" accept="image/*" class="d-none">
     <div id="iwstp" class="d-none">
@@ -144,11 +143,15 @@
       </div>
     </div>
     <div id="temasbox">
-    <hr class="my-3" style="border-color:var(--line)">
-    <div class="mut mb-2" style="font-weight:700;font-size:.9rem;text-align:center">Temas</div>
-    <button class="btn btn-outline-primary w-100 mb-3" id="renbrand" type="button"><i class="bi bi-pencil-square"></i> Cambiar nombre del título</button>
-    <div class="d-flex gap-2 mt-3"><button class="btn btn-outline-warning flex-fill" id="genprueba" type="button"><i class="bi bi-magic"></i> Generar Prueba</button><button class="btn btn-outline-danger flex-fill" id="delprueba" type="button"><i class="bi bi-trash"></i> Eliminar prueba</button></div>
-    <div id="palrow" class="d-flex justify-content-center gap-2 mt-4"></div>
+    <button class="btn btn-outline-primary w-100 mt-3" id="ajtog" type="button" style="border-radius:10px"><i class="bi bi-gear"></i> Otros ajustes</button>
+    <div id="ajusteslst" class="d-none">
+    <div class="edopt-lst mt-3">
+      <div class="edopt-it" id="renbrand"><i class="bi bi-pencil-square"></i> Cambiar nombre del título</div>
+      <div class="edopt-it" id="genprueba"><i class="bi bi-magic"></i> Generar prueba</div>
+      <div class="edopt-it" id="delprueba"><i class="bi bi-trash"></i> Eliminar prueba</div>
+    </div>
+    <div id="palrow" class="d-flex justify-content-center gap-2 mt-3"></div>
+    </div>
     </div>
   </div>
 </div></div>
@@ -702,7 +705,7 @@
 <script src="js/ota_stamp.js"></script>
 <script src="js/plantilla.js?v=2"></script>
 <script src="js/catalog.js?v=9"></script>
-<script src="js/app.js?v=135"></script>
+<script src="js/app.js?v=136"></script>
 <script src="js/exports.js?v=10"></script>
 <script src="js/paises.js?v=1"></script>
 <script src="js/cuentas.js?v=15"></script>
