@@ -43,6 +43,10 @@
   <div class="mdl-head"><span><i class="bi bi-person-badge me-2"></i>Mi Perfil</span></div>
   <div class="mdl-body">
     <input type="file" id="logo" accept="image/*" class="d-none">
+    <div id="iwstp" class="d-none">
+      <div class="stp"><span class="stp-d on" data-iw="1">1</span><span class="stp-l"></span><span class="stp-d" data-iw="2">2</span><span class="stp-l"></span><span class="stp-d" data-iw="3">3</span><span class="stp-l"></span><span class="stp-d" data-iw="4">4</span></div>
+      <div class="stp-t" id="iw-t">Paso 1 · Tu logo</div>
+    </div>
     <div class="avwrap mb-1">
       <canvas id="lc" width="240" height="240" style="background:var(--hov);border-radius:50%;touch-action:none;cursor:grab;display:block;margin-left:auto;margin-right:auto;max-width:200px"></canvas>
       <button class="avpencil" id="avpencil" type="button" title="Editar imagen"><i class="bi bi-pencil-fill"></i></button>
@@ -62,11 +66,9 @@
     </div>
     <!-- BLINDADO: asistente por pasos del perfil — no modificar -->
     <div id="iwiz" class="d-none">
-      <div class="stp"><span class="stp-d on" data-iw="1">1</span><span class="stp-l"></span><span class="stp-d" data-iw="2">2</span><span class="stp-l"></span><span class="stp-d" data-iw="3">3</span><span class="stp-l"></span><span class="stp-d" data-iw="4">4</span></div>
-      <div class="stp-t" id="iw-t">Paso 1 · Tu logo</div>
       <div id="irow">
       <div class="iw-p" id="iw1">
-        <div class="cs-hint no-ln">Elegí una imagen o tomá una foto del logo; ajustala arrastrando, pellizcando para zoom o con las herramientas.</div>
+        <div class="cs-hint no-ln">Elegí una imagen o tomá una foto del logo; arrastrá para mover, pellizcá para hacer zoom, usá Herramientas, aplicá el logo o eliminá la imagen.</div>
         <div id="rz" class="mt-2">
       <div class="d-flex gap-2 mb-2">
         <button class="btn btn-outline-primary flex-fill" id="picklab" type="button"><i class="bi bi-image"></i> Elegir imagen</button>
@@ -681,7 +683,7 @@
 <script src="js/ota_stamp.js"></script>
 <script src="js/plantilla.js?v=2"></script>
 <script src="js/catalog.js?v=9"></script>
-<script src="js/app.js?v=105"></script>
+<script src="js/app.js?v=106"></script>
 <script src="js/exports.js?v=10"></script>
 <script src="js/paises.js?v=1"></script>
 <script src="js/cuentas.js?v=15"></script>
