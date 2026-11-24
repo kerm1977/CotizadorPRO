@@ -231,7 +231,7 @@ function _mv(e){if(!lens)return;var r=host.getBoundingClientRect(),x=e.clientX-r
 function _mk(){lens=document.createElement('div');lens.className='qlens';lin=document.createElement('div');lin.className='qlens-in';var c=_pd2.cloneNode(true);c.id='';c.style.zoom=Z;c.style.height='auto';lin.appendChild(c);lens.appendChild(lin);host.appendChild(lens)}
 function _hd(){clearTimeout(tim);tim=null;locked=false;if(lens){lens.remove();lens=null}}
 host.style.touchAction='none';
-host.addEventListener('pointerdown',function(e){_mk();_mv(e);clearTimeout(tim);tim=setTimeout(function(){if(locked)_hd();else locked=true},3000);try{host.setPointerCapture(e.pointerId)}catch(x){}});
+host.addEventListener('pointerdown',function(e){if(!lens)_mk();_mv(e);clearTimeout(tim);tim=setTimeout(function(){if(locked)_hd();else locked=true},3000);try{host.setPointerCapture(e.pointerId)}catch(x){}});
 host.addEventListener('pointermove',_mv);
 host.addEventListener('pointerup',function(){clearTimeout(tim);tim=null;if(!locked)_hd()});
 host.addEventListener('pointercancel',function(){clearTimeout(tim);tim=null;if(!locked)_hd()})})();
