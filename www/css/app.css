@@ -707,5 +707,5 @@ body.dark .fsheet{background:#111827}
 #pdctas .hrow{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;padding:9px 4px;border-bottom:1px solid var(--line);cursor:pointer;font-size:.86rem;color:var(--ink)}
 #pdctas .hrow>span{min-width:0;overflow-wrap:anywhere;word-break:break-word}
 .qhr{border:0;border-top:1.3px solid var(--line,#d8dce3);margin:14px 0 2px}
-#ctas-view{background:rgba(99,102,241,.10)!important;border-color:rgba(99,102,241,.35)!important;color:rgb(79,82,221)!important}
+#ctas-view{background:rgba(99,102,241,.10)!important;border-color:rgba(99,102,241,.35)!important;color:#fff!important}
 #ctas-view:active,#ctas-view:hover{background:rgba(99,102,241,.16)!important}
