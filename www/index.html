@@ -242,7 +242,7 @@
       <div id="it-tot" class="it-tot d-none" style="margin:0"><span>Total</span><b id="it-tot-v"></b></div>
     </section>
     <datalist id="cat-srv"></datalist><datalist id="cat-prod"></datalist><datalist id="cat-ptipo"></datalist>
-    <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mDet"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mTax">Siguiente · Impuestos <i class="bi bi-arrow-right"></i></button></div>
+    <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mDet"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mTax">Siguiente · Costos <i class="bi bi-arrow-right"></i></button></div>
   </div>
 </div></div>
 
@@ -251,15 +251,15 @@
 
   <div class="mdl-body">
     <div class="stp"><span class="stp-d ok" data-go="mLst"><i class="bi bi-check-lg"></i></span><span class="stp-l on"></span><span class="stp-d on">2</span><span class="stp-l"></span><span class="stp-d" data-go="mCot">3</span></div>
-    <div class="stp-t">Paso 2 · Impuestos</div>
+    <div class="stp-t">Paso 2 · Costos</div>
     <div class="stp2"><span class="stp2-d" data-go="mPago"></span><span class="stp2-d" data-go="mDet"></span><span class="stp2-d" data-go="mItems"></span><span class="stp2-d on"></span><span class="stp2-d" data-go="mNotas"></span><span class="stp2-d" data-go="mQCli"></span></div>
     <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de hoja</div>
     <section class="cs">
-      <div class="cs-t"><i class="bi bi-calculator"></i> Impuesto y total</div>
+      <div class="cs-t"><i class="bi bi-calculator"></i> Precios / Impuestos / Total</div>
       <div class="it-legend">Acá podés agregar impuestos, aplicar descuentos y agregar un precio de envío en caso de requerirlo.</div>
       <div class="it-r2"><div><label class="it-sw"><input id="taxtog" type="checkbox" checked><span>Requiere impuesto</span></label></div><div id="taxwrap"><span class="lb">% impuesto</span><input id="tax" type="number" min="0" value="13" class="form-control"></div></div>
       <div class="it-r2"><div><label class="it-sw"><input id="ia-dsc" type="checkbox"><span>Aplicar descuento</span></label></div><div id="ia-dscw" class="d-none"><span class="lb">% descuento</span><input id="ia-dscv" type="number" min="0" max="100" step="0.01" class="form-control" placeholder="0"></div></div>
-      <div class="it-r2"><div><label class="it-sw"><input id="ia-env" type="checkbox"><span>Agregar precio de envío</span></label></div><div id="ia-envw" class="d-none"><span class="lb">Costo de envío</span><input id="ia-envv" type="number" min="0" step="1" class="form-control" placeholder="0"></div></div>
+      <div class="it-r2" id="ia-envr"><div><label class="it-sw"><input id="ia-env" type="checkbox"><span>Agregar precio de envío</span></label></div><div id="ia-envw" class="d-none"><span class="lb">Costo de envío</span><input id="ia-envv" type="number" min="0" step="1" class="form-control" placeholder="0"></div></div>
       <div class="cs-tot">
         <div class="r"><span class="mut">Subtotal</span><b id="subt"></b></div>
         <div class="r" id="taxsum" style="display:none"><span class="mut">Impuesto (<span id="taxpc"></span>%)</span><b id="taxamt"></b></div>
@@ -298,7 +298,7 @@
     <div class="stp-t">Paso 2 · Cliente</div>
     <div class="stp2"><span class="stp2-d" data-go="mPago"></span><span class="stp2-d" data-go="mDet"></span><span class="stp2-d" data-go="mItems"></span><span class="stp2-d" data-go="mTax"></span><span class="stp2-d" data-go="mNotas"></span><span class="stp2-d on"></span></div>
     <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de hoja</div>
-    <section class="cs">
+    <section class="cs" style="display:none">
       <div class="cs-t justify-content-between"><span><i class="bi bi-person"></i> Cliente</span>
         <button class="btn btn-sm btn-outline-success" id="cligo" title="Agregar / editar cliente" style="text-transform:none;letter-spacing:0"><i class="bi bi-person-plus"></i> Nuevo</button>
       </div>
@@ -660,7 +660,7 @@
 <script src="js/ota_stamp.js"></script>
 <script src="js/plantilla.js"></script>
 <script src="js/catalog.js?v=7"></script>
-<script src="js/app.js?v=66"></script>
+<script src="js/app.js?v=67"></script>
 <script src="js/exports.js?v=6"></script>
 <script src="js/paises.js?v=1"></script>
 <script src="js/cuentas.js?v=14"></script>
