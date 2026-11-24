@@ -709,3 +709,9 @@ body.dark .fsheet{background:#111827}
 .qhr{border:0;border-top:1.3px solid var(--line,#d8dce3);margin:14px 0 2px}
 #ctas-view{background:rgba(99,102,241,.10)!important;border-color:rgba(99,102,241,.35)!important;color:#fff!important}
 #ctas-view:active,#ctas-view:hover{background:rgba(99,102,241,.16)!important}
+.fs-gph{cursor:pointer;user-select:none}
+.fs-gph .fs-ch{margin-left:auto;font-size:.7rem;color:var(--mut)}
+.fs-gpb{display:none}
+.fs-gpb.on{display:block}
+.fs-o .fs-fv{flex:0 0 auto;opacity:.5;font-size:.85rem;padding:4px}
+.fs-o .fs-fv.bi-star-fill{color:#f4b400;opacity:1}
