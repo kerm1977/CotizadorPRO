@@ -6,7 +6,7 @@
 <title>CotizacionesPro</title>
 <link rel="stylesheet" href="css/bootstrap.css?v=2">
 <link rel="stylesheet" href="css/bootstrap-icons.css?v=2">
-<link rel="stylesheet" href="css/app.css?v=77">
+<link rel="stylesheet" href="css/app.css?v=78">
 </head>
 <body>
 <div class="container py-3" style="max-width:720px">
@@ -157,12 +157,14 @@
     <div class="stp"><span class="stp-d on">1</span><span class="stp-l"></span><span class="stp-d" data-go="mPago">2</span><span class="stp-l"></span><span class="stp-d" data-go="mCot">3</span></div>
     <div class="stp-t" id="lst-t">Paso 1 · Cotizaciones</div>
     <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de paso</div>
-    <div class="cs-hint mb-2" id="lst-guide" style="font-size:.82rem"></div>
-    <button type="button" class="btn btn-primary w-100" id="lst-new" style="border-radius:10px;margin-bottom:10px"><i class="bi bi-plus-lg"></i> <span id="lst-newlbl">Nueva cotización</span></button>
-    <div id="lst-resume" class="d-none" style="margin-bottom:10px">
-      <button type="button" class="btn btn-primary w-100" id="lst-go" style="border-radius:10px"><i class="bi bi-play-fill"></i> Proseguir con mi cotización actual</button>
-      <button type="button" class="btn btn-outline-danger w-100 mt-2" id="lst-cancel" style="border-radius:10px"><i class="bi bi-x-lg"></i> Cancelar el proceso de mi cotización actual</button>
-    </div>
+    <section class="cs">
+      <div class="cs-hint mb-2" id="lst-guide" style="font-size:.82rem"></div>
+      <button type="button" class="btn btn-primary w-100" id="lst-new" style="border-radius:10px;margin-bottom:10px"><i class="bi bi-plus-lg"></i> <span id="lst-newlbl">Nueva cotización</span></button>
+      <div id="lst-resume" class="d-none">
+        <button type="button" class="btn btn-primary w-100" id="lst-go" style="border-radius:10px"><i class="bi bi-play-fill"></i> Proseguir con mi cotización actual</button>
+        <button type="button" class="btn btn-outline-danger w-100 mt-2" id="lst-cancel" style="border-radius:10px"><i class="bi bi-x-lg"></i> Cancelar el proceso de mi cotización actual</button>
+      </div>
+    </section>
     <section class="cs">
       <div class="cs-t acc-t" id="lst-acc" role="button" tabindex="0"><i class="bi bi-archive"></i> <span id="lst-h">Cotizaciones guardadas</span><i class="bi bi-chevron-down acc-ic" id="lst-ic"></i></div>
       <div id="lst" class="d-none">
@@ -212,7 +214,7 @@
       <div class="cs-hint mb-2" style="font-size:.82rem">Los detalles son lo que tu cotización incluye — podés seleccionar varios a la vez. También podés personalizar y crear tus propios servicios y productos con el botón «Agregar más»: aparecen al final de la lista.</div>
       <span class="cs-l" id="stipol">Servicios y productos</span>
       <button type="button" id="stipo" class="form-control it-pick text-start d-flex justify-content-between align-items-center"><span id="stipo-v" class="mut">Tocar para elegir…</span><i class="bi bi-chevron-down mut"></i></button>
-      <div class="cs-hint">Seleccioná varios ítems — cada uno crea su tarjeta en Conceptos.</div>
+      <div class="cs-hint no-ln">Seleccioná varios ítems — cada uno crea su tarjeta en Conceptos.</div>
     </section>
     <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mPago"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mItems">Siguiente · Conceptos <i class="bi bi-arrow-right"></i></button></div>
   </div>
@@ -667,7 +669,7 @@
 <script src="js/ota_stamp.js"></script>
 <script src="js/plantilla.js?v=2"></script>
 <script src="js/catalog.js?v=9"></script>
-<script src="js/app.js?v=99"></script>
+<script src="js/app.js?v=100"></script>
 <script src="js/exports.js?v=10"></script>
 <script src="js/paises.js?v=1"></script>
 <script src="js/cuentas.js?v=15"></script>
