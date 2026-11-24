@@ -611,6 +611,8 @@ body.dark .cum{background:#111827;color:#e2e8f0}
 .hd-row{display:flex;align-items:center;gap:5px;margin-bottom:5px;flex-wrap:nowrap;min-width:0;justify-content:flex-start}
 .hd-row .it-sw{flex:0 0 auto;min-width:52px}
 .hd-row .h-t{flex:0 1 76px;min-width:0;padding:2px 3px;font-size:.74rem}
+.f-show{font-size:.82rem;color:var(--acc2);border:1.5px dashed var(--acc2);border-radius:10px;padding:8px 10px;background:rgba(99,102,241,.08);animation:fshow 1.8s ease-in-out infinite}
+@keyframes fshow{0%,100%{box-shadow:0 0 0 0 rgba(99,102,241,.35)}50%{box-shadow:0 0 0 6px rgba(99,102,241,0)}}
 .noi-ov{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:rgba(15,23,42,.45);opacity:0;pointer-events:none;transition:opacity .2s;padding:16px}
 .noi-ov.on{opacity:1;pointer-events:auto}
 .noi{background:#111827;border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:16px;width:100%;max-width:480px;display:flex;flex-direction:column;gap:8px;box-shadow:0 10px 34px rgba(0,0,0,.45)}
