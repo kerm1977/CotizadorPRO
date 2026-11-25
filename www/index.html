@@ -222,11 +222,14 @@
     <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de hoja</div>
     <section class="cs">
       <div class="cs-t"><i class="bi bi-wallet2"></i> Información de cotización</div>
+      <button type="button" class="btn btn-outline-primary w-100" id="coinfo-btn"><i class="bi bi-plus-lg"></i> Agregar información de cotización</button>
+      <div id="coinfo" class="d-none">
       <div class="cs-hint mb-2" style="font-size:.82rem">Agregar una cuenta de pago la muestra en el encabezado de tu cotización, para que el cliente sepa cómo pagarte. No es obligatorio — podés prescindir de ella, pero tenerla lista hace la cotización más completa.</div>
       <span class="cs-l">Nombre de la cotización</span>
       <input id="snom" class="form-control mb-2" placeholder="Ej. Tours, viajes, servicios o productos">
       <span class="cs-l">Moneda</span>
       <div><select id="cur" class="form-select" data-ic="bi-currency-exchange"></select></div>
+      </div>
     </section>
     <div class="stp-nav"><button type="button" class="btn btn-outline-secondary" data-go="mLst"><i class="bi bi-arrow-left"></i> Volver</button><button type="button" class="btn btn-primary" data-go="mDet">Siguiente · Detalles <i class="bi bi-arrow-right"></i></button></div>
   </div>
