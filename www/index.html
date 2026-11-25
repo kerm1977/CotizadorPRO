@@ -221,10 +221,9 @@
     <div class="stp2"><span class="stp2-d on"></span><span class="stp2-d" data-go="mDet"></span><span class="stp2-d" data-go="mItems"></span><span class="stp2-d" data-go="mTax"></span><span class="stp2-d" data-go="mNotas"></span></div>
     <div class="stp-h"><i class="bi bi-arrow-left-right"></i> Deslizá para cambiar de hoja</div>
     <section class="cs">
-      <div class="cs-t"><i class="bi bi-wallet2"></i> Información de cotización</div>
-      <button type="button" class="btn btn-outline-primary w-100" id="coinfo-btn"><i class="bi bi-plus-lg"></i> Agregar información de cotización</button>
-      <div id="coinfo" class="d-none">
-      <div class="cs-hint mb-2" style="font-size:.82rem">Agregar una cuenta de pago la muestra en el encabezado de tu cotización, para que el cliente sepa cómo pagarte. No es obligatorio — podés prescindir de ella, pero tenerla lista hace la cotización más completa.</div>
+      <div class="cs-t" id="coinfo-t" role="button" tabindex="0" style="cursor:pointer" title="Ver información"><i class="bi bi-wallet2"></i> Información de cotización <i class="bi bi-info-circle mut" style="margin-left:auto;font-size:.9rem"></i></div>
+      <div id="coinfo">
+      
       <span class="cs-l">Nombre de la cotización</span>
       <input id="snom" class="form-control mb-2" placeholder="Ej. Tours, viajes, servicios o productos">
       <span class="cs-l">Moneda</span>
@@ -747,6 +746,7 @@
   <div id="consola" class="consola"></div>
 </div>
 
+<div class="noi-ov" id="cinf-ov"><div class="noi"><div class="cs-t"><i class="bi bi-wallet2"></i> Información de cotización</div><div class="it-legend" style="margin:0 0 10px" style="font-size:.82rem">Agregar una cuenta de pago la muestra en el encabezado de tu cotización, para que el cliente sepa cómo pagarte. No es obligatorio — podés prescindir de ella, pero tenerla lista hace la cotización más completa.</div><button type="button" class="btn btn-primary mt-2" id="cinf-ok">Listo</button></div></div>
 <div class="noi-ov" id="noi-ov"><div class="noi"><div class="cs-t"><i class="bi bi-dash-circle"></i> No incluye</div><div class="it-legend" style="margin:0 0 10px">Aclará en la cotización qué no incluye en tus servicios o productos.</div><div class="rt" data-ed="inc-no" data-ph="Propinas, gastos personales…"></div><button type="button" class="btn btn-primary mt-2" id="noi-ok">Listo</button></div></div>
 <div class="toast-container position-fixed bottom-0 end-0 p-3"><div id="toast" class="toast"></div></div>
 <script src="js/buildstamp.js"></script>
